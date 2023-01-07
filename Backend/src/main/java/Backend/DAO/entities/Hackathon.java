@@ -8,12 +8,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,6 +48,7 @@ public class Hackathon implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Thematique thematique;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "hackathon")
 	private List<Equipe> equipes;
 }

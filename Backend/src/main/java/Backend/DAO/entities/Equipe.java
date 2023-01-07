@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,9 +40,11 @@ public class Equipe implements Serializable {
 	@Temporal (TemporalType.DATE)
 	private Date dateCreation;
 	
+	@JsonIgnore
 	@ManyToOne
 	Hackathon hackathon;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "equipe")
 	private List<User> membres;
 	
