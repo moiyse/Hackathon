@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './views/landing/home/home.component';
 
 const routes: Routes = [
-  {path:'',component:HomeComponent, children: [
+  {path:'auth',loadChildren: () => import('./views/auth/auth.module').then(m => m.AuthModule)},
+  {path:'', children: [
+      {path:'', redirectTo:'landing',pathMatch:'full'},
       {
         path: 'landing',
         loadChildren: () => import('./views/landing/landing.module').then(m => m.LandingModule)

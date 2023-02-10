@@ -1,4 +1,7 @@
 
+
+
+
   
   .schedule .section-title span.alternate {
     color: #0060FF !important; 
@@ -74,9 +77,8 @@
   }
   
   .schedule .schedule-contents {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 30px;
+    margin: 30px 55px;
+    padding: 0 0 12px 0 !important;
   }
   
   .schedule .schedule-contents .schedule-item table {
@@ -91,9 +93,9 @@
     overflow: auto;
   }
   
-  .schedule .schedule-contents .schedule-item table tr {
+  .schedule .schedule-contents .schedule-item table tr.headings {
     list-style: none;
-    
+    border-bottom: 1px solid #0060FF;
   }
 
   .schedule .schedule-contents .schedule-item table th {
@@ -120,19 +122,19 @@
   }
 
   .schedule .schedule-contents .schedule-item tr.block .time-td {
-    padding: 10px 0px 10px 40px;
+    padding: 30px 0px 30px 40px;
   }
 
   .schedule .schedule-contents .schedule-item tr.block .speaker-td {
-    padding: 10px 0px 10px 0px;
+    padding: 30px 0px 30px 0px;
   }
 
   .schedule .schedule-contents .schedule-item tr.block .subject-td {
-    padding: 10px 0px 10px 0px;
+    padding: 30px 0px 30px 0px;
   }
 
   .schedule .schedule-contents .schedule-item tr.block .venue-td {
-    padding: 10px 40px 10px 0px;
+    padding: 30px 40px 30px 0px;
   }
 
   @media (max-width: 991px){
@@ -232,22 +234,18 @@
   
   .schedule .schedule-contents .schedule-item tr.headings {
     
-    background: #0060FF;
+    
   }
   
   .schedule .schedule-contents .schedule-item tr.headings div {
-    color: #fff;
+    color: #1900ff;
     text-transform: uppercase;
     font-family: "michroma", sans-serif;
     
   }
   
   .schedule .schedule-contents .schedule-item tr.schedule-details {
-    border-bottom: 1px solid;
-    border-left: 1px solid;
-    border-right: 1px solid;
-    border-color: #e5e5e5;
-    background: #fff;
+    
     width: 100%;
     transition: .2s ease-in;
   }
@@ -292,10 +290,16 @@
   }
   
   .schedule .schedule-contents .schedule-item tr.schedule-details:hover {
-    background-color: #ebf3ff;
+    box-shadow: 0px 0px 30px 0px rgba(0, 184, 225, 0.19);
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
             
   }
   
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   .schedule .schedule-contents .schedule-item tr.schedule-details:hover span.name {
     color: #0060FF;
   }
@@ -305,16 +309,111 @@
     margin-bottom: 30px;
   }
 
-  .bg-schedule {
-    background: url(../../../../assets/background/schedule-bg.png) no-repeat;
-    background-size: cover;
+
+
+  /****************** Workshop ***********************************/
+
+
+
+  .my-workshop-container{
+    background-color: white;
+    width: 100%;
+    border-radius: 3px;
+  }
+  
+  .my-workshop-container .workshop-nav{
+    border-bottom: 1px grey solid;
+    padding: 30px 10px 10px 0;
+    margin: 0px 40px;
+    position: relative;
   }
 
-  ::-webkit-scrollbar {
-    display: none;
+  .tab-content {
+    background-color: #fbfcff;
+    border: 1px solid #0087FF;
+  }
+
+  .workshop-nav a {
+    margin: 0px 10px 0px 10px;
+  }
+
+  .workshop-nav span {
+    color: #848484;
+  }
+
+  .workshop-nav i {
+    font-size: 12px;
+    color: #4a4a4a;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .schedule .my-workshop-container .workshop-table .card i.mail {
+    margin-right: 22px;
+    font-size: 19px;
+  }
+
+  .schedule .my-workshop-container .workshop-table .card i.down {
+    font-size: 20px;
+    color: #8d8d8d;
+    margin-left: 206px;
+  }
+
+
+  @media (max-width: 1200px){
+    .schedule .my-workshop-container .workshop-table .card i.down {
+      
+      margin-left: 80px;
+    }
+
+  }
+
+  @media (max-width: 991px){
+    .schedule .my-workshop-container .workshop-table .card i.down {
+      
+      margin-left: 0;
+    }
+
+  }
+
+  @media (max-width : 991px){
+    .schedule .my-workshop-container .workshop-table .card i.mail {
+      margin-right: 0;
+    }
   }
 
   
-
+    .card {
+      display: block;
+      text-align: center;
+      width: 100%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      padding: 20px 16px;
+      margin: 0 0 12px 0;
+      border-radius: 30px;
+    }
   
 
+
+  @media (min-width : 991px){
+    .card {
+      display: -webkit-inline-box;
+      width: 100%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      padding: 20px 16px;
+      margin: 0 0 12px 0;
+      border-radius: 30px;
+    }
+  }
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  
+
+  
+  
+  
+  

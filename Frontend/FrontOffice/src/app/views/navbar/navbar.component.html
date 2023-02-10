@@ -2,7 +2,8 @@
     <div class="container-fluid p-0">
         <!-- logo -->
         <a class="navbar-brand" href="index.html">
-          <img src="assets/logo.png" alt="logo">
+          <img src="assets/INCEPTECH-logo.png" class="img-logo" alt="logo">
+          <!--<p>INCEPTECH</p>-->
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa fa-bars"></span>
@@ -16,20 +17,39 @@
                 <a class="nav-link" routerLink="/landing/about">About<span>/</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="landing/contact">Contact</a>
+                <a class="nav-link" routerLink="/landing/contact">Contact<span *ngIf="user!=null">/</span></a>
+            </li>
+            <li class="nav-item" *ngIf="user!=null">
+                <a class="nav-link" routerLink="/landing/reservation">Reservation</a>
             </li>
             
             </ul>
-            <li class="nav-item dropdown active dropdown-slide" style="position: relative;list-style: none;">
-            <a href="#" class="ticket">
-            <span style="border: none !important;">Account</span>
-            <span style="border: none !important;"><i class="fa fa-caret-down"></i></span>
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="index.html"><i class="fa fa-sign-in dropdown-icons" aria-hidden="true"></i>Signin</a>
-                <a class="dropdown-item" href="homepage-two.html"><i class="fa fa-user-plus dropdown-icons"></i>Signup</a>
-            </div>
+            <li *ngIf="user!=null; else elseBlock" class="nav-item dropdown active dropdown-slide" style="text-align: center;position: relative;list-style: none;">
+                
+                    
+                    <a class="ticket">
+                    <span style="border: none !important;"><i style="margin-right: 4px;" class="fa fa-user"></i>Profile</span>
+                    <span style="border: none !important;"><i class="fa fa-caret-down"></i></span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/landing/profile"><i class="fa fa-user dropdown-icons"></i>Profile Settings</a>
+                        <a class="dropdown-item" routerLink="/landing/workshops"><i class="fa fa-list dropdown-icons"></i>My Workshops</a>
+                        <a class="dropdown-item" style="display: -webkit-inline-box;width: 100%;" routerLink="/landing/invitations"><i class="fa fa-bell dropdown-icons"></i>Invitation <div class="circle-icon"><span>5</span></div></a>
+                        <a class="dropdown-item" href="homepage-two.html"><i class="fa fa-sign-in dropdown-icons" aria-hidden="true"></i>Logout</a>
+                    </div>
             </li>
+            <ng-template #elseBlock>
+                <li class="nav-item dropdown active dropdown-slide" style="text-align: center;position: relative;list-style: none;" >
+                            <a class="ticket">
+                            <span style="border: none !important;">Account</span>
+                            <span style="border: none !important;"><i class="fa fa-caret-down"></i></span>
+                            </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" routerLink="/auth"><i class="fa fa-sign-in dropdown-icons" aria-hidden="true"></i>Signin</a>
+                            <a class="dropdown-item" href="homepage-two.html"><i class="fa fa-user-plus dropdown-icons"></i>Signup</a>
+                        </div>
+                </li>
+            </ng-template>
         </div>
         
     </div>

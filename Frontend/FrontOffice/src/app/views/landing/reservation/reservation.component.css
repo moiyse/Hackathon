@@ -1,0 +1,185 @@
+.schedule.two .schedule-contents .schedule-item ul li .time {
+    width: 20%;
+  }
+  
+  @media (max-width: 767px) {
+    .schedule.two .schedule-contents .schedule-item ul li .time {
+      width: 37%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .schedule.two .schedule-contents .schedule-item ul li .time {
+      width: 48%;
+    }
+  }
+  
+  .schedule.two .schedule-contents .schedule-item ul li .speaker {
+    width: 20%;
+  }
+  
+  @media (max-width: 991px) {
+    .schedule.two .schedule-contents .schedule-item ul li .speaker {
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .schedule.two .schedule-contents .schedule-item ul li .speaker {
+      width: 20%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .schedule.two .schedule-contents .schedule-item ul li .speaker {
+      width: 50%;
+    }
+  }
+  
+  .schedule.two .schedule-contents .schedule-item ul li .subject {
+    width: 20%;
+  }
+  
+  @media (max-width: 991px) {
+    .schedule.two .schedule-contents .schedule-item ul li .subject {
+      display: none;
+    }
+  }
+  
+  .schedule.two .schedule-contents .schedule-item ul li .venue {
+    width: 20%;
+  }
+  
+  @media (max-width: 767px) {
+    .schedule.two .schedule-contents .schedule-item ul li .venue {
+      display: none;
+    }
+  }
+
+.schedule .schedule-contents .schedule-item ul li .reservation {
+    width: 30%;
+  }
+  
+  @media (max-width: 991px) {
+    .schedule .schedule-contents .schedule-item ul li .reservation {
+      display: none;
+    }
+  }
+
+  .schedule.two .schedule-contents .schedule-item ul li .reservation {
+    width: 20%;
+  }
+  
+  @media (max-width: 991px) {
+    .schedule.two .schedule-contents .schedule-item ul li .reservation {
+      display: none;
+    }
+  }
+
+
+  .button-rsrv{
+    background-color: #0087FF;
+    border: none;
+    color: white;
+    border-color: white;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "michroma";
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 21px 0px 5px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  
+
+  .schedule .schedule-tab ul li.nav-item a.active:after{
+    display: none !important;
+  }
+
+  .workshop-cards{
+    margin-top: 14px;
+    text-align: center!important;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    padding: 20px 30px;
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .workshop-cards .card-text{
+    overflow:auto;
+    height: 94px;
+  }
+
+  .workshop-cards .card-items {
+    font-family: "michroma", sans-serif;
+    text-transform: uppercase;
+    font-size: 21px;
+    color: #0060FF;
+    font-weight: 500;
+  }
+
+  .workshop-cards .card-items-details {
+    display: none;
+  }
+
+  .workshop-cards a span {
+    margin-top: 2px;
+    font-family: "michroma", sans-serif;
+    display: block;
+    font-size: 16px;
+    color: #848484;
+    font-weight: 400;
+  }
+
+  .workshop-cards:hover{
+    margin-top: 14px;
+    text-align: center !important;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    padding: 20px 30px;
+    background-color: #0060FF;
+  }
+
+  .workshop-cards:hover .card-items {
+    display: none;
+  }
+
+  .workshop-cards .card-items-details span{
+    font-size: 15px;
+    font-family : "monteserat", sans-serif;
+    display: inline-block;
+    color: white;
+  }
+
+  .workshop-cards:hover .card-items-details {
+    display: block;
+    font-family: "monteserat", sans-serif;
+    text-transform: none;
+    font-size: 15px;
+    color: #bcbcbc;
+    font-weight: 500;
+  }
+
+  .workshop-cards:hover .button-rsrv {
+    border: 1px solid;
+    border-color: white;
+  }
+  
+  
+
+  
+  
+  
+  

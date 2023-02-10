@@ -9,6 +9,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { InvitationsComponent } from './invitations/invitations.component';
+import { WorkshopsComponent } from './workshops/workshops.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { ReservationComponent } from './reservation/reservation.component';
     ProfileComponent,
     FooterComponent,
     NavbarComponent,
-    ReservationComponent
+    ReservationComponent,
+    InvitationsComponent,
+    WorkshopsComponent
   ],
   imports: [
     CommonModule,
