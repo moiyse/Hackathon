@@ -13,7 +13,8 @@ import { FooterComponent } from './views/footer/footer.component';
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
-        AppRoutingModule,
+        AppRoutingModule
+    
     ]
 })
 export class AppModule { }

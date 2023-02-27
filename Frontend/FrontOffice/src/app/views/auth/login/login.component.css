@@ -1,9 +1,13 @@
 html {
     height: 100% !important;
   }
+  body{
+    height: 100% !important;
+  }
 .login-body {
     font-family: "michroma" !important;
     font-size: 10px !important;
+    height: 100%;
   }
 
 p, a, li, blockquote, label{

@@ -110,7 +110,7 @@ function initialize() {
         position: nottingham,
         map: map,
         icon: pinIcon,
-        title: 'eventre'
+        title: 'Inceptech'
     });
 }
 
