@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Team } from '../Core/Models/Team';
+import { TeamsService } from '../Core/Services/teams.service';
 
 @Component({
   selector: 'app-teams',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamsComponent implements OnInit {
 
-  constructor() { }
+  list:Team[]=[];
+
+  constructor(private TeamsApi:TeamsService) { }
 
   ngOnInit(): void {
+    this.TeamsApi.getAllTeams().subscribe(
+      response=>{
+        this.list=response;
+        console.log(this.list)
+      },
+      error=>{
+        console.log(error)
+      },
+      ()=>{}
+    )
   }
 
 }

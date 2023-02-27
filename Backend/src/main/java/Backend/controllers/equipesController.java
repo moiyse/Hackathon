@@ -3,6 +3,7 @@ package Backend.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import Backend.DAO.entities.Equipe;
 import Backend.services.interfaces.IEquipeService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/equipes")
+@RequestMapping("/teams")
 public class equipesController {
 
 	@Autowired(required=false)

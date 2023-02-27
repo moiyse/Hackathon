@@ -1,0 +1,22 @@
+.card-body{
+    display: flex;
+    .thematic_box{
+        padding: 8px;
+        border-radius: 25px;
+        border: 1px solid rgb(98, 97, 97);
+        display: flex;
+        justify-content: space-between;
+        margin-right: 20px;
+        .thematic_name{
+            color: gray;
+            padding: 5px;
+        }
+        .thematic_remove{
+            color: red;
+            margin-left: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}

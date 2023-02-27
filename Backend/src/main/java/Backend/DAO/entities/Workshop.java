@@ -1,20 +1,24 @@
 package Backend.DAO.entities;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -36,17 +40,40 @@ public class Workshop implements Serializable {
 	@Column(name="idWorkshop")
 	private int idWorkshop;
 	private String nom;
-	@Temporal (TemporalType.DATE)
-	private Date dateDebut;
-	@Temporal (TemporalType.DATE)
-	private Date dateFin;
-	@Temporal (TemporalType.DATE)
-	private Date dateCreation;
-	@Enumerated(EnumType.STRING)
-	private Thematique thematique;
+	@Lob
+	private String description;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime dateDebut;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime dateFin;
+	
 	private int nbrMaxParticipants;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_at", nullable = false, updatable = false)
+	private Date createdAt;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated_at", nullable = false)
+	private Date updatedAt;
+
+	  
 	@JsonIgnore
 	@OneToMany(mappedBy = "workshop")
 	List<Reservation> reservations;
+	
+	@ManyToOne
+	private workshopThematic thematic;
+	
+	@PrePersist 
+	protected void onCreate() {
+		createdAt = new Date();
+		updatedAt = new Date();
+	}
+	
+	@PreUpdate
+	protected void onUpdate() {
+		updatedAt = new Date();
+	}
+	
 }

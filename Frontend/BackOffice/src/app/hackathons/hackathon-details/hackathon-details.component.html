@@ -1,0 +1,39 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content" style="margin-top: 100px;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">hackathon Details</h5>
+        </div>
+        <div class="card-body">
+            <div class="mt-3 mb-3">
+                <span class="second-title">hackathon name:</span>  {{hackathon.nom}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">Start Date: </span> {{hackathon.dateDebut | date: 'dd/MM/yyyy hh:mm a'}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">End Date: </span> {{hackathon.dateFin | date: 'dd/MM/yyyy hh:mm a'}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">Description:</span> <span innerHTML="{{hackathon.description}}"></span>  
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">maximum number of teams:</span>  {{hackathon.nbrMaxEquipe}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">date the hackathon was added: </span> {{hackathon.createdAt | date: 'dd/MM/yyyy hh:mm a'}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">last date the hackathon was updated:</span> {{hackathon.updatedAt | date: 'dd/MM/yyyy hh:mm a'}} 
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">hackathon thematic: </span> {{hackathon.thematic?.nom}}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

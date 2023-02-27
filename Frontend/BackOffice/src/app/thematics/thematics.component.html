@@ -1,0 +1,82 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content" style="margin-top: 100px;">
+  <!-- workshop thematic form -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header text-left">
+            <div class="form-group" style="padding-top: 15px;">
+              <form #WThematicForm="ngForm" (ngSubmit)="WThematicFormSubmit(WThematicForm)">
+                <div class="row">
+                  <div class="col-md-4">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      ngModel
+                      name="nom" 
+                      required
+                      #nom="ngModel"
+                      placeholder="Workshop thematic"/>
+                  </div>
+                  <div class="col-md-4">
+                    <button type="submit" class="btn" style="background-color: #0261FF; transform: translateY(-10px);">Add New Whorkshop Thematic</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        <div class="card-body">
+          <div class="thematic_box" *ngFor="let wthematic of WThematics">
+            <div  class="thematic_name" 
+                  contenteditable="true" 
+                  (blur)="updateWThematicOnBlur($event, wthematic)">
+                  {{wthematic.nom}} 
+            </div>
+            <div  class="thematic_remove" 
+                  (click)="removeWThematic(wthematic.idWorkshopThematic)">x</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- hackathon thematic form -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header text-left">
+            <div class="form-group" style="padding-top: 15px;">
+              <form #HThematicForm="ngForm" (ngSubmit)="HThematicFormSubmit(HThematicForm)">
+                <div class="row">
+                  <div class="col-md-4">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      ngModel
+                      name="nom" 
+                      required
+                      #nom="ngModel"
+                      placeholder="Hackathon thematic"/>
+                  </div>
+                  <div class="col-md-4">
+                    <button type="submit" class="btn" style="background-color: #0261FF; transform: translateY(-10px);">Add New Hackathon Thematic</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        <div class="card-body">
+          <div class="thematic_box" *ngFor="let hthematic of HThematics">
+            <div  class="thematic_name" 
+              contenteditable="true" 
+              (blur)="updateHThematicOnBlur($event, hthematic)">
+              {{hthematic.nom}} 
+            </div>
+            <div  class="thematic_remove" 
+                  (click)="removeHThematic(hthematic.idHackathonThematic)">x</div>
+            </div>            
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
