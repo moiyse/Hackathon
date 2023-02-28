@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,10 +35,12 @@ public class Reservation implements Serializable {
 	private int idReservation;
 	@Temporal (TemporalType.DATE)
 	private Date dateReservation;
-	
+
+	@JsonIgnore
 	@ManyToOne
 	User user;
-	
+
+	@JsonIgnore
 	@ManyToOne
 	Workshop workshop;
 	
