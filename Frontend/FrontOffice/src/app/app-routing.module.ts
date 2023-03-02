@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './views/landing/home/home.component';
 
 const routes: Routes = [
@@ -8,7 +9,7 @@ const routes: Routes = [
       {path:'', redirectTo:'landing',pathMatch:'full'},
       {
         path: 'landing',
-        loadChildren: () => import('./views/landing/landing.module').then(m => m.LandingModule)
+        loadChildren: () => import('./views/landing/landing.module').then(m => m.LandingModule),
       }
     ]
   }

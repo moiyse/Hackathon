@@ -11,6 +11,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { InvitationsComponent } from './invitations/invitations.component';
 import { WorkshopsComponent } from './workshops/workshops.component';
+import { authInterceptorProviders } from 'src/app/services/auth.interceptor';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { WorkshopsComponent } from './workshops/workshops.component';
   imports: [
     CommonModule,
     LandingRoutingModule
-  ]
+  ],
+  providers: [authInterceptorProviders],
 })
 export class LandingModule { }

@@ -52,6 +52,16 @@
     font-size: 7px;
 }
 
+.logout{
+  cursor: pointer;
+  color: #212529 !important;
+}
+
+.logout:focus, .logout:hover {
+  color: #0060FF !important;
+  text-decoration: none !important;
+}
+
 
 
 
