@@ -4,17 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -51,4 +41,22 @@ public class User implements Serializable {
 	
 	@OneToMany(mappedBy = "user")
 	private List<Reservation> reservations;
+
+	@OneToOne(mappedBy="user")
+	private Je je;
+
+
+
+	public User(String nom, String prenom, String email, String password, String etablissement, String imagePath, int CIN, Role role, Date dateInscription, Je je) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.password = password;
+		this.etablissement = etablissement;
+		this.imagePath = imagePath;
+		this.CIN = CIN;
+		this.role = role;
+		this.dateInscription = dateInscription;
+		this.je = je;
+	}
 }
