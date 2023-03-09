@@ -4,9 +4,11 @@ import { AuthGuard } from 'src/app/auth.guard';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
-import { InvitationsComponent } from './invitations/invitations.component';
+import { InvitationsReceivedComponent } from './invitations-received/invitations-received.component';
+import { InvitationsSentComponent } from './invitations-sent/invitations-sent.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { TeamComponent } from './team/team.component';
 import { WorkshopsComponent } from './workshops/workshops.component';
 
 const routes: Routes = [
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path:'about',component:AboutComponent},
   { path:'reservation',component:ReservationComponent,canActivate:[AuthGuard]},
   { path:'workshops',component:WorkshopsComponent,canActivate:[AuthGuard]},
-  { path:'invitations',component:InvitationsComponent,canActivate:[AuthGuard]},
+  { path:'invitationsSent',component:InvitationsSentComponent,canActivate:[AuthGuard]},
+  { path:'invitationsReceived',component:InvitationsReceivedComponent,canActivate:[AuthGuard]},
+  { path:'team',component:TeamComponent,canActivate:[AuthGuard]},
   { path:'profile',component:ProfileComponent,canActivate:[AuthGuard]}
 ];
 

@@ -14,7 +14,7 @@ export class JeService {
   constructor(private http: HttpClient) { }
 
   public getAllJe():Observable<Je[]>{
-    console.log("in service je");
+    //console.log("in service je");
     return this.http.get<Je[]>(`${this.openServerUrl}/je/getAllJe`);
   }
 }

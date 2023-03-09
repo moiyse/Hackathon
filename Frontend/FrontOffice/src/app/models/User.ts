@@ -1,10 +1,11 @@
 import { Equipe } from "./Equipe";
+import { Invitation } from "./Invitation";
 import { Je } from "./Je";
 import { Reservation } from "./Reservation";
 
 
 export class User {
-    id!: number;
+    idUser!: number;
     nom!: String;
     prenom!: String;
     email!: String;
@@ -16,5 +17,7 @@ export class User {
     dateInscription!: String;
     equipe!:Equipe
     reservations!:Reservation[];
+    invitationSent!:Invitation[];
+    invitationReceived!:Invitation[];
     je!:Je;
 }

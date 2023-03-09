@@ -2,6 +2,7 @@ package Backend.controllers;
 
 import Backend.DAO.Repositories.JeRepository;
 import Backend.DAO.entities.Je;
+import Backend.DAO.entities.Role;
 import Backend.DAO.entities.User;
 import Backend.payload.request.LoginRequest;
 import Backend.payload.request.SignupRequest;
@@ -72,6 +73,8 @@ public class AuthController {
 
         Date dateInscrit = new Date();
         Optional<Je> je = jeRepository.findById(signUpRequest.getIdJe());
+        signUpRequest.setRole(Role.ADHERENT);
+
         if(je != null){
             // Create new user's account
             User user = new User(signUpRequest.getNom(),

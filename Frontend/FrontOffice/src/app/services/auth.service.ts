@@ -24,7 +24,7 @@ export class AuthService {
   constructor(private router:Router,private tokenStorage:TokenStorageService,private http: HttpClient) { }
 
   login(credentials : any): Observable<any> {
-    console.log("credentials email : "+credentials.email+"credentials email : "+credentials.password)
+    //console.log("credentials email : "+credentials.email+"credentials email : "+credentials.password)
     return this.http.post(this.openServiceUrl + '/signin', {
       email: credentials.email,
       password: credentials.password
@@ -45,13 +45,13 @@ export class AuthService {
   }
 
   checkToken():Observable<any>{
-    console.log("in check token")
+    //console.log("in check token")
     return this.http.get(this.apiServerUrl  + '/checkToken',{responseType: 'text'});
     
   }
 
   getEmailFromToken():any{
-    console.log("in get emial from token")
+    //console.log("in get emial from token")
     let jwt = this.tokenStorage.getToken()
     let jwtData = jwt.split('.')[1]
     let decodedJwtJsonData = window.atob(jwtData)
@@ -60,15 +60,15 @@ export class AuthService {
   }
 
   chechAuth(){
-    console.log("in check auth")
-    console.log("storage user : ",this.tokenStorage.getUser()," user of token : ",this.getEmailFromToken())
+    //("in check auth")
+    //console.log("storage user : ",this.tokenStorage.getUser()," user of token : ",this.getEmailFromToken())
     if(this.tokenStorage.getUser() != this.getEmailFromToken())
     {
       this.tokenStorage.signOut();
     }
     else{
       this.checkToken().subscribe(data => {console.log(data)},err=>{console.log(err.message),this.tokenStorage.signOut()})
-      console.log("auth valid !")
+      //console.log("auth valid !")
     }
   }
 }

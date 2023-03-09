@@ -76,7 +76,6 @@
                             <div class="form-outline mb-4 image-input">
                                 <img *ngIf="imagePath == '';else elseBlock" class="image-field" src="assets/no-user-image-icon-27.jpg">
                                 <ng-template #elseBlock><img class="image-field" [src]="imagePath" ></ng-template>
-                                <p>{{imagePath}}</p>
                                 <input [value]="imagePath" #imageInput formControlName="imagePath" (change)="imageFileOnChange(imageInput)" type="file" id="imageinput" class="input-file" />
                                 
                             </div>

@@ -9,9 +9,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ReservationComponent } from './reservation/reservation.component';
-import { InvitationsComponent } from './invitations/invitations.component';
 import { WorkshopsComponent } from './workshops/workshops.component';
 import { authInterceptorProviders } from 'src/app/services/auth.interceptor';
+import { InvitationsReceivedComponent } from './invitations-received/invitations-received.component';
+import { InvitationsSentComponent } from './invitations-sent/invitations-sent.component';
+import { TeamComponent } from './team/team.component';
 
 
 @NgModule({
@@ -23,8 +25,10 @@ import { authInterceptorProviders } from 'src/app/services/auth.interceptor';
     FooterComponent,
     NavbarComponent,
     ReservationComponent,
-    InvitationsComponent,
-    WorkshopsComponent
+    WorkshopsComponent,
+    InvitationsReceivedComponent,
+    InvitationsSentComponent,
+    TeamComponent
   ],
   imports: [
     CommonModule,

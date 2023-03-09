@@ -32,12 +32,12 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit(){
-    console.log(typeof(this.logIn.value));
+    //console.log(typeof(this.logIn.value));
     this.authService.login(this.logIn.value).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data.email);
-        console.log(this.tokenStorage.getToken());
+        //console.log(this.tokenStorage.getToken());
         this.router.navigateByUrl('/landing');
       },
       err => {

@@ -20,5 +20,10 @@ public class usersController {
 		return this.IUser.getUserByEmail(email);
 	}
 	
-	
+	@PutMapping("/user/affectUserToTeamOnInvivationAcceptation/{idEquipe}")
+	public void affectUserToTeamOnInvivationAcceptation(@RequestBody User user,@PathVariable("idEquipe") int idEquipe){
+		System.out.println("id_user"+user.getIdUser());
+		System.out.println("id_equipe "+idEquipe);
+		IUser.affectUserToTeamOnInvivationAcceptation(user,idEquipe);
+	}
 }

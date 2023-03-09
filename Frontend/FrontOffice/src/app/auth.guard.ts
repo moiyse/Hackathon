@@ -24,8 +24,8 @@ export class AuthGuard implements CanActivate {
       
 
       if (this.tokenStorage.getToken() != null ) {
-        console.log("checking token storage token"+this.tokenStorage.getToken())
-        console.log("checking token storage user"+this.tokenStorage.getUser())
+        //console.log("checking token storage token"+this.tokenStorage.getToken())
+        //console.log("checking token storage user"+this.tokenStorage.getUser())
 
         this.authService.checkToken().subscribe(data => {console.log(data)},err=>{this.tokenStorage.signOut()})
 

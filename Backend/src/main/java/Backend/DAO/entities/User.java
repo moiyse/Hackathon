@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,8 +17,6 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-
 @Entity
 public class User implements Serializable {
 	@Id
@@ -36,14 +35,25 @@ public class User implements Serializable {
 	@Temporal (TemporalType.DATE)
 	private Date dateInscription;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	Equipe equipe;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
 	private List<Reservation> reservations;
 
 	@OneToOne(mappedBy="user")
 	private Je je;
+
+
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "receiver")
+	@JsonIgnore
+	private List<Invitation> invitationsReceived;
+
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "sender")
+	@JsonIgnore
+	private List<Invitation> invitationsSent;
+
+
 
 
 

@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
     
   }
   ngOnInit(): void {
-    console.log("in app on init")
+    //console.log("in app on init")
     this.authService.chechAuth();
   }
 

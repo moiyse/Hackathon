@@ -44,14 +44,14 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("data",this.signUp.value)
+    //console.log("data",this.signUp.value)
         
-        console.log("objet user",this.signUp.value)
+        //console.log("objet user",this.signUp.value)
        // const objectSignUp = {nom:this.signUp.value.nom,prenom:this.signUp.value.prenom,cin:this.signUp.value.cin,email:this.signUp.value.email,nom:this.signUp.value.nom,nom:this.signUp.value.nom,nom:this.signUp.value.nom,nom:this.signUp.value.nom,nom:this.signUp.value.nom}
         this.authService.register(this.signUp.value).subscribe(
           data => {
-            console.log(data);
-            console.log("after register data is : "+data);
+           // console.log(data);
+            //console.log("after register data is : "+data);
             this.router.navigateByUrl("/auth")
           },
           err => {
@@ -71,23 +71,23 @@ export class SignupComponent implements OnInit {
     await reader.addEventListener( await 'load',  (event: any) => {
 
       this.base64Output = reader.result;
-      console.log("the new image url",this.base64Output);
+      //console.log("the new image url",this.base64Output);
       this.imagePath = this.base64Output;
-      console.log("in var image path",this.imagePath)
-      console.log("Almost out of process file")
+      //console.log("in var image path",this.imagePath)
+      //console.log("Almost out of process file")
     },false);
     if(file){
       await reader.readAsDataURL(file);
     }
     
-    console.log("is out of process file")
+    //console.log("is out of process file")
     
   }
 
   async imageFileOnChange(imageInput: any){
 
     await this.processFile(imageInput);
-    console.log("is out of image file on change")
+    //("is out of image file on change")
     setTimeout(() => {console.log("this is the first message")}, 10);
 
   }

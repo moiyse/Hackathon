@@ -15,7 +15,7 @@ export class TokenStorageService {
   signOut(): void {
     window.sessionStorage.clear();
     this.router.navigateByUrl('/landing');
-    console.log("token not valid !")
+    //console.log("token not valid !")
   }
 
   public saveToken(token: string): void {
