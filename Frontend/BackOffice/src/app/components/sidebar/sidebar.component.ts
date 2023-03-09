@@ -12,8 +12,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/users', title: 'users',  icon:'design_bullet-list-67', class: '' },
     { path: '/hackathons', title: 'Hackathons',  icon:'location_map-big', class: '' },
     { path: '/teams', title: 'Teams',  icon:'text_caps-small', class: '' },
-    { path: '/workshops', title: 'Workshops',  icon:'objects_spaceship', class: '' }
-
+    { path: '/workshops', title: 'Workshops',  icon:'objects_spaceship', class: '' },
+    { path: '/thematics', title: 'Thematics',  icon:'text_caps-small', class: '' }    
 ];
 
 @Component({

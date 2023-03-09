@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 import Backend.services.interfaces.IReservationService;
 
+
 import javax.websocket.server.PathParam;
 
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/Reservations")
 public class ReservationsController {

@@ -1,0 +1,169 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content" style="margin-top: 100px;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">{{action}} Admin</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="row py-3">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>first name</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="prenom" 
+                    formControlName="prenom"
+                    >
+                  </div>
+                  <small *ngIf="!userForm.get('nom').valid && userForm.get('nom').touched">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                    </svg>
+                    first name is required
+                  </small>
+                </div>
+                <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>second name</label>
+                      <input 
+                      type="text" 
+                      class="form-control" 
+                      name="nom" 
+                      formControlName="nom"
+                      >
+                    </div>
+                    <small *ngIf="!userForm.get('nom').valid && userForm.get('nom').touched">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                      </svg>
+                      second name is required
+                    </small>
+                  </div>
+            </div>
+
+            <div class="row py-3">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>cin</label>
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    name="cin" 
+                    formControlName="cin"
+                    >
+                  </div>
+                  <small *ngIf="!userForm.get('cin').valid && userForm.get('cin').touched">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                    </svg>
+                    cin is required
+                  </small>
+                </div>
+                <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>phone number</label>
+                      <input 
+                      type="text" 
+                      class="form-control" 
+                      name="num_phone" 
+                      formControlName="num_phone"
+                      >
+                    </div>
+                    <small *ngIf="!userForm.get('num_phone').valid && userForm.get('num_phone').touched">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                      </svg>
+                      num_phone is required
+                    </small>
+                  </div>
+            </div>
+
+            <div class="row py-3">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>email</label>
+                    <input 
+                    type="email" 
+                    class="form-control" 
+                    name="email" 
+                    formControlName="email"
+                    >
+                  </div>
+                  <small *ngIf="!userForm.get('email').valid && userForm.get('email').touched">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                    </svg>
+                    email is required
+                  </small>
+                </div>
+                <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>password</label>
+                      <input 
+                      type="password" 
+                      class="form-control" 
+                      name="password" 
+                      formControlName="password"
+                      >
+                    </div>
+                    <small *ngIf="!userForm.get('password').valid && userForm.get('password').touched">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                      </svg>
+                      password is required
+                    </small>
+                  </div>
+            </div>
+
+            <!-- <div class="row py-3">
+              <div class="col-md-5 pl-3">
+                <div class="form-group">
+                    <label>etablissement</label>
+                      <input 
+                      type="text" 
+                      class="form-control" 
+                      name="etablissement" 
+                      formControlName="etablissement"
+                      >
+                  </div>
+                  <small *ngIf="!userForm.get('etablissement').valid && userForm.get('etablissement').touched">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                    </svg>
+                    etablissement is required
+                  </small>
+              </div>
+            </div> -->
+
+            <div class="row py-3">
+                <div class="col-md-11 text-right">
+                    <button [disabled]="!userForm.get('nom').valid 
+                                        || !userForm.get('prenom').valid 
+                                        || !userForm.get('cin').valid 
+                                        || !userForm.get('num_phone').valid 
+                                        || !userForm.get('email').valid" 
+                    type="submit" 
+                    class="btn" 
+                    style="background-color: #0261FF;"
+                    >submit
+                  </button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

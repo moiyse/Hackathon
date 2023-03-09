@@ -1,10 +1,14 @@
 package Backend.services.classes;
 
+import javax.transaction.Transactional;
+
+
 import Backend.DAO.Repositories.userRepository;
 import Backend.DAO.entities.Reservation;
 import Backend.DAO.entities.User;
 import Backend.DAO.entities.Workshop;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Backend.DAO.Repositories.reservationRepository;
 import Backend.DAO.Repositories.workshopRepository;
@@ -14,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Optional;
 
+@Transactional
 @Service
 public class reservationService implements IReservationService{
 
@@ -33,7 +38,7 @@ public class reservationService implements IReservationService{
 		if(workshop != null && user != null){
 			Reservation res = new Reservation();
 			Date nowDate = new Date();
-			res.setDateReservation(nowDate);
+			res.setCreatedAt(nowDate);
 			res.setWorkshop(workshop.get());
 			res.setUser(user.get());
 			return reservationRep.save(res);

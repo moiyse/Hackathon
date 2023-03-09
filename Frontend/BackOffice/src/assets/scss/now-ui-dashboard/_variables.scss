@@ -10,7 +10,8 @@ $border-thick:               2px !default;
 
 $white-color:                #FFFFFF !default;
 $white-bg:                   #FFFFFF !default;
-$orange-bg:                  #e95e38 !default;
+// $orange-bg:                  #e95e38 !default;
+$orange-bg:                  #0261FF !default;
 
 $smoke-bg:                   #F5F5F5 !default;
 $light-black:                #444    !default;
@@ -48,7 +49,8 @@ $default-color:              #888 !default;
 $default-states-color:       lighten($default-color, 6%) !default;
 $default-color-opacity:      rgba(182, 182, 182, .6) !default;
 
-$primary-color:              #f96332 !default;
+// $primary-color:              #f96332 !default;
+$primary-color:              #0261FF !default;
 $primary-states-color:       lighten($primary-color, 6%) !default;
 $primary-color-opacity:      rgba(249, 99, 50, .3) !default;
 $primary-color-alert:        rgba(249, 99, 50, .8) !default;
@@ -68,12 +70,14 @@ $warning-states-color:       lighten($warning-color, 6%) !default;
 $warning-color-opacity:      rgba(255, 178, 54, .3) !default;
 $warning-color-alert:        rgba(255, 178, 54, .8) !default;
 
-$danger-color:               #FF3636 !default;
+// $danger-color:               #FF3636 !default;
+$danger-color:               #0261FF !default;
 $danger-states-color:        lighten($danger-color, 6%) !default;
 $danger-color-opacity:       rgba(255, 54, 54, .3) !default;
 $danger-color-alert:         rgba(255, 54, 54, .8) !default;
 
-$orange-color:               #f96332 !default;
+// $orange-color:               #f96332 !default;
+$orange-color:               #0261FF !default;
 
 /*     brand Colors              */
 $brand-primary:              $primary-color !default;

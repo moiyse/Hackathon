@@ -3,15 +3,24 @@ import { CommonModule } from '@angular/common';
 
 import { HackathonsRoutingModule } from './hackathons-routing.module';
 import { HackathonsComponent } from './hackathons.component';
+import { hackathonFormComponent } from './hackathon-form/hackathon-form.component';
+import { HackathonDetailsComponent } from './hackathon-details/hackathon-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
   declarations: [
-    HackathonsComponent
+    HackathonsComponent,
+    hackathonFormComponent,
+    HackathonDetailsComponent
   ],
   imports: [
     CommonModule,
-    HackathonsRoutingModule
+    FormsModule,
+    ReactiveFormsModule,
+    HackathonsRoutingModule,
+    CKEditorModule
   ]
 })
 export class HackathonsModule { }
