@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
@@ -16,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ChartsModule,
     NgbModule,
+    FullCalendarModule,
     ToastrModule.forRoot()
   ],
   declarations: [

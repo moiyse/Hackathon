@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './Core/Services/auth.interceptor';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   imports: [
@@ -30,8 +29,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    LoginComponent
-
+    LoginComponent,
   ],
   providers: [
     {
