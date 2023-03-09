@@ -1,0 +1,101 @@
+<section class="vh-100 gradient-custom login-body">
+    <div class="container h-100 login-container">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card card-style img-fluid left-img" style="border-radius: 1rem;">
+            
+                <div class="card-body p-4 px-lg-5 text-black">
+  
+                  <form>
+  
+                    <div class="d-flex align-items-center mb-3 pb-3 pt-3">
+                        <img src="assets/logo-vertical.png" class="img-logo " alt="logo">
+                    </div>
+  
+                    
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form2Example17" class="form-control form-control-lg" />
+                                <label class="form-label" for="form2Example17">First name</label>
+                            </div>
+            
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                                <label class="form-label" for="form2Example27">Last name</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form2Example17" class="form-control form-control-lg" />
+                                <label class="form-label" for="form2Example17">N° Mobile</label>
+                            </div>
+            
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                                <label class="form-label" for="form2Example27">N° Cin</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form2Example17" class="form-control form-control-lg" />
+                                <label class="form-label" for="form2Example17">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form2Example17" class="form-control form-control-lg" />
+                                <label class="form-label" for="form2Example17">Campus</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example17">Are you a JE member ?</label><br>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input [(ngModel)]="jeMember" type="radio" id="contactChoice1"
+                                        name="contact" value="yes">
+                                        <label class="mr-4" for="contactChoice1">Yes</label>
+                                        <input [(ngModel)]="jeMember" type="radio" id="contactChoice1"
+                                        name="contact" value="no">
+                                        <label for="contactChoice1">No</label>
+                                    </div>
+                                    <div class="col-6 align-self-start">
+                                        <div *ngIf="jeMember == 'yes' " class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example17">JE</label>
+                                            <select class="select-form" formControlName="role" >
+                                                <option [ngValue]="null" disabled>Select your JE</option>
+                                                <option *ngFor="let je of jeList" [ngValue]="je.name">{{je.name}}</option>
+                                              </select>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4 image-input">
+                                <img *ngIf="imageStr == '';else elseBlock" class="image-field" src="assets/no-user-image-icon-27.jpg">
+                                <ng-template #elseBlock><img class="image-field" [src]=imageStr ></ng-template>
+                                <label class="form-label label-file" for="form2Example17">Put photo</label>
+                                <input [(ngModel)]="imageStr" type="file" id="form2Example17" class="input-file" />
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+  
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-lg btn-block button-login" type="button">Login</button>
+                    </div>
+  
+                    
+                    <p class="mb-5 pb-lg-2">Already have an account <a  routerLink="/auth">Login here</a></p>
+                  </form>
+                  <a routerLink="/landing">
+                    <div class="return-button">
+                      <span><i class="fa fa-arrow-circle-left icon"></i>Return</span>
+                    </div>
+                  </a>
+  
+                </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

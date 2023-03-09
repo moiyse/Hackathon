@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import Backend.DAO.entities.Workshop;
 import Backend.services.interfaces.IWorkshopService;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/workshops")
@@ -23,6 +25,11 @@ public class workshopsController {
 
 	@Autowired(required=false)
 	IWorkshopService IWorkshop;
+
+	@GetMapping("/reservedWorkshops/{idUser}")
+	public List<Workshop> listReservedWorkshops(@PathVariable("idUser") int idUser){
+		return IWorkshop.listReservedWorkshops(idUser);
+	}
 	
 	@GetMapping("/Get")
 	public List<Workshop> GetAll() {
