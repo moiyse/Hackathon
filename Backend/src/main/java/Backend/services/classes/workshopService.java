@@ -11,12 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Backend.DAO.Repositories.workshopRepository;
-import Backend.DAO.entities.Workshop;
 import Backend.services.interfaces.IWorkshopService;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 

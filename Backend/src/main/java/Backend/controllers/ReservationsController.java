@@ -1,15 +1,12 @@
 package Backend.controllers;
 
 import Backend.DAO.entities.Reservation;
-import Backend.DAO.entities.User;
-import Backend.DAO.entities.Workshop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import Backend.services.interfaces.IReservationService;
 
 
-import javax.websocket.server.PathParam;
 
 
 

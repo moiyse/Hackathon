@@ -1,6 +1,5 @@
 package Backend.DAO.Repositories;
 
-import Backend.DAO.entities.Hackathon;
 import Backend.DAO.entities.Invitation;
 import Backend.DAO.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,8 +1,6 @@
 package Backend.services.interfaces;
 
 import java.util.List;
-
-import Backend.DAO.entities.User;
 import Backend.DAO.entities.Workshop;
 
 

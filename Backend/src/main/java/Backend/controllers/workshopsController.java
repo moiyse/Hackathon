@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import Backend.DAO.entities.Workshop;
 import Backend.services.interfaces.IWorkshopService;
 
-import java.util.List;
-
 
 @RestController
 @RequestMapping("/workshops")
