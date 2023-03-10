@@ -4,23 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,7 +20,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
 @Entity
 public class Equipe implements Serializable {
 	@Id
@@ -55,7 +41,16 @@ public class Equipe implements Serializable {
 	Hackathon hackathon;
 	
 	@OneToMany(mappedBy = "equipe")
+	@JsonIgnore
 	private List<User> membres;
+
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "equipe")
+	@JsonIgnore
+	private List<Invitation> invitations;
+
+	@OneToOne
+	@JsonIgnore
+	private User leader;
 	
 	@PrePersist
 	protected void onCreate() {

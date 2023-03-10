@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Backend.DAO.entities.Hackathon;
 import Backend.services.interfaces.IHackathonService;
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 @RequestMapping("/hackathons")
+@CrossOrigin(origins = "http://localhost:4200")
 public class hackathonsController {
 
 	@Autowired(required=false)

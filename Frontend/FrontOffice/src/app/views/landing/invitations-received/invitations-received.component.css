@@ -356,17 +356,10 @@
   .schedule .my-workshop-container .workshop-table .card i.down {
     font-size: 20px;
     color: #8d8d8d;
-    margin-left: 206px;
   }
 
 
-  @media (max-width: 1200px){
-    .schedule .my-workshop-container .workshop-table .card i.down {
-      
-      margin-left: 80px;
-    }
-
-  }
+  
 
   @media (max-width: 991px){
     .schedule .my-workshop-container .workshop-table .card i.down {
@@ -383,7 +376,7 @@
   }
 
   
-    .card {
+    .card-second {
       display: block;
       text-align: center;
       width: 100%;
@@ -393,12 +386,23 @@
       margin: 0 0 12px 0;
       border-radius: 30px;
     }
+    .card{
+      display: none;
+    }
+
+    .card .row {
+      cursor: pointer;
+    }
+
+    .cursor-class {
+      cursor: pointer;
+    }
   
 
 
-  @media (min-width : 991px){
+  @media (min-width : 769px){
     .card {
-      display: -webkit-inline-box;
+      display: block;
       width: 100%;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       transition: 0.3s;
@@ -406,10 +410,53 @@
       margin: 0 0 12px 0;
       border-radius: 30px;
     }
+    .card-second{
+      display: none;
+    }
   }
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
+
+
+  .invitation-card-details{
+    border-top: 1px solid #d1d1d1;
+    padding: 11px 15px 0px 15px;
+    font-size: x-small;
+    margin: 10px 21px 0px 21px;
+
+  }
+
+  .invitation-card-details span {
+    color: #676767;
+  }
+
+  .invitation-card-details p {
+    color: #101213;
+    
+  }
+
+  .invitation-card-details button {
+
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 10%;
+    border: 1px solid grey;
+
+  }
+
+  .accept-button{
+    color:  rgb(46, 157, 46);
+  }
+
+  .refuse-button{
+    color: rgb(174, 62, 62);
+  }
+
+
+
+
+  
   
   
 

@@ -19,23 +19,25 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink="/landing/contact">Contact<span *ngIf="user!=null">/</span></a>
             </li>
-            <li class="nav-item" *ngIf="user!=null">
+            <li class="nav-item" *ngIf="email!=null">
                 <a class="nav-link" routerLink="/landing/reservation">Reservation</a>
             </li>
             
             </ul>
-            <li *ngIf="user!=null; else elseBlock" class="nav-item dropdown active dropdown-slide" style="text-align: center;position: relative;list-style: none;">
+            <li *ngIf="email!=null && token!=null; else elseBlock" class="nav-item dropdown active dropdown-slide" style="text-align: center;position: relative;min-width: 240px;list-style: none;">
                 
                     
                     <a class="ticket">
-                    <span style="border: none !important;"><i style="margin-right: 4px;" class="fa fa-user"></i>Profile</span>
+                    <span style="border: none !important;"><i style="margin-right: 4px;" class="fa fa-user"></i>{{user.nom}}</span>
                     <span style="border: none !important;"><i class="fa fa-caret-down"></i></span>
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" routerLink="/landing/profile"><i class="fa fa-user dropdown-icons"></i>Profile Settings</a>
                         <a class="dropdown-item" routerLink="/landing/workshops"><i class="fa fa-list dropdown-icons"></i>My Workshops</a>
-                        <a class="dropdown-item" style="display: -webkit-inline-box;width: 100%;" routerLink="/landing/invitations"><i class="fa fa-bell dropdown-icons"></i>Invitation <div class="circle-icon"><span>5</span></div></a>
-                        <a class="dropdown-item" href="homepage-two.html"><i class="fa fa-sign-in dropdown-icons" aria-hidden="true"></i>Logout</a>
+                        <a class="dropdown-item" style="display: -webkit-inline-box;width: 100%;" routerLink="/landing/invitationsReceived"><i class="fa fa-bell dropdown-icons"></i>Invitation <div class="circle-icon"><span>{{invitationNumber}}</span></div></a>
+                        <a *ngIf="equipeExists==true ; else equipeElseBlock" class="dropdown-item" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>{{user.equipe.nom}}</a>
+                        <ng-template #equipeElseBlock><a class="dropdown-item disabled" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>Equipe</a></ng-template>
+                        <a class="dropdown-item logout" (click)="logout()"><i class="fa fa-sign-in dropdown-icons" aria-hidden="true"></i>Logout</a>
                     </div>
             </li>
             <ng-template #elseBlock>
@@ -46,7 +48,7 @@
                             </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" routerLink="/auth"><i class="fa fa-sign-in dropdown-icons" aria-hidden="true"></i>Signin</a>
-                            <a class="dropdown-item" href="homepage-two.html"><i class="fa fa-user-plus dropdown-icons"></i>Signup</a>
+                            <a class="dropdown-item" routerLink="/auth/signup"><i class="fa fa-user-plus dropdown-icons"></i>Signup</a>
                         </div>
                 </li>
             </ng-template>

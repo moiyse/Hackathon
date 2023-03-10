@@ -49,9 +49,25 @@
 
 .circle-icon span {
     color: #00A1FF;
-    font-size: 7px;
+    font-size: 11px;
+    font-family: monospace;
 }
 
+.logout{
+  cursor: pointer;
+  color: #212529 !important;
+}
+
+.logout:focus, .logout:hover {
+  color: #0060FF !important;
+  text-decoration: none !important;
+}
+
+.disabled{
+  color: #ccc !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
 
 
 

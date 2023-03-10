@@ -1,10 +1,16 @@
 package Backend.services.interfaces;
 
+import Backend.DAO.entities.Equipe;
+import Backend.DAO.entities.User;
+
 import java.util.List;
 
-import Backend.DAO.entities.Equipe;
-
 public interface IEquipeService {
+
+
+
+    public Equipe getEquipeByLeader(User user);
+
 
 	public List<Equipe> getAll();
 	public Equipe getEquipeById(Integer id);

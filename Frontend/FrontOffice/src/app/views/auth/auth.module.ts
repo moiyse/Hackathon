@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { authInterceptorProviders } from 'src/app/services/auth.interceptor';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
     AuthRoutingModule,
     ReactiveFormsModule,
     FormsModule
-  ]
+  ],
+  providers: [authInterceptorProviders],
 })
 export class AuthModule { }

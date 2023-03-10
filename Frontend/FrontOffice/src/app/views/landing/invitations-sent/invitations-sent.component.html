@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+
+<!--================================
+=            Page Title            =
+=================================-->
+
+<section class="page-title bg-title overlay-dark">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<div class="title">
+					<h3>My dashboard</h3>
+				</div>
+				<ol class="breadcrumb p-0 m-0">
+				  <li class="breadcrumb-item"><a routerLink="/landing/home">Home</a></li>
+				  <li class="breadcrumb-item active">My dashboard</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--====  End of Page Title  ====-->
+
+
+<section class="section schedule">
+	<div class="container">
+		
+		<div class="my-workshop-container">
+			<div class="workshop-nav">
+				<i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/landing/invitationsSent">Invitations sent</a><span>/</span><a routerLink="/landing/invitationsReceived">invitations received</a>
+			</div>
+			<div class="workshop-table">
+				<div class="schedule-contents bg-schedule">
+					<div class="alert alert-danger" role="alert">
+						<i class="fa fa-exclamation-circle"></i> Sorry you can't have access to this page unless you are a team leader or have a team.<a routerLink="/landing/team" class="alert-team-link"> Create a team clicking this link</a>, or check you invitations.<br> It will be a greate experience for you joining our hackathon with a team.
+					</div>
+					<div *ngIf="user.equipe; else ifBlock1">
+						This element will be displayed if condition1 is true.
+					  </div>
+					  <ng-template #ifBlock1>
+						<div *ngIf="equipe; else ifBlock2">
+						  This element will be displayed if condition2 is true.
+						</div>
+						<ng-template #ifBlock2>
+							This element will be displayed if condition3 is true.
+						</ng-template>
+					  </ng-template>
+                    	<div class="card">
+                            <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
+                            <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
+                        </div>
+                        <div class="card">
+                            <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
+                            <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
+                        </div>
+                        <div class="card">
+                            <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
+                            <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
+                        </div>
+                        <div class="card">
+                            <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
+                            <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
+                        </div>
+                        <div class="card">
+                            <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
+                            <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
+                        </div>
+					  
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+</section>
+
+
+
+<app-footer></app-footer>

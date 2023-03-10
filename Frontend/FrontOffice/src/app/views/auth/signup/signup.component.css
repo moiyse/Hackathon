@@ -128,14 +128,8 @@ button select {
   color: #25a5c4;
 }
 
-.label-file input[type='file']{
-  display: block !important;
-}
 
 
-.input-file {
-  display: none;
-}
 
 .image-input {
   display: inline-block;
@@ -147,6 +141,35 @@ button select {
   border-radius: 50%;
   margin-right : 20px
 }
+
+
+
+.input-file{
+  width:170px 
+}
+.input-file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.input-file::before {
+  color: #848484;
+  content: 'Put photo here';
+  display: inline-block;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.input-file:hover::before {
+  color: #25a5c4;
+}
+.input-file:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 
 
 

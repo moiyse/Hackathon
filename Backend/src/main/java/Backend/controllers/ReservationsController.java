@@ -12,9 +12,10 @@ import Backend.services.interfaces.IReservationService;
 import javax.websocket.server.PathParam;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 @RequestMapping("/Reservations")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReservationsController {
 
 	@Autowired(required=false)
