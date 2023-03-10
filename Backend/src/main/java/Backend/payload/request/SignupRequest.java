@@ -1,12 +1,8 @@
 package Backend.payload.request;
 
 
-import Backend.DAO.entities.Je;
 import Backend.DAO.entities.Role;
 import lombok.ToString;
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

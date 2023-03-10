@@ -4,7 +4,6 @@ package Backend.payload.response;
 
 import Backend.DAO.entities.Role;
 
-import java.util.List;
 
 public class JwtResponse {
     private String token;
@@ -18,7 +17,7 @@ public class JwtResponse {
 
     private Role role;
 
-    private List<String> roles;
+    // private List<String> roles;
 
     public JwtResponse(String accessToken, String email) {
         this.token = accessToken;
