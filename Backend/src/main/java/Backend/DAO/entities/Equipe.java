@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,9 +27,15 @@ public class Equipe implements Serializable {
 	@Column(name="idEquipe")
 	private int idEquipe;
 	private String nom;
-	@Temporal (TemporalType.DATE)
-	private Date dateCreation;
-
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_at", nullable = false, updatable = false)
+	private Date createdAt;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated_at", nullable = false)
+	private Date updatedAt;
+	
+	
 	@JsonIgnore
 	@ManyToOne
 	Hackathon hackathon;
@@ -44,4 +52,14 @@ public class Equipe implements Serializable {
 	@JsonIgnore
 	private User leader;
 	
+	@PrePersist
+	protected void onCreate() {
+		createdAt = new Date();
+		updatedAt = new Date();
+	}
+	
+	@PreUpdate
+	protected void onUpdate() {
+		updatedAt = new Date();
+	}
 }

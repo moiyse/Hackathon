@@ -24,9 +24,15 @@ public class Reservation implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="idReservation")
 	private int idReservation;
-	@Temporal (TemporalType.DATE)
-	private Date dateReservation;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_at", nullable = false, updatable = false)
+	private Date createdAt;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated_at", nullable = false)
+	private Date updatedAt;
+
+	
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	User user;
@@ -35,4 +41,14 @@ public class Reservation implements Serializable {
 	@ManyToOne
 	Workshop workshop;
 	
+	@PrePersist
+	protected void onCreate() {
+		createdAt = new Date();
+		updatedAt = new Date();
+	}
+	
+	@PreUpdate
+	protected void onUpdate() {
+		updatedAt = new Date();
+	}
 }

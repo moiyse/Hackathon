@@ -1,17 +1,25 @@
 package Backend.services.classes;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+
+
 import Backend.DAO.entities.Equipe;
 import Backend.DAO.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Backend.DAO.Repositories.userRepository;
 import Backend.DAO.Repositories.equipeRepository;
 import Backend.services.interfaces.IUserService;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+
 @Service
+@Transactional
 public class userService implements IUserService{
 
 	@Autowired
@@ -42,4 +50,30 @@ public class userService implements IUserService{
 			System.out.println("Error of null pointer excepetion in affectUserToTeamOnInvivationAcceptation methode");
 	}
 
+
+	@Override
+	public List<User> getAll() {
+		return userRep.findAll();
+	}
+
+	@Override
+	public User getUserById(int id) {
+		return userRep.findById(id).get();
+	}
+
+	@Override
+	public User addUser(User e) {
+		return userRep.save(e);
+	}
+
+	@Override
+	public User updateUser(User e) {
+		return userRep.save(e);
+	}
+
+	@Override
+	public void deleteUser(int id) {
+		userRep.deleteById(id);
+		
+	}
 }

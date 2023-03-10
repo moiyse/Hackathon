@@ -25,6 +25,7 @@ public class User implements Serializable {
 	private int idUser;
 	private String nom;
 	private String prenom;
+	private String num_phone;
 	private String email;
 	private String password;
 	private String etablissement;
@@ -32,13 +33,21 @@ public class User implements Serializable {
 	private int CIN;
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	@Temporal (TemporalType.DATE)
-	private Date dateInscription;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_at", nullable = false, updatable = false)
+	private Date createdAt;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated_at", nullable = false)
+	private Date updatedAt;
+
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
+	@ManyToOne
 	Equipe equipe;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
 	private List<Reservation> reservations;
 
 	@OneToOne(mappedBy="user")
@@ -57,7 +66,7 @@ public class User implements Serializable {
 
 
 
-	public User(String nom, String prenom, String email, String password, String etablissement, String imagePath, int CIN, Role role, Date dateInscription, Je je) {
+	public User(String nom, String prenom, String email, String password, String etablissement, String imagePath, int CIN, Role role, Date createdAt, Je je) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
@@ -66,7 +75,18 @@ public class User implements Serializable {
 		this.imagePath = imagePath;
 		this.CIN = CIN;
 		this.role = role;
-		this.dateInscription = dateInscription;
+		this.createdAt = createdAt;
 		this.je = je;
+	}
+	
+	@PrePersist
+	protected void onCreate() {
+		createdAt = new Date();
+		updatedAt = new Date();
+	}
+	
+	@PreUpdate
+	protected void onUpdate() {
+		updatedAt = new Date();
 	}
 }

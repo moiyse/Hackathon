@@ -5,12 +5,12 @@ export class User{
     idUser: number;
     nom: string;
     prenom: string;
-    CIN: string;
+    cin: string;
     num_phone: number;
     email: string;
     password: string;
     etablissement: string;
-    Role: string;
+    role: string;
     dateInscription: Date;
     imagePath: string;
     reservations: Reservation[];

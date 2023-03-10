@@ -1,0 +1,39 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content" style="margin-top: 100px;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">workshop Details</h5>
+        </div>
+        <div class="card-body">
+            <div class="mt-3 mb-3">
+                <span class="second-title">workshop name:</span>  {{workshop.nom}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">Start Date: </span> {{workshop.dateDebut | date: 'dd/MM/yyyy hh:mm a'}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">End Date: </span> {{workshop.dateFin | date: 'dd/MM/yyyy hh:mm a'}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">Description:</span> <span innerHTML="{{workshop.description}}"></span>  
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">maximum number of participants:</span>  {{workshop.nbrMaxParticipants}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">date the workshop was added: </span> {{workshop.createdAt | date: 'dd/MM/yyyy hh:mm a'}}
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">last date the workshop was updated:</span> {{workshop.updatedAt | date: 'dd/MM/yyyy hh:mm a'}} 
+            </div>
+            <div class="mt-3 mb-3">
+                <span class="second-title">workshop thematic: </span> {{workshop.thematic?.nom}}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
