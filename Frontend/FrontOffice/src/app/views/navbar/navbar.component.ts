@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
   email?;
   token?;
-  user! :User;
+  user :User=new User();
   invitationNumber:number = 0;
   equipeExists:Boolean = false;
   constructor(private userService:UserService,private tokenStorage:TokenStorageService,private invitationService:InvitationService) { 
@@ -25,13 +25,16 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     if(this.tokenStorage.getUser()){
       this.userService.getUserByEmail(this.tokenStorage.getUser()).subscribe(data => {
-        console.log("getuserbyemail = "+data);this.user = data
-        this.invitationService.getInvitationReceived(this.user).subscribe(data => {this.invitationNumber=data.length;console.log("number of invitations is : ",this.invitationNumber)},err => console.log("error in number of invitations",err));
-        if(this.user.equipe){
-          this.equipeExists = true;
-        }
-      },err=> {console.log("error on getUserByEmail in navbar is : ",err);this.tokenStorage.signOut()})
-      
+        console.log("getuserbyemail = "+data);
+        this.user = data;
+        // this.invitationService.getInvitationReceived(this.user).subscribe(data => {this.invitationNumber=data.length;console.log("number of invitations is : ",this.invitationNumber)},err => console.log("error in number of invitations",err));
+        // if(this.user.equipe){
+        //   this.equipeExists = true;
+        // }
+        // console.log(data);
+      },
+      err=> {console.log("error on getUserByEmail in navbar is : ",err)})
+      // ;this.tokenStorage.signOut()
     }
     console.log("navbar has reloaded")
   }

@@ -17,7 +17,7 @@ const routes: Routes = [
   { path:'contact',component:ContactComponent},
   { path:'about',component:AboutComponent},
   { path:'reservation',component:ReservationComponent,canActivate:[AuthGuard]},
-  { path:'workshops',component:WorkshopsComponent,canActivate:[AuthGuard]},
+  { path:'workshops',component:WorkshopsComponent},
   { path:'invitationsSent',component:InvitationsSentComponent,canActivate:[AuthGuard]},
   { path:'invitationsReceived',component:InvitationsReceivedComponent,canActivate:[AuthGuard]},
   { path:'team',component:TeamComponent,canActivate:[AuthGuard]},
