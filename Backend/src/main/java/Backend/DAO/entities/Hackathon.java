@@ -48,6 +48,8 @@ public class Hackathon implements Serializable {
 	private LocalDateTime dateDebut;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime dateFin;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime deadline;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created_at", nullable = false, updatable = false)

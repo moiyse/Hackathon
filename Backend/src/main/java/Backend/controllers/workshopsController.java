@@ -10,8 +10,8 @@ import Backend.services.interfaces.IWorkshopService;
 
 
 @RestController
-@RequestMapping("/workshops")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("oauth/workshops")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 public class workshopsController {
 
 	@Autowired(required=false)

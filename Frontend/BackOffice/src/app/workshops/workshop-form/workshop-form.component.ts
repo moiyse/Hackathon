@@ -33,6 +33,7 @@ export class WorkshopFormComponent implements OnInit {
       description: new FormControl(''),
       dateDebut: new FormControl('',Validators.required),
       dateFin: new FormControl('',Validators.required),
+      deadline: new FormControl('',Validators.required),
       nbrMaxParticipants:new FormControl('',Validators.required),
       thematic: new FormGroup({
         idWorkshopThematic: new FormControl(''),
@@ -59,6 +60,7 @@ export class WorkshopFormComponent implements OnInit {
               description: this.workshop.description,
               dateDebut: this.workshop.dateDebut,
               dateFin: this.workshop.dateFin,
+              deadline: this.workshop.deadline,
               nbrMaxParticipants: this.workshop.nbrMaxParticipants,
               thematic: {
                 idWorkshopThematic: this.workshop.thematic.idWorkshopThematic,

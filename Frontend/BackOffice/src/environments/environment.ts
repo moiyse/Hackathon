@@ -1,10 +1,10 @@
 
-const teams="http://localhost:8081/teams/"
-const workshops= "http://localhost:8081/workshops/"
-const Hackathons= "http://localhost:8081/hackathons/"
-const Users= "http://localhost:8081/users/"
-const WorkshopThematics= "http://localhost:8081/workshopThematics/"
-const HackathonThematics= "http://localhost:8081/hackathonThematics/"
+const teams="http://localhost:8081/oauth/teams/"
+const workshops= "http://localhost:8081/oauth/workshops/"
+const Hackathons= "http://localhost:8081/oauth/hackathons/"
+const Users= "http://localhost:8081/oauth/users/"
+const WorkshopThematics= "http://localhost:8081/oauth/workshopThematics/"
+const HackathonThematics= "http://localhost:8081/oauth/hackathonThematics/"
 
 export const environment = {
   production: false,

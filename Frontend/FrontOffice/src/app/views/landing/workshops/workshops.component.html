@@ -31,6 +31,9 @@
 				<div class="section-title">
 					<h3>Event <span class="alternate">Workshops</span></h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusm tempor incididunt ut labore</p>
+					<div *ngIf="alert && alert.length" class="alert alert-danger" role="alert">
+						{{alert}}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -47,7 +50,7 @@
 							<div><span>Tutor :</span>kais saiid</div>
 					    </a>
 					</div>
-					<button class="button-rsrv" *ngIf="token">Reserver</button>
+					<button class="button-rsrv" *ngIf="token" (click)="reserverWorkshop(w.idWorkshop)">Reserver</button>
 					
 				</div>
 			</div>

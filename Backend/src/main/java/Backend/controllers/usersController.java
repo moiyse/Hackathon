@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import Backend.services.interfaces.IUserService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 @RestController
-@RequestMapping("/users")
+@RequestMapping("oauth/users")
 public class usersController {
 
 	@Autowired(required=false)

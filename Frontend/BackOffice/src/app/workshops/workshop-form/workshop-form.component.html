@@ -96,7 +96,36 @@
                   </small>
               </div>
             </div>
-            
+
+            <div class="row py-3">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                    <label>deadline to register</label><br>
+                    <input 
+                    type="datetime-local" 
+                    id="deadline" 
+                    name="deadline" 
+                    class="dateInput"
+                    formControlName="deadline"
+                    >
+                  </div>
+                  <small *ngIf="!workshopForm.get('deadline').valid && workshopForm.get('deadline').touched">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                    </svg>
+                    deadline to register is required
+                  </small>
+                  <small *ngIf="workshopForm.get('dateDebut').dirty && workshopForm.get('deadline').dirty && workshopForm.get('dateDebut').value<=workshopForm.get('deadline').value">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                    </svg>
+                    deadline should be less than start date
+                  </small>
+              </div>
+            </div>
+
             <div class="row py-3">
               <div class="col-md-4 pr-1">
                 <div class="form-group">
@@ -118,12 +147,15 @@
                 </small>
               </div>
             </div>
-
+            
             <div class="row py-3">
                 <div class="col-md-11 text-right">
                     <button [disabled]="!workshopForm.get('dateDebut').valid 
                                         || !workshopForm.get('dateFin').valid 
-                                        || workshopForm.get('dateDebut').dirty && workshopForm.get('dateFin').dirty && workshopForm.get('dateFin').value<=workshopForm.get('dateDebut').value" 
+                                        || !workshopForm.get('nom').valid 
+                                        || !workshopForm.get('nbrMaxParticipants').valid 
+                                        || workshopForm.get('dateDebut').dirty && workshopForm.get('dateFin').dirty && workshopForm.get('dateFin').value<=workshopForm.get('dateDebut').value
+                                        || workshopForm.get('dateDebut').dirty && workshopForm.get('deadline').dirty && workshopForm.get('dateDebut').value<=workshopForm.get('deadline').value" 
                     type="submit" 
                     class="btn" 
                     style="background-color: #0261FF;"
