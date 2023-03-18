@@ -1,6 +1,9 @@
 package Backend.controllers;
 
 import Backend.DAO.entities.Reservation;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +42,8 @@ public class ReservationsController {
 	public Boolean deleteReservationById(@PathVariable("id") int id){
 		return IReservation.deleteReservationById(id);
 	}
+
+
 
 
 	

@@ -37,118 +37,28 @@
 							<tr class="headings">
 								<th><div class="time">Time</div></th>
 								<th><div class="speaker">Workshop</div></th>
-								<th><div class="subject">Hours</div></th>
+								<th><div class="subject">DURATION</div></th>
 								<th><div class="venue"></div></th>
 							</tr>
-							<tr class="schedule-details block">
+							<tr *ngFor="let w of list" class="schedule-details block">
 								
 									<td class="time-td"> 
 										<div class="time">
 										<i class="fa fa-clock-o"></i>
-										<span class="time">9.00 AM</span>
+										<span class="time">{{w.dateDebut | date: 'dd/MM/yyyy hh:mm a'}}</span>
 										</div>
 									</td>
 									<td class="speaker-td">
 										<div class="speaker">
-									 	<span class="name">Workshop symfony</span>
+									 	<span class="name">{{w.nom}}</span>
 										</div>
 									</td>
-									<td class="subject-td"><div class="subject">2 hours</div></td>
+									<td class="subject-td"><div class="subject">{{ getDuration(w.dateDebut, w.dateFin) }}
+									</div></td>
 									<td class="venue-td"><div class="venue"><button class="button-delete">Delete</button></div></td>
 								
 								
 							</tr>
-							<tr class="schedule-details block">
-								
-								<td class="time-td"> 
-									<div class="time">
-									<i class="fa fa-clock-o"></i>
-									<span class="time">9.00 AM</span>
-									</div>
-								</td>
-								<td class="speaker-td">
-									<div class="speaker">
-									 <span class="name">Workshop symfony</span>
-									</div>
-								</td>
-								<td class="subject-td"><div class="subject">2 hours</div></td>
-								<td class="venue-td"><div class="venue"><button class="button-delete">Delete</button></div></td>
-							
-							
-							</tr>
-							<tr class="schedule-details block">
-								
-								<td class="time-td"> 
-									<div class="time">
-									<i class="fa fa-clock-o"></i>
-									<span class="time">9.00 AM</span>
-									</div>
-								</td>
-								<td class="speaker-td">
-									<div class="speaker">
-									 <span class="name">Workshop symfony</span>
-									</div>
-								</td>
-								<td class="subject-td"><div class="subject">2 hours</div></td>
-								<td class="venue-td"><div class="venue"><button class="button-delete">Delete</button></div></td>
-							
-							
-							</tr>
-							<tr class="schedule-details block">
-								
-								<td class="time-td"> 
-									<div class="time">
-									<i class="fa fa-clock-o"></i>
-									<span class="time">9.00 AM</span>
-									</div>
-								</td>
-								<td class="speaker-td">
-									<div class="speaker">
-									 <span class="name">Workshop symfony</span>
-									</div>
-								</td>
-								<td class="subject-td"><div class="subject">2 hours</div></td>
-								<td class="venue-td"><div class="venue"><button class="button-delete">Delete</button></div></td>
-							
-							
-							</tr>
-							<tr class="schedule-details block">
-								
-								<td class="time-td"> 
-									<div class="time">
-									<i class="fa fa-clock-o"></i>
-									<span class="time">9.00 AM</span>
-									</div>
-								</td>
-								<td class="speaker-td">
-									<div class="speaker">
-									 <span class="name">Workshop symfony</span>
-									</div>
-								</td>
-								<td class="subject-td"><div class="subject">2 hours</div></td>
-								<td class="venue-td"><div class="venue"><button class="button-delete">Delete</button></div></td>
-							
-							
-							</tr>
-							<tr class="schedule-details block">
-								
-								<td class="time-td"> 
-									<div class="time">
-									<i class="fa fa-clock-o"></i>
-									<span class="time">9.00 AM</span>
-									</div>
-								</td>
-								<td class="speaker-td">
-									<div class="speaker">
-									 <span class="name">Workshop symfony</span>
-									</div>
-								</td>
-								<td class="subject-td"><div class="subject">2 hours</div></td>
-								<td class="venue-td"><div class="venue"><button class="button-delete">Delete</button></div></td>
-							
-							
-							</tr>
-							
 						</table>
 					  </div>
 					  

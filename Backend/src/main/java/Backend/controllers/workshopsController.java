@@ -47,5 +47,10 @@ public class workshopsController {
 		IWorkshop.deleteWorkshop(id);
 		
 	}
+
+	@GetMapping("/getUserWorkshops/{id}")
+	public List<Workshop> getUserWorkshops(@PathVariable("id") int id){
+		return IWorkshop.getUserWorkshops(id);
+	}
 	
 }
