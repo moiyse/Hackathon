@@ -5,6 +5,7 @@ const Hackathons= "http://localhost:8081/oauth/hackathons/"
 const Users= "http://localhost:8081/oauth/users/"
 const WorkshopThematics= "http://localhost:8081/oauth/workshopThematics/"
 const HackathonThematics= "http://localhost:8081/oauth/hackathonThematics/"
+const Events= "http://localhost:8081/oauth/events/"
 
 export const environment = {
   production: false,
@@ -53,6 +54,13 @@ export const environment = {
       get: HackathonThematics+"Get/",
       update: HackathonThematics+"Update",
       login: HackathonThematics+"Get",
+    },
+    Events:{
+      GetAll: Events+"Get",
+      post:Events+"Post",
+      delete: Events+"Delete/",
+      get: Events+"Get/",
+      update: Events+"Update"
     }
   }
 };

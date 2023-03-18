@@ -1,0 +1,182 @@
+<div class="panel-header panel-header-sm"></div>
+
+<div class="main-content" style="margin-top: 100px">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"></div>
+        <div class="card-body">
+          <div class="row" *ngIf="action==='update'">
+            <div class="col-12 text-center">
+              <button class="btn btn-sm" (click)="initForm()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                  <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                </svg>
+              </button>
+              <button class="btn btn-sm" (click)="deleteEvent()" style="background-color: #dc3545;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>event name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="nom"
+                    formControlName="nom"
+                  />
+                  <small
+                    *ngIf="
+                      !eventForm.get('nom').valid &&
+                      eventForm.get('nom').touched
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-exclamation-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                      />
+                      <path
+                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"
+                      />
+                    </svg>
+                    event name is required
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Start date</label><br />
+                  <input
+                    type="datetime-local"
+                    id="start"
+                    class="dateInput"
+                    formControlName="dateDebut"
+                  />
+                </div>
+                <small
+                  *ngIf="
+                    !eventForm.get('dateDebut').valid &&
+                    eventForm.get('dateDebut').touched
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-exclamation-circle"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                    />
+                    <path
+                      d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"
+                    />
+                  </svg>
+                  start date is required
+                </small>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>End date</label><br />
+                  <input
+                    type="datetime-local"
+                    id="end"
+                    name="end"
+                    class="dateInput"
+                    formControlName="dateFin"
+                  />
+                </div>
+                <small
+                  *ngIf="
+                    !eventForm.get('dateFin').valid &&
+                    eventForm.get('dateFin').touched
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-exclamation-circle"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                    />
+                    <path
+                      d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"
+                    />
+                  </svg>
+                  End date is required
+                </small>
+                <small
+                  *ngIf="
+                    eventForm.get('dateDebut').dirty &&
+                    eventForm.get('dateFin').dirty &&
+                    eventForm.get('dateFin').value <=
+                      eventForm.get('dateDebut').value
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-exclamation-circle"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                    />
+                    <path
+                      d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"
+                    />
+                  </svg>
+                  End date should be greater than start date
+                </small>
+              </div>
+              <div class="col-md-3 text-right">
+                <button [disabled]="!eventForm.get('dateDebut').valid 
+                                    || !eventForm.get('dateFin').valid 
+                                    || !eventForm.get('nom').valid " 
+                type="submit" 
+                class="btn" 
+                style="background-color: #0261FF;"
+                >{{action}}
+              </button>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"></div>
+        <div class="card-body">
+          <full-calendar [options]="calendarOptions">
+          </full-calendar>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

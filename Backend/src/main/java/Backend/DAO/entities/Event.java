@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -34,44 +33,28 @@ import lombok.ToString;
 @ToString
 
 @Entity
-public class Hackathon implements Serializable {
+public class Event implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name="idHackathon")
-	private int idHackathon;
+	@Column(name="idEvent")
+	private int idEvent;
 	private String nom;
-	@Lob
-	private String description;
-	private int nbrMaxEquipe;
-	//@Temporal (TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime dateDebut;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime dateFin;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
-	private LocalDateTime deadline;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created_at", nullable = false, updatable = false)
 	private Date createdAt;
-//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
-//	private LocalDateTime dateCreation;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "updated_at", nullable = false)
 	private Date updatedAt;
 
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "hackathon")
-	private List<Equipe> equipes;
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "hackathon")
-	private List<Event> events;
-	
 	@ManyToOne
-	private hackathonThematic thematic;
+	private Hackathon hackathon;
 	
 
 	@PrePersist
