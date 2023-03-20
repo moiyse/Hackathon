@@ -8,8 +8,7 @@ import { JeService } from 'src/app/services/je.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
 
@@ -27,19 +26,19 @@ export class SignupComponent implements OnInit {
     this.signUp = new FormGroup({
       nom: new FormControl('', [Validators.required]),
       prenom: new FormControl('', [Validators.required]),
-      cin: new FormControl('', [Validators.required]),
+      cin: new FormControl('', [Validators.required,Validators.maxLength(8),Validators.minLength(8),Validators.pattern("^[0-9]*$")]),
       email: new FormControl('', [Validators.required, Validators.minLength(3), Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(4)]),
       etablissement: new FormControl('', [Validators.required]),
       je: new FormControl('', [Validators.required]),
-      imagePath: new FormControl('', [Validators.required]),
+      imagePath: new FormControl(''/*, [Validators.required]*/),
       jeMember: new FormControl(''),
       
       
     });
   }
 
-  get f() {
+  get fs() {
     return this.signUp.controls;
   }
 
@@ -48,6 +47,7 @@ export class SignupComponent implements OnInit {
         
         //console.log("objet user",this.signUp.value)
        // const objectSignUp = {nom:this.signUp.value.nom,prenom:this.signUp.value.prenom,cin:this.signUp.value.cin,email:this.signUp.value.email,nom:this.signUp.value.nom,nom:this.signUp.value.nom,nom:this.signUp.value.nom,nom:this.signUp.value.nom,nom:this.signUp.value.nom}
+      if(this.signUp.valid){
         this.authService.register(this.signUp.value).subscribe(
           data => {
            // console.log(data);
@@ -60,6 +60,8 @@ export class SignupComponent implements OnInit {
             
           }
         );
+      } 
+       
   }
 
 
@@ -88,7 +90,7 @@ export class SignupComponent implements OnInit {
 
     await this.processFile(imageInput);
     //("is out of image file on change")
-    setTimeout(() => {console.log("this is the first message")}, 10);
+    setTimeout(() =>console.log(""), 10);
 
   }
     

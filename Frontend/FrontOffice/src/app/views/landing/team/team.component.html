@@ -28,37 +28,59 @@
 	<div class="container">
 		
 		<div class="my-workshop-container">
-			<div class="workshop-nav">
-				<i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/landing/invitations">Invitations</a><span>/</span><a routerLink="/landing/workshops">My Workshops</a>
+			<div class="equipe-title">
+				<div *ngIf="equipeExists == true; else noEquipeBlock">
+					{{equipe.nom}}
+				</div>
+				<ng-template #noEquipeBlock>
+					No equipe
+				</ng-template>
 			</div>
 			<div class="workshop-table">
 				<div class="schedule-contents bg-schedule">
-					<div >
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-1">
-                                    <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
-                                </div>
-                                <div class="col-9">
-                                    <a >You have a new invitation from <a style="color:#000000 ; font-weight: bold;"></a> to join their team <a style="color:#000000 ; font-weight: bold;"></a> 
-                                        
-                                    </a>
-                                </div>
-                                <div class="col-2"><i  class="fa fa-sort-desc down" aria-hidden="true"></i></div>
-                            </div>
-                            
-                        </div>
-                        <div class="card-second">
-                            <div class="cursor-class">
-                                <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
-                                <a >You have a new invitation from <a style="color:#000000 ; font-weight: bold;"></a> to join their team <a style="color:#000000 ; font-weight: bold;"></a> 
-                                    <i class="fa fa-sort-desc down" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
+					<div *ngIf="leader == true; else ifBlock1">
+						<div class="team-leader-container-gpt">
+							<div *ngFor="let member of teamMembers; let i = index">
+								<div class="team-leader-member-gpt">
+									<img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
+									<p>{{member.nom}} {{member.prenom}}</p>
+									<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
+									<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
+									<button class="team-leader-member-gpt-button">Kick</button>
+								  </div>
+							</div>
+							<!-- Add more team members as needed -->
+							<div (click)="openDialogInvitation()" class="team-leader-add-member-gpt add-member-card">
+								<i class="fa fa-user-plus"></i>
+								<p>Click to add new team member</p>
+							</div>
+						</div>
+					  </div>
+
+					  <ng-template #ifBlock1>
+						<div *ngIf="equipeExists == true; else ifBlock2">
+							<div class="alert alert-info" role="alert">
+								You are not the leader of <a style="font-weight:bold">{{equipe.nom}}</a> you can only view your teammates
+							</div>
+							<div class="team-container-gpt">
+								<div *ngFor="let member of teamMembers; let i = index">
+									<div class="team-member-gpt">
+										<img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
+										<p>{{member.nom}}{{member.prenom}}</p>
+										<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
+										<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<ng-template #ifBlock2>
+							<div *ngIf="NoEquipeNotLeader == true"></div>
+							<div class="alert alert-danger" role="alert">
+								<i class="fa fa-exclamation-circle"></i> Can't have access to this page unless you are a team leader.<a (click)="openDialogTeamCreation()" class="alert-team-link"> Create a team clicking this link</a><br> It will be a greate experience for you joining our hackathon with a team.
+							</div>
+						</ng-template>
+					  </ng-template>
                         
 
                         <!--

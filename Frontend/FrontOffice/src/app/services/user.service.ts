@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Equipe } from '../models/Equipe';
 import { User } from '../models/User';
 import { TokenStorageService } from './token-storage.service';
 
@@ -20,6 +21,14 @@ export class UserService {
 
   affectUserToTeamOnInvivationAcceptation(user:User,id_equipe:number){
     return this.http.put(this.apiServerUrl  + '/user/affectUserToTeamOnInvivationAcceptation/'+id_equipe,user);
+  }
+
+  getReceiverOfInvitation(id_invitation:number):Observable<User>{
+    return this.http.get<User>(this.apiServerUrl  + '/user/getReceiverOfInvitation/'+id_invitation);
+  }
+
+  getMembersOfEquipe(idEquipe:number):Observable<User[]>{
+    return this.http.get<User[]>(this.apiServerUrl  + '/user/getMembersOfEquipe/'+idEquipe);
   }
 
   

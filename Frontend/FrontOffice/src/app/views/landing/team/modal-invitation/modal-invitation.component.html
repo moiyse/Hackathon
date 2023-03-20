@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Invite someone to you team</h1>
+<div *ngIf="repeatedInvitation" class="alert-class">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="row">
+            <div class="col-md-11 col-sm-12"><div class="alert-message"><strong>Sorry </strong> you have already sent an invitation to that person or is already part of your team</div></div>
+            <div class="col-md-1 col-sm-12" style="text-align: center;">
+                <a style="cursor: pointer;" type="button" (click)="repeatedInvitation = false" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<form [formGroup]="invitationForm" (ngSubmit)="sendInvitation()">
+    <div mat-dialog-content>
+        <p>Enter the email of your teammate :</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+    </div>
+    
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button type="submit" mat-button mat-raised-button class="send-button">Send</button>
+    </div>
+</form>

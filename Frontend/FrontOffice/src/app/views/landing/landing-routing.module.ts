@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/auth.guard';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
@@ -13,7 +14,7 @@ import { WorkshopsComponent } from './workshops/workshops.component';
 
 const routes: Routes = [
   { path:'',pathMatch:'full',redirectTo:'home' },
-  { path:'home',component:HomeComponent },
+  { path:'home',component:HomeComponent},
   { path:'contact',component:ContactComponent},
   { path:'about',component:AboutComponent},
   { path:'reservation',component:ReservationComponent,canActivate:[AuthGuard]},

@@ -9,51 +9,67 @@
                   <form [formGroup]="signUp" (ngSubmit)="onSubmit()">
   
                     <div class="d-flex align-items-center mb-3 pb-3 pt-3">
-                        <img src="assets/logo-vertical.png" class="img-logo " alt="logo">
+                        <img src="assets/Inceptech-logo-vertical.png" class="img-logo " alt="logo">
                     </div>
   
                     
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center" style="margin-top:50px">
                         <div class="col-md-6">
                             <div class="form-outline mb-4">
                               <label class="form-label" for="form2Example17">First name</label>
-
                               <input type="text" formControlName="nom"  id="form2Example17" class="form-control form-control-lg" />
+                              <div *ngIf="fs['nom'].invalid && (fs['nom'].dirty || fs['nom'].touched)">
+                                <div class="text-danger" *ngIf="fs['nom'].errors && fs['nom'].errors['required']" >*FirstName is required please fill it</div>
+                              </div>
                             </div>
             
                             <div class="form-outline mb-4">
                               <label class="form-label" for="form2Example27">Last name</label>
-  
                               <input type="text" formControlName="prenom" id="form2Example27" class="form-control form-control-lg" />
+                              <div *ngIf="fs['prenom'].invalid && (fs['prenom'].dirty || fs['prenom'].touched)">
+                                <div class="text-danger" *ngIf="fs['prenom'].errors && fs['prenom'].errors['required']" >*LastName is required please fill it</div>
+                              </div>
                             </div>
             
                             <div class="form-outline mb-4">
                               <label class="form-label" for="form2Example27">N° Cin</label>
-  
                               <input type="text" formControlName="cin" id="form2Example27" class="form-control form-control-lg" />
+                              <div *ngIf="fs['cin'].invalid && (fs['cin'].dirty || fs['cin'].touched)">
+                                <div class="text-danger" *ngIf="fs['cin'].errors && fs['cin'].errors['required']" >*Cin is required please fill it</div>
+                                <div class="text-danger" *ngIf="fs['cin'].errors && fs['cin'].errors['pattern']" >*Cin must be composed of numbers</div>
+                                <div class="text-danger" *ngIf="fs['cin'].errors && (fs['cin'].errors['maxlength'] || fs['cin'].errors['minlength'])" >*Cin must be composed of 8 numbers</div>
+                              </div>
                             </div>
                             <div class="form-outline mb-4">
                               <label class="form-label" for="form2Example17">Email</label>
-  
                               <input type="text" formControlName="email" id="form2Example17" class="form-control form-control-lg" />
+                              <div *ngIf="fs['email'].invalid && (fs['email'].dirty || fs['email'].touched)">
+                                <div class="text-danger" *ngIf="fs['email'].errors && fs['email'].errors['required']" >*Email is required please fill it</div>
+                                <div class="text-danger" *ngIf="fs['email'].errors && fs['email'].errors['email']" >*Email must be of email format like .....@gmail.com</div>
+                              </div>
                             </div>
                             <div class="form-outline mb-4">
                               <label class="form-label" for="form2Example17">Password</label>
-  
                               <input type="password" formControlName="password" id="form2Example17" class="form-control form-control-lg" />
+                              <div *ngIf="fs['password'].invalid && (fs['password'].dirty || fs['password'].touched)">
+                                <div class="text-danger" *ngIf="fs['password'].errors && fs['password'].errors['required']" >*Password is required please fill it</div>
+                                <div class="text-danger" *ngIf="fs['password'].errors && fs['password'].errors['minLength']" >*Password must be of 4 letters</div>
+                              </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             
                             <div class="form-outline mb-4">
                               <label class="form-label" for="form2Example17">Campus</label>
-  
                               <input type="text" formControlName="etablissement" id="form2Example17" class="form-control form-control-lg" />
+                              <div *ngIf="fs['etablissement'].invalid && (fs['etablissement'].dirty || fs['etablissement'].touched)">
+                                <div class="text-danger" *ngIf="fs['etablissement'].errors && fs['etablissement'].errors['required']" >*Campus is required please fill it</div>
+                              </div>
                             </div>
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-4 jeMembre">
                                 <label class="form-label" for="form2Example17">Are you a JE member ?</label><br>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-lg-4">
                                         <input formControlName="jeMember" [(ngModel)]="jeMember" type="radio" id="contactChoice1"
                                         name="jeMember" value="yes">
                                         <label class="mr-4" for="contactChoice1">Yes</label>
@@ -61,14 +77,16 @@
                                         name="jeMember" value="no">
                                         <label  for="contactChoice1">No</label>
                                     </div>
-                                    <div class="col-6 align-self-start">
+                                    <div class="col-12 col-lg-8 align-self-start">
                                         <div *ngIf="jeMember == 'yes' " class="form-outline mb-4">
                                             <label class="form-label" for="form2Example17">JE</label>
                                             <select class="select-form" formControlName="je">
                                               <option [ngValue]="null" disabled>Select your JE</option>
                                               <option *ngFor="let je of jeObject" [ngValue]="je">{{je.nom}}</option>
                                             </select>
-                                            
+                                            <div *ngIf="fs['je'].invalid && (fs['je'].dirty || fs['je'].touched)">
+                                              <div class="text-danger" *ngIf="fs['je'].errors && fs['je'].errors['required']" >*Please choose your Junior Entreprise or click on NO JE</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +103,7 @@
                     
   
                     <div class="pt-1 mb-4">
-                      <button class="btn btn-lg btn-block button-login" type="submit">SignUp</button>
+                      <button class="btn btn-lg btn-block button-login" [disabled]="!signUp.valid" type="submit">SignUp</button>
                     </div>
   
                     
@@ -93,7 +111,7 @@
                   </form>
                   <a routerLink="/landing">
                     <div class="return-button">
-                      <span><i class="fa fa-arrow-circle-left icon"></i>Return</span>
+                      <span><i class="fa fa-arrow-circle-left icon"></i>Home</span>
                     </div>
                   </a>
   

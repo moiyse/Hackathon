@@ -20,17 +20,24 @@
                     
   
                     <div class="form-outline mb-4">
-                      <input formControlName="email" type="email" id="form2Example17" class="form-control form-control-lg" />
                       <label class="form-label" for="form2Example17">Email address</label>
+                      <input formControlName="email" type="email" id="form2Example17" class="form-control form-control-lg" />
+                      <div *ngIf="fs['email'].invalid && (fs['email'].dirty || fs['email'].touched)">
+                        <div class="text-danger" *ngIf="fs['email'].errors && fs['email'].errors['required']" >*email is required</div>
+                        <div class="text-danger" *ngIf="fs['email'].errors && fs['email'].errors['email']" >*Email must be of format like .....@gmail.com</div>
+                      </div>
                     </div>
   
                     <div class="form-outline mb-4">
-                      <input formControlName="password" type="password" id="form2Example27" class="form-control form-control-lg" />
                       <label class="form-label" for="form2Example27">Password</label>
+                      <input formControlName="password" type="password" id="form2Example27" class="form-control form-control-lg" />
+                      <div *ngIf="fs['password'].invalid && (fs['password'].dirty || fs['password'].touched)">
+                        <div class="text-danger" *ngIf="fs['password'].errors && fs['password'].errors['required']" >*Password is required</div>
+                      </div>
                     </div>
   
                     <div class="pt-1 mb-4">
-                      <button class="btn btn-lg btn-block button-login" type="submit">Login</button>
+                      <button  class="btn btn-lg btn-block button-login" [disabled]="!logIn.valid" type="submit">Login</button>
                     </div>
   
                     <a class="small text-muted" style="font-size: 10px;" href="#!">Forgot password?</a>
@@ -38,7 +45,7 @@
                   </form>
                   <a routerLink="/landing">
                     <div class="return-button">
-                      <span><i class="fa fa-arrow-circle-left icon"></i>Return</span>
+                      <span><i class="fa fa-arrow-circle-left icon"></i>Home</span>
                     </div>
                   </a>
   

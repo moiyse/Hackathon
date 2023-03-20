@@ -22,12 +22,14 @@ export class InvitationsReceivedComponent implements OnInit {
   elements : Boolean[] = []
   invitationSelected!: Invitation
   user!: User;
+  invitationNumber:number = 0;
 
   ngOnInit(): void {
 
     this.userService.getUserByEmail(this.tokenStorage.getUser()).subscribe(data => 
       {
         this.user=data;
+        this.invitationService.getInvitationReceived(this.user).subscribe(data => {this.invitationNumber=data.length;console.log("number of invitations is : ",this.invitationNumber)},err => console.log("error in number of invitations",err));
         this.invitationService.getInvitationReceived(data).subscribe(data => {console.log("data of the service : ",data);this.invitationsReceived=data;console.log("invitation recieved content list",this.invitationsReceived);this.elements = new Array(this.invitationsReceived.length).fill(false);});
       },err=> {console.log("error on invitation is : ",err);this.tokenStorage.signOut()})
       console.log("refreshed")

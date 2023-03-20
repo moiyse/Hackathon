@@ -348,6 +348,14 @@
     margin-right: 10px;
   }
 
+  .workshop-nav .invi-received {
+    display: inline-flex;
+  }
+
+  
+
+  
+
   .schedule .my-workshop-container .workshop-table .card i.mail {
     margin-right: 22px;
     font-size: 19px;
@@ -423,7 +431,7 @@
     border-top: 1px solid #d1d1d1;
     padding: 11px 15px 0px 15px;
     font-size: x-small;
-    margin: 10px 21px 0px 21px;
+    margin: 20px 0 0px 0;
 
   }
 
@@ -445,6 +453,19 @@
 
   }
 
+
+  @media(max-width:576px){
+    .invitation-card-details .row {
+      margin-top: 25px;
+    }
+    .invitation-card-details button {
+
+      margin-top: 10px;
+  
+    }
+
+  }
+
   .accept-button{
     color:  rgb(46, 157, 46);
   }
@@ -452,6 +473,24 @@
   .refuse-button{
     color: rgb(174, 62, 62);
   }
+
+  .circle-icon {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ECECEC;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3px;
+}
+
+.circle-icon span {
+    color: black;
+    font-size: 11px;
+    font-family: monospace;
+}
 
 
 

@@ -17,7 +17,7 @@
                 <a class="nav-link" routerLink="/landing/about">About<span>/</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/landing/contact">Contact<span *ngIf="user!=null">/</span></a>
+                <a class="nav-link" routerLink="/landing/contact">Contact<span *ngIf="email!=null">/</span></a>
             </li>
             <li class="nav-item" *ngIf="email!=null">
                 <a class="nav-link" routerLink="/landing/reservation">Reservation</a>
@@ -35,8 +35,8 @@
                         <a class="dropdown-item" routerLink="/landing/profile"><i class="fa fa-user dropdown-icons"></i>Profile Settings</a>
                         <a class="dropdown-item" routerLink="/landing/workshops"><i class="fa fa-list dropdown-icons"></i>My Workshops</a>
                         <a class="dropdown-item" style="display: -webkit-inline-box;width: 100%;" routerLink="/landing/invitationsReceived"><i class="fa fa-bell dropdown-icons"></i>Invitation <div class="circle-icon"><span>{{invitationNumber}}</span></div></a>
-                        <a *ngIf="equipeExists==true ; else equipeElseBlock" class="dropdown-item" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>{{user.equipe.nom}}</a>
-                        <ng-template #equipeElseBlock><a class="dropdown-item disabled" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>Equipe</a></ng-template>
+                        <a *ngIf="equipeExists==true ; else equipeElseBlock" class="dropdown-item" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>{{equipe.nom}}</a>
+                        <ng-template #equipeElseBlock><a class="dropdown-item" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>Equipe</a></ng-template>
                         <a class="dropdown-item logout" (click)="logout()"><i class="fa fa-sign-in dropdown-icons" aria-hidden="true"></i>Logout</a>
                     </div>
             </li>

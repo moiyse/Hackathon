@@ -26,4 +26,8 @@ export class InvitationService {
     return this.http.delete(`${this.apiServerUrl}/invitation/deleteInvitationOnRefuse/`+idInvitation);
   }
 
+  public sendInvitation(sender:User,emailReceiver:String):Observable<Boolean>{
+    return this.http.post<Boolean>(`${this.apiServerUrl}/invitation/sendInvitationByEmail/`+emailReceiver,sender);
+  }
+
 }
