@@ -27,6 +27,7 @@ export class ModalInvitationComponent implements OnInit {
   equipeOfReceiver!:Equipe;
   receiver!:User;
   invitationsSent!:Invitation[]
+  receiverNotExist = false;
 
 
   constructor(public equipeService:EquipeService,public invitationService:InvitationService,public userService:UserService,public dialogRef: MatDialogRef<ModalInvitationComponent>,
@@ -73,20 +74,27 @@ export class ModalInvitationComponent implements OnInit {
                   console.log("starting the forEach")
                   let numberOfInvitationsSent = this.invitationsSent.length
                   console.log("length of invitation is = ",numberOfInvitationsSent)
-                  this.invitationsSent.forEach(invitation => {
-                    this.userService.getReceiverOfInvitation(invitation.idInvitation).subscribe(data => {
-                      numberOfInvitationsSent--;
-                      if (data.email == this.invitationReceiver.email)
-                      {
-                        console.log("inside the condition")
-                        this.repeatedInvitation = true;
-                      }
-                      if(numberOfInvitationsSent == 0 && this.repeatedInvitation == false){
-                        this.invitationService.sendInvitation(this.data.user,this.invitationForm.value.email).subscribe(data => {console.log("the send invitation service returned : ",data);this.dialogRef.close();})
-                      }
-                      
+                  if(this.invitationsSent.length == 0)
+                  {
+                    this.invitationService.sendInvitation(this.data.user,this.invitationForm.value.email).subscribe(data => {console.log("the send invitation service returned : ",data);this.dialogRef.close();})
+                  }
+                  else {
+                    this.invitationsSent.forEach(invitation => {
+                      this.userService.getReceiverOfInvitation(invitation.idInvitation).subscribe(data => {
+                        numberOfInvitationsSent--;
+                        if (data.email == this.invitationReceiver.email && invitation.status != "LEFTTEAM")
+                        {
+                          console.log("inside the condition")
+                          this.repeatedInvitation = true;
+                        }
+                        if(numberOfInvitationsSent == 0 && this.repeatedInvitation == false){
+                          this.invitationService.sendInvitation(this.data.user,this.invitationForm.value.email).subscribe(data => {console.log("the send invitation service returned : ",data);this.dialogRef.close();})
+                        }
+                        
+                      })
                     })
-                  })
+                  }
+                  
                   
                 }
               })
@@ -109,6 +117,10 @@ export class ModalInvitationComponent implements OnInit {
           
           })
           
+        }
+        else
+        {
+          this.receiverNotExist = true;
         }
       })
     }

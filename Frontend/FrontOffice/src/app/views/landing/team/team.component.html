@@ -30,27 +30,29 @@
 		<div class="my-workshop-container">
 			<div class="equipe-title">
 				<div *ngIf="equipeExists == true; else noEquipeBlock">
-					{{equipe.nom}}
+					{{equipe.nom}} <i (click)="exitTeam()" class="fa fa-ban"></i>
 				</div>
 				<ng-template #noEquipeBlock>
-					No equipe
+					<div *ngIf="NoEquipeNotLeader == true">No team</div>
 				</ng-template>
 			</div>
+			
 			<div class="workshop-table">
 				<div class="schedule-contents bg-schedule">
 					<div *ngIf="leader == true; else ifBlock1">
 						<div class="team-leader-container-gpt">
 							<div *ngFor="let member of teamMembers; let i = index">
 								<div class="team-leader-member-gpt">
-									<img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
-									<p>{{member.nom}} {{member.prenom}}</p>
+									<img *ngIf="leaderOfEquipe.email != member.email" class="image-member" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
+									<img *ngIf="leaderOfEquipe.email == member.email" class="image-member-mark" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
+									<p>{{member.nom+" "}} {{" "+member.prenom}}</p>
 									<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
 									<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
-									<button class="team-leader-member-gpt-button">Kick</button>
+									<button *ngIf="member.email != user.email" class="team-leader-member-gpt-button">Kick</button>
 								  </div>
 							</div>
 							<!-- Add more team members as needed -->
-							<div (click)="openDialogInvitation()" class="team-leader-add-member-gpt add-member-card">
+							<div *ngIf="teamMembers.length <= 6" (click)="openDialogInvitation()" class="team-leader-add-member-gpt add-member-card">
 								<i class="fa fa-user-plus"></i>
 								<p>Click to add new team member</p>
 							</div>
@@ -65,8 +67,9 @@
 							<div class="team-container-gpt">
 								<div *ngFor="let member of teamMembers; let i = index">
 									<div class="team-member-gpt">
-										<img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
-										<p>{{member.nom}}{{member.prenom}}</p>
+										<img *ngIf="leaderOfEquipe.email != member.email" class="image-member" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
+										<img *ngIf="leaderOfEquipe.email == member.email" class="image-member-mark" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
+										<p>{{member.nom+" "}} {{" "+member.prenom}}</p>
 										<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
 										<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
 									</div>
@@ -75,9 +78,10 @@
 							
 						</div>
 						<ng-template #ifBlock2>
-							<div *ngIf="NoEquipeNotLeader == true"></div>
-							<div class="alert alert-danger" role="alert">
-								<i class="fa fa-exclamation-circle"></i> Can't have access to this page unless you are a team leader.<a (click)="openDialogTeamCreation()" class="alert-team-link"> Create a team clicking this link</a><br> It will be a greate experience for you joining our hackathon with a team.
+							<div *ngIf="NoEquipeNotLeader == true">
+								<div class="alert alert-danger" role="alert">
+									<i class="fa fa-exclamation-circle"></i> Can't have access to this page unless you are a team leader.<a style="cursor: pointer;" (click)="openDialogTeamCreation()" class="alert-team-link"> Create a team clicking this link</a><br> It will be a greate experience for you joining our hackathon with a team.
+								</div>
 							</div>
 						</ng-template>
 					  </ng-template>

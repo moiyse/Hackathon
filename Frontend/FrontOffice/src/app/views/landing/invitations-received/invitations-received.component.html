@@ -33,8 +33,20 @@
 			</div>
 			<div class="workshop-table">
 				<div class="schedule-contents bg-schedule">
+                    <div *ngIf="userHaveEquipe" class="alert-class">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <div class="row">
+                                <div class="col-md-11 col-sm-12"><div class="alert-message"><strong>Sorry </strong> you are already part of the team <strong>{{equipe.nom}}</strong>. If you want to enter another team you have to leave yours first.</div></div>
+                                <div class="col-md-1 col-sm-12" style="text-align: center;">
+                                    <a style="cursor: pointer;" type="button" (click)="userHaveEquipe = false" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 					<div *ngFor="let invitation of invitationsReceived; let i = index">
-                        <div class="card">
+                        <div *ngIf="invitation.status == 'PENDING'" class="card">
                             <div (click)="toggleDetails(i)" class="row">
                                 <div class="col-1">
                                     <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
@@ -47,16 +59,16 @@
                                         <span>The name of the team you were invited to : </span><p>{{invitation.equipe.nom}}</p>
                                         <span>Date of the invitation : </span><p>{{invitation.dateEnvoi}}</p>
                                         <div style="text-align:center" class="row justify-content-center">
-                                            <div class="col-3"><button (click)="accepterInviation(invitation.equipe.idEquipe)" class="accept-button">Accept</button></div>
+                                            <div class="col-3"><button (click)="accepterInviation(invitation.equipe.idEquipe,invitation.idInvitation)" class="accept-button">Accept</button></div>
                                             <div class="col-3"><button (click)="refuserInvitation(invitation.idInvitation)" class="refuse-button">Refuse</button></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-1"><i *ngIf="!elements[i]" class="fa fa-sort-desc down" aria-hidden="true"></i></div>
                             </div>
-                            
                         </div>
-                        <div class="card-second">
+                        
+                        <div *ngIf="invitation.status == 'PENDING'" class="card-second">
                             <div class="cursor-class">
                                 <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
                                 <a (click)="toggleDetails(i)">You have a new invitation from <a style="color:#000000 ; font-weight: bold;">{{invitation.sender.email}}</a> to join their team <a style="color:#000000 ; font-weight: bold;">{{invitation.equipe.nom}}</a> 
@@ -68,35 +80,55 @@
                                 <span>The name of the team you were invited to : </span><p>{{invitation.equipe.nom}}</p>
                                 <span>Date of the invitation : </span><p>{{invitation.dateEnvoi}}</p>
                                 <div class="row justify-content-center">
-                                    <div class="col-sm-3"><button (click)="accepterInviation(invitation.equipe.idEquipe)" class="accept-button">Accept</button></div>
+                                    <div class="col-sm-3"><button (click)="accepterInviation(invitation.equipe.idEquipe,invitation.idInvitation)" class="accept-button">Accept</button></div>
                                     <div class="col-sm-3"><button (click)="refuserInvitation(invitation.idInvitation)" class="refuse-button">Refuse</button></div>
                                 </div>
                             </div>
                             
                         </div>
                     </div>
+                    <div *ngFor="let invitation of invitationsReceived; let i = index">
+                        <div *ngIf="invitation.status == 'OPENED'" style="background-color: #eaeaea;" class="card">
+                            <div (click)="toggleDetails(i)" class="row">
+                                <div class="col-1">
+                                    <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-10">
+                                    <a (click)="toggleDetails(i)">You have a new invitation from <a style="color:#000000 ; font-weight: bold;">{{invitation.sender.email}}</a> to join their team <a style="color:#000000 ; font-weight: bold;">{{invitation.equipe.nom}}</a> 
+                                    </a>
+                                    <div *ngIf="elements[i]" class="invitation-card-details">
+                                        <span>Email of the sender : </span><p>{{invitation.sender.email}} </p>
+                                        <span>The name of the team you were invited to : </span><p>{{invitation.equipe.nom}}</p>
+                                        <span>Date of the invitation : </span><p>{{invitation.dateEnvoi}}</p>
+                                        <div style="text-align:center" class="row justify-content-center">
+                                            <div class="col-3"><button (click)="accepterInviation(invitation.equipe.idEquipe,invitation.idInvitation)" class="accept-button">Accept</button></div>
+                                            <div class="col-3"><button (click)="refuserInvitation(invitation.idInvitation)" class="refuse-button">Refuse</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-1"><i *ngIf="!elements[i]" class="fa fa-sort-desc down" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
                         
-
-                        <!--
-                            <div class="card">
-                            <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
-                            <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
+                        <div *ngIf="invitation.status == 'OPENED'" style="background-color: #eaeaea;" class="card-second">
+                            <div class="cursor-class">
+                                <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
+                                <a (click)="toggleDetails(i)">You have a new invitation from <a style="color:#000000 ; font-weight: bold;">{{invitation.sender.email}}</a> to join their team <a style="color:#000000 ; font-weight: bold;">{{invitation.equipe.nom}}</a> 
+                                    <i class="fa fa-sort-desc down" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div *ngIf="elements[i]" class="invitation-card-details">
+                                <span>Email of the sender : </span><p>{{invitation.sender.email}} </p>
+                                <span>The name of the team you were invited to : </span><p>{{invitation.equipe.nom}}</p>
+                                <span>Date of the invitation : </span><p>{{invitation.dateEnvoi}}</p>
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-3"><button (click)="accepterInviation(invitation.equipe.idEquipe,invitation.idInvitation)" class="accept-button">Accept</button></div>
+                                    <div class="col-sm-3"><button (click)="refuserInvitation(invitation.idInvitation)" class="refuse-button">Refuse</button></div>
+                                </div>
+                            </div>
+                            
                         </div>
-                        <div class="card">
-                            <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
-                            <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
-                        </div>
-                        <div class="card">
-                            <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
-                            <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
-                        </div>
-                        <div class="card">
-                            <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
-                            <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
-                        </div>
-                        -->
-                        
-					  
+                    </div>
 				</div>
 			</div>
 			

@@ -31,5 +31,18 @@ export class UserService {
     return this.http.get<User[]>(this.apiServerUrl  + '/user/getMembersOfEquipe/'+idEquipe);
   }
 
+  getLeaderOfEquipe(idEquipe:number):Observable<User>{
+    return this.http.get<User>(this.apiServerUrl  + '/user/getLeaderOfEquipe/'+idEquipe);
+  }
+
+  leaveTeam(user:User):Observable<Boolean>{
+    return this.http.put<Boolean>(this.apiServerUrl  + '/user/leaveTeam',user);
+  }
+
+  checkSateOfUser(user:User,idEquipe:number):Observable<any>{
+    return this.http.post<any>(this.apiServerUrl  + '/user/checkSateOfUser/'+idEquipe,user);
+  }
+  
+
   
 }

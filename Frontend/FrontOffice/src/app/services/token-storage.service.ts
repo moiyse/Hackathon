@@ -19,8 +19,8 @@ export class TokenStorageService {
     //console.log("token not valid !")
   }
 
-  logout(){
-    window.sessionStorage.clear();
+  async logout(){
+    await window.sessionStorage.clear();
     this.router.navigateByUrl('/auth');
   }
 

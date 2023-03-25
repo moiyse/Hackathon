@@ -24,7 +24,7 @@ export class InvitationsSentComponent implements OnInit {
   equipeExists!: Boolean;
   thirdCondition!: Boolean;
   invitationNumber:number = 0;
-  invitationsSent!:Invitation[];
+  invitationsSent:Invitation[] =[];
   receivers:User[] = [];
 
   ngOnInit() {
@@ -38,13 +38,17 @@ export class InvitationsSentComponent implements OnInit {
           console.log("equiupe retrieved",data)
           this.invitationService.getInvitationReceived(this.user).subscribe(data => {this.invitationNumber=data.length;console.log("number of invitations is : ",this.invitationNumber)},err => console.log("error in number of invitations",err));
           this.invitationService.getInvitationSent(this.user).subscribe(data => {
-            this.invitationsSent = data
             data.forEach(invitation => {
-              this.userService.getReceiverOfInvitation(invitation.idInvitation).subscribe(data => {
-                
+              console.log("invite : ",invitation)
+              if(invitation.status == "OPENED" || invitation.status == "PENDING")
+              {
+                this.invitationsSent.push(invitation)
+                console.log("here and invitationsSent became : ",this.invitationsSent)
+                this.userService.getReceiverOfInvitation(invitation.idInvitation).subscribe(data => {
                 this.receivers.push(data);
                 console.log("receiver retreived : ",data)
               })
+              }
             });
           },err => {console.log(err)})
           this.equipeService.getEquipeByLeader(this.user).subscribe(data => {
@@ -69,8 +73,29 @@ export class InvitationsSentComponent implements OnInit {
 
       },err=> {console.log("error in the invitation sent of getting user details : ",err);this.tokenStorage.signOut()})
       console.log("refreshed")
-      
-      
+  }
+
+  reload(){
+    this.invitationService.getInvitationSent(this.user).subscribe(data => {
+      data.forEach(invitation => {
+        console.log("invite : ",invitation)
+        if(invitation.status == "OPENED" || invitation.status == "PENDING")
+        {
+          this.invitationsSent.push(invitation)
+          console.log("here and invitationsSent became : ",this.invitationsSent)
+          this.userService.getReceiverOfInvitation(invitation.idInvitation).subscribe(data => {
+          this.receivers.push(data);
+          console.log("receiver retreived : ",data)
+        })
+        }
+      });
+    },err => {console.log(err)})
+  }
+
+
+
+  withdrawInvitation(idInvitation:number){
+    this.invitationService.changeInvitationStatus(this.user,idInvitation,"withdrawn").subscribe(data => {this.reload()},err => console.log(err))
   }
 
 

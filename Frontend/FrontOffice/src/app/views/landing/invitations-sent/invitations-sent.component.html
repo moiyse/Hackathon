@@ -43,7 +43,7 @@
 								</div>
 								
 								<div class="button-deletion">
-									<button type="button" class="btn btn-outline-danger">Delete invitation</button>
+									<button (click)="withdrawInvitation(invitation.idInvitation)" class="btn btn-outline-danger">Withdraw invitation</button>
 								</div>
 							</div>
 						</div>
@@ -58,7 +58,7 @@
 						<ng-template #ifBlock2>
 							<div *ngIf="thirdCondition == true">
 								<div class="alert alert-danger" role="alert">
-									<i class="fa fa-exclamation-circle"></i> Can't have access to this page unless you are a team leader.<a routerLink="/landing/team" class="alert-team-link"> Create a team clicking this link</a><br> It will be a greate experience for you joining our hackathon with a team.
+									<i class="fa fa-exclamation-circle"></i> Can't send or see invitations here unless you are a team leader.<a routerLink="/landing/team" class="alert-team-link"> Create a team clicking this link</a><br> Create a team or join one to live a great experience.
 								</div>
 							</div>
 						</ng-template>

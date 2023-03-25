@@ -7,7 +7,7 @@ export class Equipe {
     idEquipe!:number;
     nom!:String;
     dateCreation!:Date;
-    hackathon!:Hackathon;
+    idHackathon!:number;
     members!:User[];
     invitations!:Invitation[];
     leader!:User;

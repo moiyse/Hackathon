@@ -11,6 +11,18 @@
         </div>
     </div>
 </div>
+<div *ngIf="receiverNotExist" class="alert-class">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="row">
+            <div class="col-md-11 col-sm-12"><div class="alert-message"><strong>Sorry </strong> the email you have written does not exist</div></div>
+            <div class="col-md-1 col-sm-12" style="text-align: center;">
+                <a style="cursor: pointer;" type="button" (click)="receiverNotExist = false" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 <form [formGroup]="invitationForm" (ngSubmit)="sendInvitation()">
     <div mat-dialog-content>
         <p>Enter the email of your teammate :</p>

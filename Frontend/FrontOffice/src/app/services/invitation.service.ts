@@ -30,4 +30,8 @@ export class InvitationService {
     return this.http.post<Boolean>(`${this.apiServerUrl}/invitation/sendInvitationByEmail/`+emailReceiver,sender);
   }
 
+  public changeInvitationStatus(user:User,idInvitation:number,statusString:String):Observable<Invitation>{
+    return this.http.put<Invitation>(`${this.apiServerUrl}/invitation/changeStatusOfInvitation/`+idInvitation+"/"+statusString,user);
+  }
+
 }

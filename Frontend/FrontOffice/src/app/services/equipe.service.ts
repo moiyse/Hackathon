@@ -23,5 +23,17 @@ export class EquipeService {
     return this.http.post<Equipe>(`${this.apiServerUrl}/equipe/getEquipeByUser`,user);
   }
 
+  public getAllEquipes():Observable<Equipe[]>{
+    return this.http.get<Equipe[]>(`${this.apiServerUrl}/equipe/Get`);
+  }
+
+  public createEquipe(user:User,equipeName:String,idHackathon:number):Observable<Equipe>{
+    return this.http.post<Equipe>(`${this.apiServerUrl}/equipe/createEquipeOfHackathon/`+equipeName+"/"+idHackathon,user);
+  }
+
+  public deleteEquipeWithRemovingUserKey(idEquipe:number):Observable<Equipe>{
+    return this.http.delete<Equipe>(`${this.apiServerUrl}/equipe/deleteEquipeWithRemovingUserKey/`+idEquipe);
+  }
+
 
 }

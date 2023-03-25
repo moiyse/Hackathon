@@ -13,7 +13,6 @@ import { JeService } from 'src/app/services/je.service';
 export class SignupComponent implements OnInit {
 
   jeMember : String = "no";
-  jeList = [{name:"INCEPTUM"},{name:"ESPRO"},{name:"SUP'COM JE"}];
   imagePath : String = "";
   jeObject! : Je[];
   signUp! : FormGroup;
@@ -22,7 +21,7 @@ export class SignupComponent implements OnInit {
   constructor(private jeService:JeService,private authService: AuthService,private router:Router) { }
 
   ngOnInit(): void {
-    this.jeService.getAllJe().subscribe(data => {this.jeObject = data;console.log(this.jeObject)},err => {alert(err.message);console.log("error catching : "+err)});
+    this.jeService.getAllJe().subscribe(data => {this.jeObject = data;console.log(this.jeObject)},err => {console.log("error catching : "+err)});
     this.signUp = new FormGroup({
       nom: new FormControl('', [Validators.required]),
       prenom: new FormControl('', [Validators.required]),
@@ -30,7 +29,7 @@ export class SignupComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.minLength(3), Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(4)]),
       etablissement: new FormControl('', [Validators.required]),
-      je: new FormControl('', [Validators.required]),
+      je: new FormControl(''),
       imagePath: new FormControl(''/*, [Validators.required]*/),
       jeMember: new FormControl(''),
       

@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Create your team</h1>
+<div *ngIf="equipeExists" class="alert-class">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="row">
+            <div class="col-md-10 col-sm-12"><div class="alert-message"><strong>Sorry </strong> this name already exists please choose another</div></div>
+            <div class="col-md-2 col-sm-12" style="text-align: center;">
+                <a style="cursor: pointer;" type="button" (click)="equipeExists = false" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="equipeNumberMaxed" class="alert-class">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="row">
+            <div class="col-md-10 col-sm-12"><div class="alert-message"><strong>Sorry </strong> we have reached the max number of teams <strong> :'(</strong></div></div>
+            <div class="col-md-2 col-sm-12" style="text-align: center;">
+                <a style="cursor: pointer;" type="button" (click)="equipeNumberMaxed = false" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<form [formGroup]="equipeForm" (ngSubmit)="saveEquipe()">
+    <div mat-dialog-content>
+        <p>Enter your team's name :</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter the name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button type="submit" mat-button mat-raised-button class="send-button">Add</button>
+    </div>
+</form>
