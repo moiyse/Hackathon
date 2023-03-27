@@ -3,6 +3,7 @@ package Backend.DAO.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @ToString
@@ -18,6 +19,6 @@ public class Je {
 
     private String nom;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private User user;
+    @OneToMany(mappedBy="je")
+    private List<User> users;
 }

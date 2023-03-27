@@ -15,6 +15,7 @@ import java.util.Optional;
 public interface equipeRepository extends JpaRepository<Equipe, Integer>{
 
 
-    @Query("select e from Equipe e where e.leader=:user")
-    public Optional<Equipe> getEquipeByLeader(@Param("user") User user);
+    @Query("select count(e) from Equipe e where e.leader=:user")
+    public int getEquipeByLeader(@Param("user") User user);
+
 }

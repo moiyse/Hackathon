@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface InvitationRepository extends JpaRepository<Invitation, Integer> {
 
-    @Query("Select i from Invitation i where i.sender=:user")
+    @Query("Select i from Invitation i where i.sender=:user and (i.status='PENDING' or i.status='OPENED' or i.status='ACCEPTED' or i.status='LEFTTEAM')")
     public List<Invitation> getInvitationsSentByUser(@Param("user") User user);
 
 

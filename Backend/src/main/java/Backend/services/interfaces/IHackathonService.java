@@ -11,4 +11,7 @@ public interface IHackathonService {
 	public Hackathon addHackathon(Hackathon e);
 	public Hackathon updateHackathon(Hackathon e);
 	public void deleteHackathon(Integer id);
+
+	public Hackathon findCommingHackathon();
+
 }

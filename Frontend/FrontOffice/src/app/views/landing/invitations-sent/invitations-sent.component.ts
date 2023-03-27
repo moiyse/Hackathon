@@ -96,7 +96,8 @@ export class InvitationsSentComponent implements OnInit {
 
   withdrawInvitation(idInvitation:number){
     this.invitationService.changeInvitationStatus(this.user,idInvitation,"withdrawn").subscribe(data => {this.reload()},err => console.log(err))
-  }
+    this.reload()
+    }
 
 
 

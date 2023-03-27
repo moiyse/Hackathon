@@ -20,8 +20,8 @@ public class Invitation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idInvitation")
     private int idInvitation;
-    private Boolean opened;
-    private Boolean accepted;
+    @Enumerated(EnumType.STRING)
+    private InvitationStatus status = InvitationStatus.PENDING;
     @Temporal (TemporalType.DATE)
     private Date dateEnvoi;
 

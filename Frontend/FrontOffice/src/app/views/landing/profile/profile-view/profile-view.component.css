@@ -1,0 +1,105 @@
+
+.body-container{
+    background: linear-gradient(to top, rgba(38, 38, 38,1), rgb(0 38 30));
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .profile-page-container {
+    background: linear-gradient(to bottom, #fff, #f9f9f9);
+    padding: 40px;
+    box-shadow: 0px 0px 30px #00B6E1;
+    border-radius: 30px;
+    width: 70%;
+    max-width: 1000px;
+    transition: all 0.3s ease-in-out;
+    margin: 150px 0px;
+  }
+
+.left-side{
+  border-right: 1px rgb(204, 204, 204) solid ;
+}
+
+.profile-settings{
+  
+  
+}
+
+  
+.form-control:focus {
+  box-shadow: none;
+  border-color: #BA68C8
+}
+
+.profile-button {
+  background: rgb(0, 182, 225);
+  box-shadow: none;
+  border: none
+}
+
+.profile-button:hover {
+  background: #682773;
+  
+}
+
+.profile-button:focus {
+  background: rgb(86, 0, 226);
+  box-shadow: none
+}
+
+.profile-button:active {
+  background: #682773;
+  box-shadow: none
+}
+
+.back:hover {
+  color: #682773;
+  cursor: pointer
+}
+
+.labels {
+  font-size: 13px
+}
+
+.add-experience:hover {
+  background: #BA68C8;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #BA68C8
+}
+
+.button-place{
+  margin-top: 70px;
+}
+
+.details-part{
+    text-align: center;
+}
+
+.details {
+    margin: 11px 0px 11px 0px;
+}
+
+.details span{
+    font-size: 13px;
+    color: rgb(86, 0, 226);
+    font-weight: bold;
+}
+
+.details p {
+    font-size: 17px;
+}
+
+.profile-title{
+    color: rgb(0, 182, 225);
+    margin-bottom: 40px;
+}
+
+.profile-title i{
+    color:grey;
+    font-size: 20px;
+}

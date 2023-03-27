@@ -34,11 +34,11 @@ public class User implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_at", nullable = false, updatable = false)
+	@Column(name = "created_at", updatable = false)
 	private Date createdAt;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_at", nullable = false)
+	@Column(name = "updated_at")
 	private Date updatedAt;
 
 	
@@ -50,7 +50,8 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user")
 	private List<Reservation> reservations;
 
-	@OneToOne(mappedBy="user")
+	@JsonIgnore
+	@ManyToOne
 	private Je je;
 
 
@@ -78,13 +79,13 @@ public class User implements Serializable {
 		this.createdAt = createdAt;
 		this.je = je;
 	}
-	
+
 	@PrePersist
 	protected void onCreate() {
 		createdAt = new Date();
 		updatedAt = new Date();
 	}
-	
+
 	@PreUpdate
 	protected void onUpdate() {
 		updatedAt = new Date();

@@ -513,7 +513,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 260px;
-    height: 400px;
+    height: 360px;
     transition: all 0.3s ease-in-out;
     background-color: #fff;
     overflow-y: auto;
@@ -561,6 +561,11 @@
     margin-bottom: 10px;
   }
 
+  .team-member-details-gpt{
+    height: 210px;
+    overflow: scroll;
+  }
+
 
 
 
@@ -583,7 +588,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 260px;
-    height: 466px;
+    height: 425px;
     transition: all 0.3s ease-in-out;
     background-color: #fff;
     overflow-y: auto;
@@ -658,6 +663,9 @@
     margin: 21px 0px 5px 0px;
     cursor: pointer;
     border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
   }
   
   .team-leader-member-gpt-button:hover {
@@ -705,7 +713,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 260px;
-    height: 400px;
+    height: 425px;
     transition: all 0.3s ease-in-out;
     background-color: #fff;
     overflow-y: auto;
@@ -729,6 +737,11 @@
     margin-top: 10px;
     color: #333;
     font-weight: bold;
+  }
+
+  .team-leader-member-details-gpt{
+    height: 210px;
+    overflow: scroll;
   }
 
   .my-workshop-container p strong {

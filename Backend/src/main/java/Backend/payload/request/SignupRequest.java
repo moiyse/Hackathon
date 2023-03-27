@@ -47,7 +47,7 @@ public class SignupRequest {
     @NotNull
     private Date dateInscription;
 
-    @NotNull
+
     private int idJe;
 
     public String getNom() {

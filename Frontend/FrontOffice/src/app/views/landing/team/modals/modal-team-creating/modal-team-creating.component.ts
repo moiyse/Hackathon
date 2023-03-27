@@ -43,6 +43,7 @@ export class ModalTeamCreatingComponent implements OnInit {
       this.allEquipes = data
       console.log("all Equipes : ",this.allEquipes)
       let equipeNumber = this.allEquipes.length
+      console.log("coming hackathon",this.commingHackathon)
       if(this.commingHackathon.nbrMaxEquipe <= equipeNumber)
       {
         this.equipeNumberMaxed = true;

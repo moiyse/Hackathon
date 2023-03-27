@@ -32,4 +32,14 @@ public class invitationController {
         invitationService.deleteInvitationOnRefuse(idInvitation);
     }
 
+    @PostMapping("/invitation/sendInvitationByEmail/{emailReceiver}")
+    public Boolean sendInvitationByEmail(@RequestBody User sender,@PathVariable("emailReceiver")String emailReceiver ){
+        return invitationService.sendInvitationByEmail(sender,emailReceiver);
+    }
+
+    @PutMapping("/invitation/changeStatusOfInvitation/{idInvitation}/{status}")
+    public Invitation changeStatusOfInvitation(@RequestBody User user,@PathVariable("idInvitation") int idInvitation,@PathVariable("status") String status){
+        return invitationService.changeStatusOfInvitation(user,idInvitation,status);
+    }
+
 }

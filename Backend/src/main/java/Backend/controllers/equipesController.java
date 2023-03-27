@@ -1,5 +1,6 @@
 package Backend.controllers;
 
+import Backend.DAO.Repositories.equipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import Backend.services.interfaces.IEquipeService;
@@ -9,42 +10,58 @@ import Backend.DAO.entities.User;
 
 
 @RestController
-@RequestMapping("/teams")
 @CrossOrigin(origins = "http://localhost:4200")
 public class equipesController {
 
 	@Autowired(required=false)
 	IEquipeService IEquipe;
+	@Autowired
+	private Backend.DAO.Repositories.equipeRepository equipeRepository;
 
 	@PostMapping("/equipe/getEquipeByLeader")
-	public Equipe getEquipeByLeader(@RequestBody User user){
+	public Boolean getEquipeByLeader(@RequestBody User user){
 		return IEquipe.getEquipeByLeader(user);
 	}
 		
-	@GetMapping("/Get")
+	@GetMapping("/equipe/Get")
 	public List<Equipe> GetAll() {
 		return IEquipe.getAll();
 	}
 
-	@GetMapping("/Get/{id}")
+	@GetMapping("/equipe/Get/{id}")
 	public Equipe Get(@PathVariable Integer id) {
 		return IEquipe.getEquipeById(id);
 	}
 
-	@PostMapping("/Post")
+	@PostMapping("/equipe/Post")
 	public Equipe Post(@RequestBody Equipe e) {
 		return IEquipe.addEquipe(e);
 	}
 
-	@PutMapping("/Update")
+	@PutMapping("/equipe/Update")
 	public Equipe Update(@RequestBody Equipe e) {
 		return IEquipe.updateEquipe(e);
 	}
 
-	@DeleteMapping("/Delete/{id}")
+	@DeleteMapping("/equipe/Delete/{id}")
 	public void Delete(@PathVariable Integer id) {
 		IEquipe.deleteEquipe(id);
-		
+	}
+
+	@PostMapping("/equipe/getEquipeByUser")
+	public Equipe getEquipeByUser(@RequestBody User user){
+		return IEquipe.getEquipeByUser(user);
+	}
+
+	@PostMapping("/equipe/createEquipeOfHackathon/{equipeName}/{idHackathon}")
+	public Equipe createEquipeOfHackathon(@RequestBody User user,@PathVariable("equipeName")String equipeName,@PathVariable("idHackathon")int idHackathon) {
+		return IEquipe.createEquipêOfHackathon(user,equipeName,idHackathon);
+	}
+
+	@DeleteMapping("/equipe/deleteEquipeWithRemovingUserKey/{idEquipe}")
+	public Equipe deleteEquipeWithRemovingUserKey(@PathVariable("idEquipe") int idEquipe)
+	{
+		return IEquipe.deleteEquipeWithRemovingUserKey(idEquipe);
 	}
 	
 }

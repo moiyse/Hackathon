@@ -14,19 +14,18 @@ import javax.websocket.server.PathParam;
 
 
 @RestController
-@RequestMapping("/Reservations")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ReservationsController {
 
 	@Autowired(required=false)
 	IReservationService IReservation;
 
-	@PostMapping("/addReservation/{idWorkshop}/{idUser}")
+	@PostMapping("/Reservations/addReservation/{idWorkshop}/{idUser}")
 	public Reservation addReservation(@PathVariable("idWorkshop") int idWorkshop, @PathVariable("idUser") int idUserser){
 		return IReservation.addReservation(idWorkshop,idUserser);
 	}
 
-	@DeleteMapping("/deleteReservation/{id}")
+	@DeleteMapping("/Reservations/deleteReservation/{id}")
 	public Boolean deleteReservationById(@PathVariable("id") int id){
 		return IReservation.deleteReservationById(id);
 	}

@@ -45,14 +45,16 @@
 								<div class="team-leader-member-gpt">
 									<img *ngIf="leaderOfEquipe.email != member.email" class="image-member" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
 									<img *ngIf="leaderOfEquipe.email == member.email" class="image-member-mark" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
-									<p>{{member.nom+" "}} {{" "+member.prenom}}</p>
-									<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
-									<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
+									<div class="team-leader-member-details-gpt">
+										<p>{{member.nom+" "}} {{" "+member.prenom}}</p>
+										<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
+										<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
+									</div>
 									<button *ngIf="member.email != user.email" class="team-leader-member-gpt-button">Kick</button>
-								  </div>
+								</div>
 							</div>
 							<!-- Add more team members as needed -->
-							<div *ngIf="teamMembers.length <= 6" (click)="openDialogInvitation()" class="team-leader-add-member-gpt add-member-card">
+							<div *ngIf="teamMembers.length < 6" (click)="openDialogInvitation()" class="team-leader-add-member-gpt add-member-card">
 								<i class="fa fa-user-plus"></i>
 								<p>Click to add new team member</p>
 							</div>
@@ -69,9 +71,12 @@
 									<div class="team-member-gpt">
 										<img *ngIf="leaderOfEquipe.email != member.email" class="image-member" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
 										<img *ngIf="leaderOfEquipe.email == member.email" class="image-member-mark" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
-										<p>{{member.nom+" "}} {{" "+member.prenom}}</p>
-										<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
-										<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
+										<div class="team-member-details-gpt">
+											<p>{{member.nom+" "}} {{" "+member.prenom}}</p>
+											<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
+											<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
+										</div>
+										
 									</div>
 								</div>
 							</div>

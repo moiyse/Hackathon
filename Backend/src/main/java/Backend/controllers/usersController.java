@@ -9,33 +9,32 @@ import Backend.services.interfaces.IUserService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/users")
 public class usersController {
 
 	@Autowired(required=false)
 	IUserService IUser;
 
-	@GetMapping("/Get")
+	@GetMapping("/user/Get")
 	public List<User> GetAll() {
 		return IUser.getAll();
 	}
 
-	@GetMapping("/Get/{id}")
+	/*GetMapping("/Get/{id}")
 	public User Get(@PathVariable int id) {
 		return IUser.getUserById(id);
-	}
+	}*/
 
-	@PostMapping("/Post")
+	@PostMapping("/user/Post")
 	public User Post(@RequestBody User u) {
 		return IUser.addUser(u);
 	}
 
-	@PutMapping("/Update")
+	@PutMapping("/user/Update")
 	public User Update(@RequestBody User u) {
 		return IUser.updateUser(u);
 	}
 
-	@DeleteMapping("/Delete/{id}")
+	@DeleteMapping("/user/Delete/{id}")
 	public void Delete(@PathVariable int id) {
 		IUser.deleteUser(id);
 		
@@ -52,5 +51,30 @@ public class usersController {
 		System.out.println("id_user"+user.getIdUser());
 		System.out.println("id_equipe "+idEquipe);
 		IUser.affectUserToTeamOnInvivationAcceptation(user,idEquipe);
+	}
+
+	@GetMapping("/user/getReceiverOfInvitation/{idInvitation}")
+	public User getReceiverOfInvitation(@PathVariable("idInvitation") int idInvitation){
+		return IUser.getReceiverOfInvitation(idInvitation);
+	}
+
+	@GetMapping("/user/getMembersOfEquipe/{idEquipe}")
+	public List<User> getMembersOfEquipe(@PathVariable("idEquipe") int idEquipe){
+		return IUser.getMembersOfEquipe(idEquipe);
+	}
+
+	@GetMapping("/user/getLeaderOfEquipe/{idEquipe}")
+	public User getLeaderOfEquipe(@PathVariable("idEquipe") int idEquipe) { return IUser.getLeaderOfEquipe(idEquipe); }
+
+	@PutMapping("/user/leaveTeam")
+	public Boolean leaveTeam(@RequestBody User user)
+	{
+		return IUser.leaveTeam(user);
+	}
+
+	@PostMapping("/user/checkSateOfUser/{idEquipe}")
+	public Integer checkSateOfUser(@RequestBody User user,@PathVariable("idEquipe") Integer idEquipe){
+		System.out.println("value of the service check user : "+IUser.checkSateOfUser(user,idEquipe));
+		return IUser.checkSateOfUser(user,idEquipe);
 	}
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class JeController {
 
-    @Autowired(required=false)
+    @Autowired
     IJeService jeService;
 
     @GetMapping("/oauth/je/getAllJe")

@@ -5,7 +5,6 @@ import { LandingRoutingModule } from './landing-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { ProfileComponent } from './profile/profile.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ReservationComponent } from './reservation/reservation.component';
@@ -22,6 +21,8 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { ModalTeamCreatingComponent } from './team/modals/modal-team-creating/modal-team-creating.component';
 import { ModalConfirmingLeavingEquipeComponent } from './team/modals/modal-confirming-leaving-equipe/modal-confirming-leaving-equipe.component';
+import { ProfileComponent } from './profile/profile-settings/profile.component';
+import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ModalConfirmingLeavingEquipeComponent } from './team/modals/modal-confi
     TeamComponent,
     ModalInvitationComponent,
     ModalTeamCreatingComponent,
-    ModalConfirmingLeavingEquipeComponent
+    ModalConfirmingLeavingEquipeComponent,
+    ProfileViewComponent
   ],
   imports: [
     CommonModule,
