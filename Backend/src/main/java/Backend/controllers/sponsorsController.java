@@ -13,41 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import Backend.DAO.entities.Event;
-import Backend.services.interfaces.IEventService;
+import Backend.DAO.entities.Sponsor;
+import Backend.services.interfaces.ISponsorService;
 
 @RestController
-@RequestMapping("oauth/events")
+@RequestMapping("oauth/sponsors")
 @CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201", "http://localhost:3000"})
-public class eventsController {
+public class sponsorsController {
 
 	@Autowired(required=false)
-	IEventService IEvent;
+	ISponsorService ISponsor;
 	
 	
 	@GetMapping("/Get")
-	public List<Event> GetAll() {
-		return IEvent.getAll();
+	public List<Sponsor> GetAll() {
+		return ISponsor.getAll();
 	}
 
 	@GetMapping("/Get/{id}")
-	public Event Get(@PathVariable Integer id) {
-		return IEvent.getEventById(id);
+	public Sponsor Get(@PathVariable Integer id) {
+		return ISponsor.getSponsorById(id);
 	}
 
 	@PostMapping("/Post")
-	public Event Post(@RequestBody Event e) {
-		return IEvent.addEvent(e);
+	public Sponsor Post(@RequestBody Sponsor e) {
+		return ISponsor.addSponsor(e);
 	}
 
 	@PutMapping("/Update")
-	public Event Update(@RequestBody Event e) {
-		return IEvent.updateEvent(e);
+	public Sponsor Update(@RequestBody Sponsor e) {
+		return ISponsor.updateSponsor(e);
 	}
 
 	@DeleteMapping("/Delete/{id}")
 	public void Delete(@PathVariable Integer id) {
-		IEvent.deleteEvent(id);
+		ISponsor.deleteSponsor(id);
 		
 	}
 	

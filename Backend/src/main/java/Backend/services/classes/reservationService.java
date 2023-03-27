@@ -64,15 +64,14 @@ public class reservationService implements IReservationService {
 		}
 
 		// check if the workshop is nested with other workshops
-		for (int i = 0; i < userReservations.size(); i++) {
-			Reservation res = userReservations.get(i);
-			if (res.getWorkshop().getDateFin().isAfter(workshop.getDateDebut())
-					|| res.getWorkshop().getDateDebut().isBefore(workshop.getDateFin())) {
-				msg = "NESTED_WORKSHOPS";
-				break;
-			}
-			return msg;
-		}
+//		for (int i = 0; i < userReservations.size(); i++) {
+//			Reservation res = userReservations.get(i);
+//			if (res.getWorkshop().getDateFin().isAfter(workshop.getDateDebut()) || res.getWorkshop().getDateDebut().isBefore(workshop.getDateFin())) {
+//				msg = "NESTED_WORKSHOPS";
+//				break;
+//			}
+//			return msg;
+//		}
 
 		// add a new workshop reservation 
 		if (msg == "") {

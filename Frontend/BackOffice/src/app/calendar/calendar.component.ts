@@ -111,7 +111,7 @@ export class CalendarComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.action == "new") {
+    if (this.action == "Add") {
       this.addNewEvent();
     } else if (this.action == "update") {
       this.updateEvent();
@@ -137,6 +137,7 @@ export class CalendarComponent implements OnInit {
   addNewEvent(){
     this.eventsApi.addEvent(this.eventForm.value).subscribe(
       (res) => {
+        console.log(this.eventForm.value);
         //get all events from database and assign them to calender events list
         this.getAllEvents();
       },

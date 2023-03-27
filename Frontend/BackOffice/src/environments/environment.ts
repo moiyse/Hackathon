@@ -6,9 +6,15 @@ const Users= "http://localhost:8081/oauth/users/"
 const WorkshopThematics= "http://localhost:8081/oauth/workshopThematics/"
 const HackathonThematics= "http://localhost:8081/oauth/hackathonThematics/"
 const Events= "http://localhost:8081/oauth/events/"
+const Sponsors= "http://localhost:8081/oauth/sponsors/"
+const Partners= "http://localhost:8081/oauth/partners/"
 
 export const environment = {
   production: false,
+  
+  //DROPBOX TOKEN
+  DROPBOX_ACCESS_TOKEN:"sl.BbYSuaxtgPEjs7-1l7qb2MXST3laoRNIdBIqVYT2SrMV5Zvcwn14XGmfYEO5HsYZn-Q5Bu8VQyxK2_mbyJQk7hMxwEtSI65tnKkGEBR88uaAu7S2yIFo4paZJ9kRUB0HDun35cI",
+  
   endpoints:{
     teams:{
       GetAll: teams+"Get",
@@ -61,6 +67,20 @@ export const environment = {
       delete: Events+"Delete/",
       get: Events+"Get/",
       update: Events+"Update"
+    },
+    Sponsors:{
+      GetAll: Sponsors+"Get",
+      post:Sponsors+"Post",
+      delete: Sponsors+"Delete/",
+      get: Sponsors+"Get/",
+      update: Sponsors+"Update"
+    },
+    Partners:{
+      GetAll: Partners+"Get",
+      post:Partners+"Post",
+      delete: Partners+"Delete/",
+      get: Partners+"Get/",
+      update: Partners+"Update"
     }
   }
 };
