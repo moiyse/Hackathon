@@ -10,13 +10,13 @@ import Backend.DAO.entities.User;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@RequestMapping("oauth/teams")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 public class equipesController {
 
 	@Autowired(required=false)
 	IEquipeService IEquipe;
-	@Autowired
-	private Backend.DAO.Repositories.equipeRepository equipeRepository;
+	
 
 	@PostMapping("/equipe/getEquipeByLeader")
 	public Boolean getEquipeByLeader(@RequestBody User user){

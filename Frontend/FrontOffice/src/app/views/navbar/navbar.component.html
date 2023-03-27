@@ -19,8 +19,8 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink="/landing/contact">Contact<span *ngIf="email!=null">/</span></a>
             </li>
-            <li class="nav-item" *ngIf="email!=null">
-                <a class="nav-link" routerLink="/landing/reservation">Reservation</a>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/landing/workshops">Workshops</a>
             </li>
             
             </ul>
@@ -33,7 +33,7 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" routerLink="/landing/profile"><i class="fa fa-user dropdown-icons"></i>Profile Settings</a>
-                        <a class="dropdown-item" routerLink="/landing/workshops"><i class="fa fa-list dropdown-icons"></i>My Workshops</a>
+                        <a class="dropdown-item" routerLink="/landing/reservation"><i class="fa fa-list dropdown-icons"></i>My Workshops</a>
                         <a class="dropdown-item" style="display: -webkit-inline-box;width: 100%;" routerLink="/landing/invitationsReceived"><i class="fa fa-bell dropdown-icons"></i>Invitation <div class="circle-icon"><span>{{invitationNumber}}</span></div></a>
                         <a *ngIf="equipeExists==true ; else equipeElseBlock" class="dropdown-item" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>{{equipe.nom}}</a>
                         <ng-template #equipeElseBlock><a class="dropdown-item" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>Equipe</a></ng-template>

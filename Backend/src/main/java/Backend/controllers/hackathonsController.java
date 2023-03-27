@@ -17,7 +17,8 @@ import Backend.DAO.entities.Hackathon;
 import Backend.services.interfaces.IHackathonService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@RequestMapping("oauth/hackathons")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 public class hackathonsController {
 
 	@Autowired(required=false)

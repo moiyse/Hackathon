@@ -1,7 +1,5 @@
 package Backend.services.interfaces;
 
-import Backend.DAO.entities.Equipe;
-import Backend.DAO.entities.Invitation;
 import Backend.DAO.entities.User;
 
 import java.util.List;

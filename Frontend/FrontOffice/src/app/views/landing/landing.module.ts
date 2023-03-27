@@ -7,12 +7,12 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { ReservationComponent } from './reservation/reservation.component';
-import { WorkshopsComponent } from './workshops/workshops.component';
 import { authInterceptorProviders } from 'src/app/services/auth.interceptor';
 import { InvitationsReceivedComponent } from './invitations-received/invitations-received.component';
 import { InvitationsSentComponent } from './invitations-sent/invitations-sent.component';
 import { TeamComponent } from './team/team.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { WorkshopsComponent } from './workshops/workshops.component';
 import { ModalInvitationComponent } from './team/modals/modal-invitation/modal-invitation.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -23,6 +23,7 @@ import { ModalTeamCreatingComponent } from './team/modals/modal-team-creating/mo
 import { ModalConfirmingLeavingEquipeComponent } from './team/modals/modal-confirming-leaving-equipe/modal-confirming-leaving-equipe.component';
 import { ProfileComponent } from './profile/profile-settings/profile.component';
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
+
 
 @NgModule({
   declarations: [

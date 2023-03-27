@@ -1,8 +1,6 @@
 package Backend.services.interfaces;
 
 import java.util.List;
-
-import Backend.DAO.entities.User;
 import Backend.DAO.entities.Workshop;
 
 
@@ -17,5 +15,7 @@ public interface IWorkshopService {
     public List<Workshop> listReservedWorkshops(int idUser);
 
     public List<Workshop> listWorkshops();
+	
+	public List<Workshop> getUserWorkshops(int idUser);
 
 }

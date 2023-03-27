@@ -7,45 +7,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import Backend.services.interfaces.IUserService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 @RestController
+//@RequestMapping("oauth/users")
 public class usersController {
 
 	@Autowired(required=false)
 	IUserService IUser;
 
+	//@GetMapping("/Get")
 	@GetMapping("/user/Get")
 	public List<User> GetAll() {
 		return IUser.getAll();
 	}
 
-	/*GetMapping("/Get/{id}")
+	//@GetMapping("/Get/{id}")
+	@GetMapping("user/Get/{id}")
 	public User Get(@PathVariable int id) {
 		return IUser.getUserById(id);
-	}*/
+	}
 
+	//@PostMapping("/Post")
 	@PostMapping("/user/Post")
 	public User Post(@RequestBody User u) {
 		return IUser.addUser(u);
 	}
 
+	//@PutMapping("/Update")
 	@PutMapping("/user/Update")
 	public User Update(@RequestBody User u) {
 		return IUser.updateUser(u);
 	}
 
+	//@DeleteMapping("/Delete/{id}")
 	@DeleteMapping("/user/Delete/{id}")
 	public void Delete(@PathVariable int id) {
 		IUser.deleteUser(id);
 		
 	}
 
-
+	//@GetMapping("/getUserByEmail/{email}")
 	@GetMapping("/getUserByEmail/{email}")
 	public User getUserByEmail(@PathVariable("email") String email ){
 		return this.IUser.getUserByEmail(email);
 	}
 	
+	//@PutMapping("/user/affectUserToTeamOnInvivationAcceptation/{idEquipe}")
 	@PutMapping("/user/affectUserToTeamOnInvivationAcceptation/{idEquipe}")
 	public void affectUserToTeamOnInvivationAcceptation(@RequestBody User user,@PathVariable("idEquipe") int idEquipe){
 		System.out.println("id_user"+user.getIdUser());
@@ -53,6 +60,7 @@ public class usersController {
 		IUser.affectUserToTeamOnInvivationAcceptation(user,idEquipe);
 	}
 
+	
 	@GetMapping("/user/getReceiverOfInvitation/{idInvitation}")
 	public User getReceiverOfInvitation(@PathVariable("idInvitation") int idInvitation){
 		return IUser.getReceiverOfInvitation(idInvitation);

@@ -7,6 +7,7 @@ export class Hackathon{
     description: string;
     dateDebut: Date;
     dateFin: Date;
+    deadline: Date;
     createdAt: Date;
     updatedAt: Date;
     nbrMaxEquipe: number;

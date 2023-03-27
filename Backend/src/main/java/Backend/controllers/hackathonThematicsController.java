@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import Backend.DAO.entities.hackathonThematic;
 import Backend.services.interfaces.IHackathonThematicService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 @RestController
-@RequestMapping("/hackathonThematics")
+@RequestMapping("oauth/hackathonThematics")
 public class hackathonThematicsController {
 
 	@Autowired(required=false)

@@ -6,7 +6,6 @@ import Backend.DAO.entities.Invitation;
 import Backend.DAO.entities.InvitationStatus;
 import Backend.DAO.entities.User;
 import Backend.services.interfaces.IInvitationService;
-import Backend.services.interfaces.IJeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

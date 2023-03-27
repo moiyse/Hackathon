@@ -48,6 +48,8 @@ public class Hackathon implements Serializable {
 	private LocalDateTime dateDebut;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime dateFin;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime deadline;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created_at" , updatable = false)
@@ -59,6 +61,14 @@ public class Hackathon implements Serializable {
 	@Column(name = "updated_at")
 	private Date updatedAt;
 
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "hackathon")
+	private List<Equipe> equipes;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "hackathon")
+	private List<Event> events;
 	
 	@ManyToOne
 	private hackathonThematic thematic;

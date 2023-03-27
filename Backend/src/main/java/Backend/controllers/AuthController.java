@@ -24,7 +24,7 @@ import javax.validation.Valid;
 import java.util.Date;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 @RestController
 public class AuthController {
     @Autowired
@@ -64,7 +64,7 @@ public class AuthController {
     @PostMapping("/oauth/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         Je je =null;
-        System.out.println("the result signuup"+signUpRequest);
+        System.out.println("the result signup: "+signUpRequest);
         if (userRep.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()

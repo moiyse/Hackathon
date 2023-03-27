@@ -1,45 +1,138 @@
-
-
-
-
-  
-  .schedule .section-title span.alternate {
-    color: #0060FF !important; 
-  }
-  
-  
-  .schedule .schedule-tab .nav li.nav-item a.nav-link span{
-    color: #2c2c2c;
-  
-  }
-
-
-  .schedule .schedule-tab ul li.nav-item {
-    margin-right: 10px;
+.schedule.two .schedule-contents .schedule-item ul li .time {
+    width: 20%;
   }
   
   @media (max-width: 767px) {
-    .schedule .schedule-tab ul li.nav-item {
-      width: 100%;
-      margin-bottom: 10px;
+    .schedule.two .schedule-contents .schedule-item ul li .time {
+      width: 37%;
     }
   }
   
-  .schedule .schedule-tab ul li.nav-item a {
+  @media (max-width: 480px) {
+    .schedule.two .schedule-contents .schedule-item ul li .time {
+      width: 48%;
+    }
+  }
+  
+  .schedule.two .schedule-contents .schedule-item ul li .speaker {
+    width: 20%;
+  }
+  
+  @media (max-width: 991px) {
+    .schedule.two .schedule-contents .schedule-item ul li .speaker {
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .schedule.two .schedule-contents .schedule-item ul li .speaker {
+      width: 20%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .schedule.two .schedule-contents .schedule-item ul li .speaker {
+      width: 50%;
+    }
+  }
+  
+  .schedule.two .schedule-contents .schedule-item ul li .subject {
+    width: 20%;
+  }
+  
+  @media (max-width: 991px) {
+    .schedule.two .schedule-contents .schedule-item ul li .subject {
+      display: none;
+    }
+  }
+  
+  .schedule.two .schedule-contents .schedule-item ul li .venue {
+    width: 20%;
+  }
+  
+  @media (max-width: 767px) {
+    .schedule.two .schedule-contents .schedule-item ul li .venue {
+      display: none;
+    }
+  }
+
+.schedule .schedule-contents .schedule-item ul li .reservation {
+    width: 30%;
+  }
+  
+  @media (max-width: 991px) {
+    .schedule .schedule-contents .schedule-item ul li .reservation {
+      display: none;
+    }
+  }
+
+  .schedule.two .schedule-contents .schedule-item ul li .reservation {
+    width: 20%;
+  }
+  
+  @media (max-width: 991px) {
+    .schedule.two .schedule-contents .schedule-item ul li .reservation {
+      display: none;
+    }
+  }
+
+
+  .button-rsrv{
+    background-color: #0087FF;
+    border: none;
+    color: white;
+    border-color: white;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "michroma";
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 21px 0px 5px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  
+
+  .schedule .schedule-tab ul li.nav-item a.active:after{
+    display: none !important;
+  }
+
+  .workshop-cards{
+    margin-top: 14px;
+    text-align: center!important;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    padding: 20px 30px;
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .workshop-cards .card-text{
+    overflow:auto;
+    height: 94px;
+  }
+
+  .workshop-cards .card-items {
     font-family: "michroma", sans-serif;
     text-transform: uppercase;
     font-size: 21px;
     color: #0060FF;
     font-weight: 500;
-    display: block;
-    border-radius: 0;
-    padding: 20px 30px;
-    background-color: rgba(255, 255, 255, 0.8);
   }
-  
-  
-  
-  .schedule .schedule-tab ul li.nav-item a span {
+
+  .workshop-cards .card-items-details {
+    display: none;
+  }
+
+  .workshop-cards a span {
     margin-top: 2px;
     font-family: "michroma", sans-serif;
     display: block;
@@ -47,322 +140,43 @@
     color: #848484;
     font-weight: 400;
   }
-  
-  .schedule .schedule-tab ul li.nav-item a.active {
-    background: #0060FF;
-    color: #fff;
-    position: relative;
-  }
-  
-  .schedule .schedule-tab ul li.nav-item a.active span {
-    color: #fff;
-  }
-  
-  .schedule .schedule-tab ul li.nav-item a.active:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -20px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 20px 20px 0;
-    border-color: transparent #0060FF transparent transparent;
-  }
-  
-  @media (max-width: 767px) {
-    .schedule .schedule-tab ul li.nav-item a.active:after {
-      content: none;
-    }
-  }
-  
-  .schedule .schedule-contents {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 30px;
-  }
-  
-  .schedule .schedule-contents .schedule-item table {
-    margin-bottom: 0;
+
+  .workshop-cards:hover{
+    margin-top: 14px;
+    text-align: center !important;
     width: 100%;
-    font-size: 14px;
-    line-height: 26px;
-    color: #848484;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    padding: 20px 30px;
+    background-color: #0060FF;
   }
 
-  .schedule .schedule-contents .schedule-item {
-    overflow: auto;
-  }
-  
-  .schedule .schedule-contents .schedule-item table tr.headings {
-    list-style: none;
-    border-bottom: 1px solid #0060FF;
-  }
-
-  .schedule .schedule-contents .schedule-item table th {
-    font-weight: 100 !important;
-  }
-
-  @media (max-width: 991px) {
-    .schedule .schedule-contents .schedule-item table td {
-      text-align: center;
-    }
-  }
-  
-  .schedule .schedule-contents .schedule-item table tr div {
-    display: inline-block;
-  }
-  
-  
-  .schedule .schedule-contents .schedule-item table tr.headings .time {
-    padding: 22px 0px 22px 40px;
-  }
-
-  .schedule .schedule-contents .schedule-item table tr.headings .venue {
-    padding: 22px 40px 22px 0px;
-  }
-
-  .schedule .schedule-contents .schedule-item tr.block .time-td {
-    padding: 30px 0px 30px 40px;
-  }
-
-  .schedule .schedule-contents .schedule-item tr.block .speaker-td {
-    padding: 30px 0px 30px 0px;
-  }
-
-  .schedule .schedule-contents .schedule-item tr.block .subject-td {
-    padding: 30px 0px 30px 0px;
-  }
-
-  .schedule .schedule-contents .schedule-item tr.block .venue-td {
-    padding: 30px 40px 30px 0px;
-    text-align: center;
-  }
-
-  @media (max-width: 991px){
-    .schedule .schedule-contents .schedule-item table tr.headings th {
-      padding: 22px 25px ;
-    }
-  
-    .schedule .schedule-contents .schedule-item tr.block td {
-      padding: 10px 25px !important;
-    }
-
-    .schedule .schedule-contents .schedule-item tr.schedule-details div span.name {
-    margin-left: 0 !important;
-  }
-  }
-
-  @media (max-width: 767px){
-    .schedule .schedule-contents .schedule-item table tr.headings th {
-      padding: 22px 15px ;
-    }
-  
-    .schedule .schedule-contents .schedule-item tr.block td {
-      padding: 10px 15px !important;
-    }
-
-    .schedule .schedule-contents .schedule-item tr.schedule-details div span.name {
-    margin-left: 0 !important;
-    transition: .2s ease-in;
-  }
-  }
-  
-  /*
-  @media (max-width: 767px) {
-    .schedule .schedule-contents .schedule-item table tr .time {
-      width: 37%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .schedule .schedule-contents .schedule-item table tr .time {
-      width: 48%;
-    }
-  }
-  
-  
-  .schedule .schedule-contents .schedule-item table tr .speaker {
-    width: 30%;
-  }
-  
-  @media (max-width: 991px) {
-    .schedule .schedule-contents .schedule-item table tr .speaker {
-      width: 50%;
-    }
-  }
-  
-  @media (max-width: 767px) {
-    .schedule .schedule-contents .schedule-item table tr .speaker {
-      width: 60%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .schedule .schedule-contents .schedule-item table tr .speaker {
-      width: 50%;
-    }
-  }
-  
-  
-    @media (max-width: 480px) {
-    .schedule .schedule-contents .schedule-item ul li .speaker img {
-      display: none;
-    }
-  }
-  
-  
-  .schedule .schedule-contents .schedule-item table tr .subject {
-    width: 30%;
-  }
-  
-  
-    @media (max-width: 991px) {
-    .schedule .schedule-contents .schedule-item ul li .subject {
-      display: none;
-    }
-  }
-  */
-  
-  /*
-  @media (max-width: 767px) {
-    .schedule .schedule-contents .schedule-item ul li .venue {
-      display: none;
-    }
-  }
-  */
-
-
-  
-  .schedule .schedule-contents .schedule-item tr.headings {
-    
-    
-  }
-  
-  .schedule .schedule-contents .schedule-item tr.headings div {
-    color: #1900ff;
-    text-transform: uppercase;
-    font-family: "michroma", sans-serif;
-    
-  }
-  
-  .schedule .schedule-contents .schedule-item tr.schedule-details {
-    
-    width: 100%;
-    transition: .2s ease-in;
-  }
-  
-  /*
-    .schedule .schedule-contents .schedule-item tr.schedule-details .block {
-    padding: 10px 40px;
-    background: #fff;
-    width: 100%;
-    transition: .2s ease-in;
-  }
-  */
-  
-  .schedule .schedule-contents .schedule-item tr.schedule-details div {
-    color: #222222;
-    font-family: "michroma", sans-serif;
-    
-  }
-  
-  .schedule .schedule-contents .schedule-item tr.schedule-details div i {
-    font-size: 1.1875em;
-    color: #c7c8c9;
-  }
-  
-  .schedule .schedule-contents .schedule-item tr.schedule-details div img {
-    border-radius: 100%;
-  }
-  
-  .schedule .schedule-contents .schedule-item tr.schedule-details div span.time {
-    margin-left: 5px;
-  }
-  
-  .schedule .schedule-contents .schedule-item tr.schedule-details div span.name {
-    margin-left: 20px;
-    transition: .2s ease-in;
-  }
-  
-  @media (max-width: 480px) {
-    .schedule .schedule-contents .schedule-item tr.schedule-details .block div span.name {
-      margin-left: 0;
-    }
-  }
-  
-  .schedule .schedule-contents .schedule-item tr.schedule-details:hover {
-    box-shadow: 0px 0px 30px 0px rgba(0, 184, 225, 0.19);
-  -webkit-transform: scale(1.01);
-          transform: scale(1.01);
-            
-  }
-  
-  ::-webkit-scrollbar {
+  .workshop-cards:hover .card-items {
     display: none;
   }
 
-  .schedule .schedule-contents .schedule-item tr.schedule-details:hover span.name {
-    color: #0060FF;
-  }
-  
-  .schedule .download-button {
-    padding-top: 40px;
-    margin-bottom: 30px;
-  }
-
-
-
-  /******* Workshop *******/
-
-  .my-workshop-container{
-    background-color: white;
-    width: 100%;
-    border-radius: 3px;
-  }
-  
-  .my-workshop-container .workshop-nav{
-    border-bottom: 1px grey solid;
-    padding: 30px 10px 10px 0;
-    margin: 0px 40px;
-    position: relative;
-  }
-
-  .tab-content {
-    background-color: #fbfcff;
-    border: 1px solid #0087FF;
-  }
-
-  .workshop-nav a {
-    margin: 0px 10px 0px 10px;
-  }
-
-  .workshop-nav span {
-    color: #848484;
-  }
-
-  .workshop-nav i {
-    font-size: 12px;
-    color: #cfcfcf;
-    margin-left: 10px;
-  }
-  
-
-  .button-delete{
-    background-color: #0087FF;
-    border: none;
+  .workshop-cards .card-items-details span{
+    font-size: 15px;
+    font-family : "monteserat", sans-serif;
+    display: inline-block;
     color: white;
-    border-color: white;
-    padding: 4px 14px;
-    text-align: center;
-    text-decoration: none;
-    font-family: "michroma";
-    letter-spacing: 2px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
   }
+
+  .workshop-cards:hover .card-items-details {
+    display: block;
+    font-family: "monteserat", sans-serif;
+    text-transform: none;
+    font-size: 15px;
+    color: #bcbcbc;
+    font-weight: 500;
+  }
+
+  .workshop-cards:hover .button-rsrv {
+    border: 1px solid;
+    border-color: white;
+  }
+  
   
 
   

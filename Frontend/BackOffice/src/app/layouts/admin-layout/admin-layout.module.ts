@@ -10,12 +10,14 @@ import { UserProfileComponent } from '../../user-profile/user-profile.component'
 import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { CalendarComponent } from '../../calendar/calendar.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
+    ReactiveFormsModule,
     ChartsModule,
     NgbModule,
     FullCalendarModule,
@@ -23,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   declarations: [
     DashboardComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CalendarComponent
   ]
 })
 

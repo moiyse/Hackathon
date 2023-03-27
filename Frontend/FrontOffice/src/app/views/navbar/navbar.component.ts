@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
 
   email?;
   token?;
-  user = new User();
+  user :User=new User();
   invitationNumber:number = 0;
   equipeExists:Boolean = false;
   equipe!:Equipe;
