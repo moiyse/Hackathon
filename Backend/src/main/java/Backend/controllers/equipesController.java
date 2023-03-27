@@ -9,8 +9,8 @@ import Backend.DAO.entities.User;
 
 
 @RestController
-@RequestMapping("/teams")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("oauth/teams")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 public class equipesController {
 
 	@Autowired(required=false)

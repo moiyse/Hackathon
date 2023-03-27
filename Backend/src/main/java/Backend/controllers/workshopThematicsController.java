@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import Backend.DAO.entities.workshopThematic;
 import Backend.services.interfaces.IWorkshopThematicService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 @RestController
-@RequestMapping("/workshopThematics")
+@RequestMapping("oauth/workshopThematics")
 public class workshopThematicsController {
 
 	@Autowired(required=false)

@@ -1,35 +1,49 @@
 package Backend.controllers;
 
 import Backend.DAO.entities.Reservation;
-import Backend.DAO.entities.User;
-import Backend.DAO.entities.Workshop;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Backend.services.interfaces.IReservationService;
 
 
-import javax.websocket.server.PathParam;
 
 
 
 @RestController
-@RequestMapping("/Reservations")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("oauth/Reservations")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 public class ReservationsController {
 
 	@Autowired(required=false)
 	IReservationService IReservation;
 
 	@PostMapping("/addReservation/{idWorkshop}/{idUser}")
-	public Reservation addReservation(@PathVariable("idWorkshop") int idWorkshop, @PathVariable("idUser") int idUserser){
-		return IReservation.addReservation(idWorkshop,idUserser);
+	public ResponseEntity<String> addReservation(@PathVariable("idWorkshop") int idWorkshop, @PathVariable("idUser") int idUserser){
+		String response= IReservation.addReservation(idWorkshop,idUserser);
+	    ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			String json = objectMapper.writeValueAsString(response);
+			return ResponseEntity.ok(json);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+		
 	}
 
 	@DeleteMapping("/deleteReservation/{id}")
 	public Boolean deleteReservationById(@PathVariable("id") int id){
 		return IReservation.deleteReservationById(id);
 	}
+
+
 
 
 	

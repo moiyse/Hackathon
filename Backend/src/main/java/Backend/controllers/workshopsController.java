@@ -8,12 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import Backend.DAO.entities.Workshop;
 import Backend.services.interfaces.IWorkshopService;
 
-import java.util.List;
-
 
 @RestController
-@RequestMapping("/workshops")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("oauth/workshops")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 public class workshopsController {
 
 	@Autowired(required=false)
@@ -48,6 +46,11 @@ public class workshopsController {
 	public void Delete(@PathVariable int id) {
 		IWorkshop.deleteWorkshop(id);
 		
+	}
+
+	@GetMapping("/getUserWorkshops/{id}")
+	public List<Workshop> getUserWorkshops(@PathVariable("id") int id){
+		return IWorkshop.getUserWorkshops(id);
 	}
 	
 }
