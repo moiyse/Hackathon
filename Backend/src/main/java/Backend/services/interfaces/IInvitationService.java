@@ -13,5 +13,8 @@ public interface IInvitationService {
 
     public void deleteInvitationOnRefuse(int id_invitation);
 
+    public Invitation changeStatusOfInvitation(User user,int idInvitation,String invitationStatus);
+
+    public Boolean sendInvitationByEmail(User sender,String emailReceiver);
 
 }

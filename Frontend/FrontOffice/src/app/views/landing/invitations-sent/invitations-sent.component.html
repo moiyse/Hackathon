@@ -29,25 +29,42 @@
 		
 		<div class="my-workshop-container">
 			<div class="workshop-nav">
-				<i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/landing/invitationsSent">Invitations sent</a><span>/</span><a routerLink="/landing/invitationsReceived">invitations received</a>
+				<i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/landing/invitationsSent">Invitations sent</a><span>/</span><a class="invi-received" routerLink="/landing/invitationsReceived">Invitations received<div class="circle-icon"><span>{{invitationNumber}}</span></div></a>
 			</div>
 			<div class="workshop-table">
 				<div class="schedule-contents bg-schedule">
-					<div class="alert alert-danger" role="alert">
-						<i class="fa fa-exclamation-circle"></i> Sorry you can't have access to this page unless you are a team leader or have a team.<a routerLink="/landing/team" class="alert-team-link"> Create a team clicking this link</a>, or check you invitations.<br> It will be a greate experience for you joining our hackathon with a team.
+					
+					<div *ngIf="leader == true && equipeExists == true; else ifBlock1">
+						<div *ngFor="let invitation of invitationsSent; let i = index">
+							<div class="card">
+								<div class="detail">
+									<i class="fa fa-envelope-o mail" aria-hidden="true"></i>
+								<p>Invitation Sent to <a style="color:#2f2f2f">{{receivers[i].nom}}</a> with adresse mail <a style="color:#2f2f2f">{{receivers[i].email}}</a> to join your team <a style="color:#2f2f2f">{{equipe.nom}}</a> </p>
+								</div>
+								
+								<div class="button-deletion">
+									<button (click)="withdrawInvitation(invitation.idInvitation)" class="btn btn-outline-danger">Withdraw invitation</button>
+								</div>
+							</div>
+						</div>
+						
 					</div>
-					<div *ngIf="user.equipe; else ifBlock1">
-						This element will be displayed if condition1 is true.
-					  </div>
-					  <ng-template #ifBlock1>
-						<div *ngIf="equipe; else ifBlock2">
-						  This element will be displayed if condition2 is true.
+					<ng-template #ifBlock1>
+						<div *ngIf="equipeExists == true && leader == false; else ifBlock2">
+							<div class="alert alert-info" role="alert">
+								You are not the leader of <a style="font-weight:bold">{{equipe.nom}}</a>
+							  </div>
 						</div>
 						<ng-template #ifBlock2>
-							This element will be displayed if condition3 is true.
+							<div *ngIf="thirdCondition == true">
+								<div class="alert alert-danger" role="alert">
+									<i class="fa fa-exclamation-circle"></i> Can't send or see invitations here unless you are a team leader.<a routerLink="/landing/team" class="alert-team-link"> Create a team clicking this link</a><br> Create a team or join one to live a great experience.
+								</div>
+							</div>
 						</ng-template>
-					  </ng-template>
-                    	<div class="card">
+					</ng-template>
+					  <!--
+						<div class="card">
                             <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
                             <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
                         </div>
@@ -67,6 +84,8 @@
                             <i class="fa fa-envelope-o mail" aria-hidden="true"></i>
                             <p>You have a new invitation from <a style="color:#2f2f2f">mohamed.tlili@esprit.tn</a> to join their team </p><i class="fa fa-sort-desc down" aria-hidden="true"></i>
                         </div>
+					  -->
+                    	
 					  
 				</div>
 			</div>

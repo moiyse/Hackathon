@@ -17,7 +17,7 @@ import Backend.DAO.entities.Hackathon;
 import Backend.services.interfaces.IHackathonService;
 
 @RestController
-@RequestMapping("oauth/hackathons")
+//@RequestMapping("oauth/hackathons")
 @CrossOrigin(origins = {"http://localhost:4200" , "http://localhost:4201"})
 public class hackathonsController {
 
@@ -25,30 +25,35 @@ public class hackathonsController {
 	IHackathonService IHackathon;
 	
 	
-	@GetMapping("/Get")
+	@GetMapping("/hackathons/Get")
 	public List<Hackathon> GetAll() {
 		return IHackathon.getAll();
 	}
 
-	@GetMapping("/Get/{id}")
+	@GetMapping("/hackathons/Get/{id}")
 	public Hackathon Get(@PathVariable Integer id) {
 		return IHackathon.getHackathonById(id);
 	}
 
-	@PostMapping("/Post")
+	@PostMapping("/hackathons/Post")
 	public Hackathon Post(@RequestBody Hackathon e) {
 		return IHackathon.addHackathon(e);
 	}
 
-	@PutMapping("/Update")
+	@PutMapping("/hackathons/Update")
 	public Hackathon Update(@RequestBody Hackathon e) {
 		return IHackathon.updateHackathon(e);
 	}
 
-	@DeleteMapping("/Delete/{id}")
+	@DeleteMapping("/hackathons/Delete/{id}")
 	public void Delete(@PathVariable Integer id) {
 		IHackathon.deleteHackathon(id);
 		
+	}
+
+	@GetMapping("/hackathons/findCommingHackathon")
+	public Hackathon findCommingHackathon(){
+		return IHackathon.findCommingHackathon();
 	}
 	
 }

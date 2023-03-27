@@ -1,8 +1,9 @@
+
+
 /*=== MEDIA QUERY ===*/
-@import url("https://fonts.googleapis.com/css?family=michroma:300,400,500,600,700|michroma:300,400,500,700");
+
 html {
   font-size: 16px;
-  height: 100%;
 }
 
 /* #0060FF */
@@ -3463,3 +3464,5 @@ ul.pagination .active a {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+
+

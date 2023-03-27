@@ -63,11 +63,7 @@
   text-decoration: none !important;
 }
 
-.disabled{
-  color: #ccc !important;
-  pointer-events: none !important;
-  cursor: not-allowed !important;
-}
+
 
 
 

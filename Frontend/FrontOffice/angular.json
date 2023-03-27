@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/plugins/bootstrap/css/bootstrap.min.css",
               "src/plugins/font-awsome/css/font-awesome.min.css",
               "src/plugins/magnific-popup/magnific-popup.css",
@@ -38,7 +39,6 @@
               "src/plugins/jquery/jquery.js",
               "src/plugins/popper/popper.min.js",
               "src/plugins/bootstrap/js/bootstrap.min.js",
-              "src/plugins/smoothscroll/SmoothScroll.min.js",
               "src/plugins/isotope/mixitup.min.js",
               "src/plugins/magnific-popup/jquery.magnific-popup.min.js",
               "src/plugins/slick/slick.min.js",
@@ -109,6 +109,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []

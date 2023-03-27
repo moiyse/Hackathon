@@ -52,13 +52,13 @@ public class Hackathon implements Serializable {
 	private LocalDateTime deadline;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_at", nullable = false, updatable = false)
+	@Column(name = "created_at" , updatable = false)
 	private Date createdAt;
 //	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
 //	private LocalDateTime dateCreation;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_at", nullable = false)
+	@Column(name = "updated_at")
 	private Date updatedAt;
 
 	

@@ -8,7 +8,6 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 
@@ -26,25 +25,28 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  get f() {
+  get fs() {
     return this.logIn.controls;
   }
 
 
   onSubmit(){
     //console.log(typeof(this.logIn.value));
-    this.authService.login(this.logIn.value).subscribe(
-      data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUser(data.email);
-        //console.log(this.tokenStorage.getToken());
-        this.router.navigateByUrl('/landing');
-      },
-      err => {
-        alert(err.message);
-      }
-    );
-    // console.log(this.logIn.value);
+    if(this.logIn.valid)
+    {
+      this.authService.login(this.logIn.value).subscribe(
+        data => {
+          this.tokenStorage.saveToken(data.accessToken);
+          this.tokenStorage.saveUser(data.email);
+          //console.log(this.tokenStorage.getToken());
+          this.router.navigateByUrl('/landing');
+        },
+        err => {
+          alert(err.message);
+        }
+      );
+    }
+    
   }
 
 

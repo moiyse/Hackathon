@@ -5,7 +5,6 @@ import { LandingRoutingModule } from './landing-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { ProfileComponent } from './profile/profile.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { authInterceptorProviders } from 'src/app/services/auth.interceptor';
@@ -14,6 +13,16 @@ import { InvitationsSentComponent } from './invitations-sent/invitations-sent.co
 import { TeamComponent } from './team/team.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { WorkshopsComponent } from './workshops/workshops.component';
+import { ModalInvitationComponent } from './team/modals/modal-invitation/modal-invitation.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { ModalTeamCreatingComponent } from './team/modals/modal-team-creating/modal-team-creating.component';
+import { ModalConfirmingLeavingEquipeComponent } from './team/modals/modal-confirming-leaving-equipe/modal-confirming-leaving-equipe.component';
+import { ProfileComponent } from './profile/profile-settings/profile.component';
+import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 
 
 @NgModule({
@@ -28,11 +37,21 @@ import { WorkshopsComponent } from './workshops/workshops.component';
     WorkshopsComponent,
     InvitationsReceivedComponent,
     InvitationsSentComponent,
-    TeamComponent
+    TeamComponent,
+    ModalInvitationComponent,
+    ModalTeamCreatingComponent,
+    ModalConfirmingLeavingEquipeComponent,
+    ProfileViewComponent
   ],
   imports: [
     CommonModule,
-    LandingRoutingModule
+    LandingRoutingModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    
   ],
   providers: [authInterceptorProviders],
 })

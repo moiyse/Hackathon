@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Event } from 'src/app/models/Event';
 import { EventsService } from 'src/app/services/events.service';
 
@@ -9,9 +10,8 @@ import { EventsService } from 'src/app/services/events.service';
 })
 export class HomeComponent implements OnInit {
 
+  constructor(private router:Router,private eventsApi: EventsService){}
   list: Event[]=[];
-  
-  constructor(private eventsApi: EventsService){}
 
   ngOnInit(): void {
     this.eventsApi.getAllEvents().subscribe(

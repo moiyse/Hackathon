@@ -17,32 +17,32 @@ public class workshopsController {
 	@Autowired(required=false)
 	IWorkshopService IWorkshop;
 
-	@GetMapping("/reservedWorkshops/{idUser}")
+	@GetMapping("/workshops/reservedWorkshops/{idUser}")
 	public List<Workshop> listReservedWorkshops(@PathVariable("idUser") int idUser){
 		return IWorkshop.listReservedWorkshops(idUser);
 	}
 	
-	@GetMapping("/Get")
+	@GetMapping("/workshops/Get")
 	public List<Workshop> GetAll() {
 		return IWorkshop.getAll();
 	}
 
-	@GetMapping("/Get/{id}")
+	@GetMapping("/workshops/Get/{id}")
 	public Workshop Get(@PathVariable int id) {
 		return IWorkshop.getWorkshopById(id);
 	}
 
-	@PostMapping("/Post")
+	@PostMapping("/workshops/Post")
 	public Workshop Post(@RequestBody Workshop e) {
 		return IWorkshop.addWorkshop(e);
 	}
 
-	@PutMapping("/Update")
+	@PutMapping("/workshops/Update")
 	public Workshop Update(@RequestBody Workshop e) {
 		return IWorkshop.updateWorkshop(e);
 	}
 
-	@DeleteMapping("/Delete/{id}")
+	@DeleteMapping("/workshops/Delete/{id}")
 	public void Delete(@PathVariable int id) {
 		IWorkshop.deleteWorkshop(id);
 		

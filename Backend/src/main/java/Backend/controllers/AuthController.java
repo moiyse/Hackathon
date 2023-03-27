@@ -63,7 +63,7 @@ public class AuthController {
 
     @PostMapping("/oauth/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-
+        Je je =null;
         System.out.println("the result signup: "+signUpRequest);
         if (userRep.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
@@ -72,33 +72,34 @@ public class AuthController {
         }
 
         Date dateInscrit = new Date();
-        Optional<Je> je = jeRepository.findById(signUpRequest.getIdJe());
+        if(signUpRequest.getIdJe() > 0) {
+            Optional<Je> jeObject = jeRepository.findById(signUpRequest.getIdJe());
+            if(jeObject != null) {
+                je = jeObject.get();
+            }
+        }
         signUpRequest.setRole(Role.ADHERENT);
 
-        if(je != null){
-            // Create new user's account
-            User user = new User(signUpRequest.getNom(),
-                    signUpRequest.getPrenom(),
-                    signUpRequest.getEmail(),
-                    encoder.encode(signUpRequest.getPassword()),
-                    signUpRequest.getEtablissement(),
-                    signUpRequest.getImagePath(),
-                    signUpRequest.getCIN(),
-                    signUpRequest.getRole(),
-                    dateInscrit,
-                    je.get()
-                    );
+
+        // Create new user's account
+        User user = new User(signUpRequest.getNom(),
+                signUpRequest.getPrenom(),
+                signUpRequest.getEmail(),
+                encoder.encode(signUpRequest.getPassword()),
+                signUpRequest.getEtablissement(),
+                signUpRequest.getImagePath(),
+                signUpRequest.getCIN(),
+                signUpRequest.getRole(),
+                dateInscrit,
+                je);
+
+        
+        userRep.save(user);
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 
 
-            userRep.save(user);
-
-            return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
-
-        }else
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: JE est introuvable!"));
-        }
+    }
 
     @GetMapping("/checkToken")
     public String checkCredentials(){

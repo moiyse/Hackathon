@@ -9,7 +9,13 @@ public interface IEquipeService {
 
 
 
-    public Equipe getEquipeByLeader(User user);
+    public Boolean getEquipeByLeader(User user);
+
+	public Equipe getEquipeByUser(User user);
+
+	public Equipe createEquipêOfHackathon(User user,String equipeName,int idHackathon);
+
+	public Equipe deleteEquipeWithRemovingUserKey(Integer idEquipe);
 
 
 	public List<Equipe> getAll();

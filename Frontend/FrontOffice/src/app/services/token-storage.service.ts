@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { timeout } from 'rxjs';
 import { User } from '../models/User';
 
 const TOKEN_KEY = 'auth-token';
@@ -12,11 +13,18 @@ export class TokenStorageService {
 
   constructor(private router : Router) { }
 
-  signOut(): void {
+  signOut(): void{
     window.sessionStorage.clear();
     this.router.navigateByUrl('/landing');
     //console.log("token not valid !")
   }
+
+  async logout(){
+    await window.sessionStorage.clear();
+    this.router.navigateByUrl('/auth');
+  }
+
+  
 
   public saveToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);

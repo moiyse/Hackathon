@@ -1,0 +1,7 @@
+<h1 style="color : black" mat-dialog-title><strong>Leaving your team</strong></h1>
+<div class="sure-text" *ngIf="leader" mat-dialog-content><strong> you sure you want to leave your team? </strong><p>By leaving this team as a leader the whole team will be deleted !</p></div>
+<div class="sure-text" *ngIf="!leader" mat-dialog-content>Are you sure you want to leave your team?</div>
+<div class="button-container" mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <button (click)="onConfirmClick()" mat-button mat-raised-button class="send-button">Confirm</button>
+</div>

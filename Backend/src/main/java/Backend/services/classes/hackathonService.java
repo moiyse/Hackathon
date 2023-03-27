@@ -1,6 +1,10 @@
 package Backend.services.classes;
 
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -43,5 +47,17 @@ public class hackathonService implements IHackathonService{
 	public void deleteHackathon(Integer id) {
 		hackathonRep.deleteById(id);
 	}
-	
+
+	@Override
+	public Hackathon findCommingHackathon() {
+		LocalDateTime now = LocalDateTime.now();
+		List<Hackathon> hackathons = hackathonRep.findAll();
+		hackathons = hackathons.stream()
+				.filter(h -> h.getDateDebut().isAfter(now))
+				.sorted(Comparator.comparing(Hackathon::getDateDebut))
+				.collect(Collectors.toList());
+		System.out.println("hackathons found : "+hackathons);
+		return hackathons.get(0);
+	}
+
 }

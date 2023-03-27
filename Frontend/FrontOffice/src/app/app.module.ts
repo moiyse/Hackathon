@@ -7,6 +7,8 @@ import { NavbarComponent } from './views/navbar/navbar.component';
 import { FooterComponent } from './views/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './services/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
     declarations: [
@@ -17,7 +19,9 @@ import { authInterceptorProviders } from './services/auth.interceptor';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule,
+        
     
     ],
     providers: [authInterceptorProviders]

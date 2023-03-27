@@ -37,11 +37,11 @@ public class hackathonThematic implements Serializable {
 	private int idHackathonThematic;
 	private String nom;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_at", nullable = false, updatable = false)
+	@Column(name = "created_at", updatable = false)
 	private Date createdAt;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_at", nullable = false)
+	@Column(name = "updated_at")
 	private Date updatedAt;
 	
 	@JsonIgnore
