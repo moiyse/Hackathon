@@ -81,28 +81,6 @@ export class TeamComponent implements OnInit {
           else 
           console.log("ddata from check state user : ",data)
         },err => console.log("error in check user : ",err))
-        /*await this.equipeService.getEquipeByLeader(user).subscribe(data => {
-          console.log("team leader data : ",data)
-          this.leader = data
-          if(this.leader==true){
-            this.equipeExists=true
-            this.userService.getMembersOfEquipe(this.equipe.idEquipe).subscribe(data => {
-              this.teamMembers = data;
-            })
-          }
-          else if(this.equipe !=null && this.leader==false){
-            console.log("here and equipe exists = ",this.equipeExists)
-            this.equipeExists=true
-            this.userService.getMembersOfEquipe(this.equipe.idEquipe).subscribe(data => {
-              this.teamMembers = data;
-            })
-          }
-          else if(this.equipe ==null && this.leader==false)
-          {
-            this.NoEquipeNotLeader=true;
-          }
-          
-        },err=> {console.log("error in the invitation sent of leader of team probably leader not found : ",err)})*/
       }
     })
   }
