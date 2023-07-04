@@ -1,0 +1,65 @@
+.mat-form-field {
+    display: block !important;
+    position: relative;
+    text-align: left;
+    }
+    .mat-dialog-content{
+        text-align: center;
+    }
+    .mat-dialog-content p {
+        margin-bottom: 5px;
+    }
+    .mat-dialog-title{
+        font-family: "michroma", sans-serif;
+        color: black;
+        margin: 0px -24px 20px -24px;
+        padding: 0px 0px 10px 19px;
+        border-bottom: 1px solid black;
+        text-align: center;
+    }
+    .alert-class .row {
+        font-size: 14px;
+        height: fit-content;
+    }
+
+    .alert-class .col {
+        flex-grow: 1;
+          
+    }
+
+    .alert-class{
+        margin-top: -30px;
+
+    }
+
+    .mat-button{
+        font-family: inherit;
+        font-weight: bold;
+    }
+
+    .ng-star-inserted{
+        text-align: center;
+    }
+
+    .mat-dialog-actions{
+        display: block;
+        text-align: center;
+    }
+
+    .sure-text p {
+        color: #768fb0;
+        padding: 0px 27px;
+        font-size: initial;
+    }
+
+    .sure-text{
+        margin-bottom: 30px;
+    }
+
+    .send-button{
+        background-color: rgb(112, 145 ,176 ,0.37);
+    }
+
+    .button-container button {
+        margin: 0px 30px;
+    }

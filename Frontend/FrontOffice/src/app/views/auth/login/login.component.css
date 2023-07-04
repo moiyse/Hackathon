@@ -80,7 +80,26 @@ p, a, li, blockquote, label{
 }
 
 
+.alert-class{
+    font-size:13px
+}
 
+.alert-class span{
+    font-size:23px
+}
+
+.alert-team-link:hover{
+    color: #0087FF;
+} 
+
+.forgot_password_class{
+    cursor:pointer;
+
+}
+
+.forgot_password_class:hover{
+    color: #0087FF !important;
+}
   
 
 

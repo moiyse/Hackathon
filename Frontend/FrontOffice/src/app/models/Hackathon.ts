@@ -1,5 +1,5 @@
 import { Equipe } from "./Equipe"
-import { Thematique } from "./Thematique"
+import { HackathonThematic } from "./HackathonThematic"
 
 export class Hackathon {
     idHackathon!:number
@@ -11,6 +11,6 @@ export class Hackathon {
     createdAt!:Date
 	updatedAt!:Date
 	equipes!:Equipe[]
-	thematic!:Thematique
+	thematic!:HackathonThematic
 
 }

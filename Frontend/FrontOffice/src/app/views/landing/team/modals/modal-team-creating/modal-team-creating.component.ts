@@ -39,6 +39,7 @@ export class ModalTeamCreatingComponent implements OnInit {
   }
 
   saveEquipe(){
+    this.equipeExists = false
     this.equipeService.getAllEquipes().subscribe(data => {
       this.allEquipes = data
       console.log("all Equipes : ",this.allEquipes)
@@ -67,7 +68,10 @@ export class ModalTeamCreatingComponent implements OnInit {
             {
               this.equipeExists = true;
             }
-            else if(this.equipeExists != true && equipeNumber <=0 ){
+            else if(this.equipeExists != true){
+              this.equipeExists = false;
+            }
+            if(this.equipeExists != true && equipeNumber <=0 ){
               console.log("into condition where there is no name doubling")
               this.equipe.nom = this.equipeForm.value.name;
               this.equipe.idHackathon = this.commingHackathon.idHackathon;

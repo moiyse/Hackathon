@@ -31,38 +31,48 @@
 			
 			<div class="workshop-table">
 				<div class="schedule-contents bg-schedule">
-					<div class="tab-content" id="pills-tabContent">
-					  <div class="tab-pane fade show active schedule-item" id="nov20">
-						<table class="m-0 p-0">
-							<tr class="headings">
-								<th><div class="time">Time</div></th>
-								<th><div class="speaker">Workshop</div></th>
-								<th><div class="subject">DURATION</div></th>
-								<th><div class="venue"></div></th>
-							</tr>
-							<tr *ngFor="let w of list" class="schedule-details block">
-								
-									<td class="time-td"> 
-										<div class="time">
-										<i class="fa fa-clock-o"></i>
-										<span class="time">{{w.dateDebut | date: 'dd/MM/yyyy hh:mm a'}}</span>
-										</div>
-									</td>
-									<td class="speaker-td">
-										<div class="speaker">
-									 	<span class="name">{{w.nom}}</span>
-										</div>
-									</td>
-									<td class="subject-td"><div class="subject">{{ getDuration(w.dateDebut, w.dateFin) }}
-									</div></td>
-									<td class="venue-td"><div class="venue"><button class="button-delete">Delete</button></div></td>
-								
-								
-							</tr>
-						</table>
-					  </div>
-					  
+					<div *ngIf="reservationsAvailable == false; else elseBlock1">
+						<div class="alert alert-info" role="alert">
+							You have reserved no workshop try reserving <a routerLink="/landing/workshops"><strong style="color: #0c5460; ">clicking this link !</strong></a>
+						</div>	
 					</div>
+					<ng-template #elseBlock1>
+						<div class="tab-content" id="pills-tabContent">
+							<div class="tab-pane fade show active schedule-item" id="nov20">
+								  <table class="m-0 p-0">
+									  <tr class="headings">
+										  <th><div class="time">Time</div></th>
+										  <th><div class="speaker">Workshop</div></th>
+										  <th><div class="subject">DURATION</div></th>
+										  <th><div class="venue"></div></th>
+									  </tr>
+									  <tr *ngFor="let w of list" class="schedule-details block">
+											  <td class="time-td"> 
+												  <div class="time">
+												  <i class="fa fa-clock-o"></i>
+												  <span class="time">{{w.dateDebut | date: 'dd/MM/yyyy hh:mm a'}}</span>
+												  </div>
+											  </td>
+											  <td class="speaker-td">
+												  <div class="speaker">
+												   <span class="name">{{w.nom}}</span>
+												  </div>
+											  </td>
+											  <td class="subject-td"><div class="subject">{{ getDuration(w.dateDebut, w.dateFin) }}
+											  </div></td>
+											  <td class="venue-td"><div class="venue"><button class="button-delete">Delete</button></div></td>
+										  
+										  
+									  </tr>
+								  </table>
+							  
+							  
+							</div>
+							
+						</div>
+					</ng-template>
+					
+					
 				</div>
 			</div>
 			

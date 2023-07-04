@@ -95,6 +95,7 @@
 						<table class="m-0 p-0">
 							<tr class="headings">
 								<th><div class="time">Date</div></th>
+								<th><div class="time">time</div></th>
 								<!-- <th><div class="speaker">Speaker</div></th> -->
 								<th><div class="subject">duration</div></th>
 								<th><div class="venue">Subject</div></th>
@@ -103,8 +104,14 @@
 								
 									<td class="time-td"> 
 										<div class="time">
+										<i class="fa fa-calendar"></i>
+										<span class="time">{{e.dateDebut | date: 'dd/MM/yyyy'}}</span>
+										</div>
+									</td>
+									<td class="time-td"> 
+										<div class="time">
 										<i class="fa fa-clock-o"></i>
-										<span class="time">{{e.dateDebut | date: 'dd/MM/yyyy hh:mm a'}}</span>
+										<span class="time">{{e.dateDebut | date: 'hh:mm a'}}</span>
 										</div>
 									</td>
 									<td class="speaker-td">
@@ -647,7 +654,7 @@
 =            Speakers            =
 ===============================-->
 
-<section class="section speakers bg-speaker overlay-lighter">
+<section class="section speakers">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">

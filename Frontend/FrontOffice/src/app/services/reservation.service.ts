@@ -14,8 +14,8 @@ export class ReservationService {
 
   constructor(private http:HttpClient) { }
 
-  reserverWorkshop(idWorkshop:number){
-    const idUser= localStorage.getItem('idUser');
+  reserverWorkshop(idWorkshop:number,idUser:number){
+    //const idUser= localStorage.getItem('idUser');
     const url= `${this.openApiUrl}/Reservations/addReservation/${idWorkshop}/${idUser}`;
     console.log(url);
     return this.http.post<Reservation>(url, null);

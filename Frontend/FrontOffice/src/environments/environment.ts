@@ -3,9 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+
   production: false,
   apiBaseUrl: 'http://localhost:8081',
-  openApiUrl: 'http://localhost:8081/oauth'
+  openApiUrl: 'http://localhost:8081/oauth',
+  apiKeySendgrid : "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"
+
 };
 
 /*

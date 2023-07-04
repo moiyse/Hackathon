@@ -475,15 +475,26 @@
   }
 
   .equipe-title i {
-    padding-left: 6px;
+    padding-left: 20px;
     font-size: 18px;
     color: #ff7373;
     cursor: pointer;
+    margin: auto;
   }
 
   .equipe-title i:hover {
     font-weight: bold;
     font-size: 19px;
+  }
+
+  .equipe-title div[contentEditable=true] {
+    outline: none;
+  }
+  .team-name-field:focus{
+    border: none;
+  }
+  .team-name-field-container{
+    display: inline-flex;
   }
 
 

@@ -29,6 +29,7 @@ public class User implements Serializable {
 	private String password;
 	private String etablissement;
 	private String imagePath;
+	@Column(columnDefinition = "INT(8) ZEROFILL")
 	private int CIN;
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -62,6 +63,11 @@ public class User implements Serializable {
 	@JsonIgnore
 	private List<Invitation> invitationsSent;
 
+	private String verificationCode;
+
+	private boolean enabled;
+
+	private String resetPasswordToken;
 
 
 

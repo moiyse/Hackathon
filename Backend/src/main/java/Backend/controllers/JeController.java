@@ -2,11 +2,10 @@ package Backend.controllers;
 
 
 import Backend.DAO.entities.Je;
+import Backend.DAO.entities.User;
 import Backend.services.interfaces.IJeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,4 +20,7 @@ public class JeController {
     public List<Je> getAllJe(){
         return jeService.getAllJe();
     }
+
+    @GetMapping("/je/getJeByUser/{userEmail}")
+    public Je getJeByUser(@PathVariable String userEmail) { return jeService.getJeByUser(userEmail); }
 }

@@ -17,17 +17,17 @@
                         <div class="col-md-6">
                             <div class="form-outline mb-4">
                               <label class="form-label" for="form2Example17">First name</label>
-                              <input type="text" formControlName="nom"  id="form2Example17" class="form-control form-control-lg" />
-                              <div *ngIf="fs['nom'].invalid && (fs['nom'].dirty || fs['nom'].touched)">
-                                <div class="text-danger" *ngIf="fs['nom'].errors && fs['nom'].errors['required']" >*FirstName is required please fill it</div>
+                              <input type="text" formControlName="prenom"  id="form2Example17" class="form-control form-control-lg" />
+                              <div *ngIf="fs['prenom'].invalid && (fs['prenom'].dirty || fs['prenom'].touched)">
+                                <div class="text-danger" *ngIf="fs['prenom'].errors && fs['prenom'].errors['required']" >*FirstName is required please fill it</div>
                               </div>
                             </div>
             
                             <div class="form-outline mb-4">
                               <label class="form-label" for="form2Example27">Last name</label>
-                              <input type="text" formControlName="prenom" id="form2Example27" class="form-control form-control-lg" />
-                              <div *ngIf="fs['prenom'].invalid && (fs['prenom'].dirty || fs['prenom'].touched)">
-                                <div class="text-danger" *ngIf="fs['prenom'].errors && fs['prenom'].errors['required']" >*LastName is required please fill it</div>
+                              <input type="text" formControlName="nom" id="form2Example27" class="form-control form-control-lg" />
+                              <div *ngIf="fs['nom'].invalid && (fs['nom'].dirty || fs['nom'].touched)">
+                                <div class="text-danger" *ngIf="fs['nom'].errors && fs['nom'].errors['required']" >*LastName is required please fill it</div>
                               </div>
                             </div>
             

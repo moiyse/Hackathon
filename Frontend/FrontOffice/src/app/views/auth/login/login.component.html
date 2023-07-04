@@ -12,20 +12,74 @@
                 <div class="card-body p-4 px-lg-5 text-black">
   
                   <form [formGroup]="logIn" (ngSubmit)="onSubmit()">
-  
+                    
                     <div class="d-flex align-items-center mb-3 pb-3 pt-3">
                         <img src="assets/logo-vertical.png" class="img-logo " alt="logo">
                     </div>
-  
+                    <div *ngIf="forgotPasswordAlert" class="alert-class">
+                      <div class="alert alert-dismissible fade show" [ngClass]="{'alert-warning':alertWarning,'alert-info':alertInfo}" role="alert">
+                          <div class="row">
+                              <div class="col-10"><div class="alert-message" [innerHTML]="forgotPasswordAlertMessage"></div></div>
+                              <div class="col-2" style="text-align: center;">
+                                  <a style="cursor: pointer;" type="button" (click)="forgotPasswordAlert = false" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <!------------------------  alerts  ------------------------------>
+                    <div *ngIf="userNotVerified" class="alert alert-warning alert-dismissible alert-class fade show" role="alert">
+                      <div class="row">
+                        <div class="col-10"><i class="fa fa-exclamation-circle"></i>This account has not been verified.<br><a style="cursor: pointer;" (click)="resendVerificationLink()" class="alert-team-link">Click here to resend a verification link</a></div>
+                        <div class="col-2" style="text-align: center;">
+                          <a style="cursor: pointer;" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span (click)="userNotVerified = false" aria-hidden="true">&times;</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="userNotFound" class="alert alert-danger alert-dismissible alert-class fade show" role="alert">
+                      <div class="row">
+                        <div class="col-10"><i class="fa fa-exclamation-circle"></i>This account does not exist <br> please signup</div>
+                        <div class="col-2" style="text-align: center;">
+                          <a style="cursor: pointer;" type="button"  class="close" data-dismiss="alert" aria-label="Close">
+                            <span (click)="userNotFound = false" aria-hidden="true">&times;</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="badCredentials" class="alert alert-danger alert-dismissible alert-class fade show" role="alert">
+                      <div class="row">
+                        <div class="col-10"><i class="fa fa-exclamation-circle"></i>The credentials entered are wrong <br> please try again</div>
+                        <div class="col-2" style="text-align: center;">
+                          <a style="cursor: pointer;" type="button"  class="close" data-dismiss="alert" aria-label="Close">
+                            <span (click)="badCredentials = false" aria-hidden="true">&times;</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="somethingWentWrong" class="alert alert-danger alert-dismissible alert-class fade show" role="alert">
+                      <div class="row">
+                        <div class="col-10"><i class="fa fa-exclamation-circle"></i>Something went wrong <br> please tcontact us</div>
+                        <div class="col-2" style="text-align: center;">
+                          <a style="cursor: pointer;" type="button"  class="close" data-dismiss="alert" aria-label="Close">
+                            <span (click)="somethingWentWrong = false" aria-hidden="true">&times;</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <!------------------------------------------------------------------------------>
                     
   
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form2Example17">Email address</label>
                       <input formControlName="email" type="email" id="form2Example17" class="form-control form-control-lg" />
                       <div *ngIf="fs['email'].invalid && (fs['email'].dirty || fs['email'].touched)">
-                        <div class="text-danger" *ngIf="fs['email'].errors && fs['email'].errors['required']" >*email is required</div>
+                        <div class="text-danger" *ngIf="fs['email'].errors && fs['email'].errors['required'] && forgotPasswordError==''" >*email is required</div>
                         <div class="text-danger" *ngIf="fs['email'].errors && fs['email'].errors['email']" >*Email must be of format like .....@gmail.com</div>
                       </div>
+                      <div class="text-danger">{{forgotPasswordError}}</div>
                     </div>
   
                     <div class="form-outline mb-4">
@@ -40,7 +94,7 @@
                       <button  class="btn btn-lg btn-block button-login" [disabled]="!logIn.valid" type="submit">Login</button>
                     </div>
   
-                    <a class="small text-muted" style="font-size: 10px;" href="#!">Forgot password?</a>
+                    <a class="small text-muted forgot_password_class" style="font-size: 10px;" (click)="forgotPasswordHandler()">Forgot password ?</a>
                     <p class="mb-5 pb-lg-2">Don't have an account? <a  routerLink="/auth/signup">Register here</a></p>
                   </form>
                   <a routerLink="/landing">

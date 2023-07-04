@@ -11,6 +11,7 @@ export class ReservationComponent implements OnInit {
 
   idUser:any;
   list: Workshop[]=[];
+  reservationsAvailable = false;
 
   constructor(private workshopsApi:WorkshopService) { }
 
@@ -19,8 +20,10 @@ export class ReservationComponent implements OnInit {
     this.workshopsApi.getUserWorkshops(this.idUser).subscribe(
       (response) => {
         this.list = response;
+        this.reservationsAvailable = true;
       },
       (error) => {
+        this.reservationsAvailable = false
         console.log(error);
       },
       () => {}

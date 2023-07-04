@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Je } from 'src/app/models/Je';
 import { AuthService } from 'src/app/services/auth.service';
 import { JeService } from 'src/app/services/je.service';
+import { MatDialog,MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EmailVerificationModalComponent } from './modals/email-verification-modal/email-verification-modal.component';
 
 @Component({
   selector: 'app-signup',
@@ -18,10 +20,13 @@ export class SignupComponent implements OnInit {
   signUp! : FormGroup;
   errorMessage ='';
   base64Output : any;
-  constructor(private jeService:JeService,private authService: AuthService,private router:Router) { }
+  messageTitleToDisplay ="Verify your email";
+  messageToDisplay = "A verification link will be sent to your email address";
+
+  constructor(private dialog: MatDialog,private jeService:JeService,private authService: AuthService,private router:Router) { }
 
   ngOnInit(): void {
-    this.jeService.getAllJe().subscribe(data => {this.jeObject = data;console.log(this.jeObject)},err => {console.log("error catching : "+err)});
+    this.jeService.getAllJe().subscribe(data => {this.jeObject = data;console.log(this.jeObject)},err => {console.log("error catching in je : "+err)});
     this.signUp = new FormGroup({
       nom: new FormControl('', [Validators.required]),
       prenom: new FormControl('', [Validators.required]),
@@ -42,23 +47,39 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(){
-    //console.log("data",this.signUp.value)
+    console.log("data",this.signUp.value)
         
         //console.log("objet user",this.signUp.value)
        // const objectSignUp = {nom:this.signUp.value.nom,prenom:this.signUp.value.prenom,cin:this.signUp.value.cin,email:this.signUp.value.email,nom:this.signUp.value.nom,nom:this.signUp.value.nom,nom:this.signUp.value.nom,nom:this.signUp.value.nom,nom:this.signUp.value.nom}
       if(this.signUp.valid){
         this.authService.register(this.signUp.value).subscribe(
           data => {
-           // console.log(data);
+            console.log("result that came from signup : ",data);
             //console.log("after register data is : "+data);
-            this.router.navigateByUrl("/auth")
+            
           },
           err => {
-            alert(err.message)
-            this.errorMessage = err.error.message;
-            
-          }
+            if(err.status == 440)
+            {
+              this.messageTitleToDisplay = "Email in use"
+              this.messageToDisplay = "The email you entered is already in use"
+            }
+            else{
+              this.messageTitleToDisplay = "Something went wrong"
+              this.messageToDisplay = "Your account was not registered successfully"
+            }
+            console.log("status of errror",err.status)
+          },
         );
+        setTimeout(() =>{
+          const dialogRef = this.dialog.open(EmailVerificationModalComponent, {
+            width: '500px',
+            data: {messageTitle: this.messageTitleToDisplay,message:this.messageToDisplay}
+          });
+          dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+          });
+        },1000)
       } 
        
   }

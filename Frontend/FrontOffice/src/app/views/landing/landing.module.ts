@@ -23,6 +23,8 @@ import { ModalTeamCreatingComponent } from './team/modals/modal-team-creating/mo
 import { ModalConfirmingLeavingEquipeComponent } from './team/modals/modal-confirming-leaving-equipe/modal-confirming-leaving-equipe.component';
 import { ProfileComponent } from './profile/profile-settings/profile.component';
 import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
+import { environment } from 'src/environments/environment';
+import { QrcodeComponent } from './qrcode/qrcode.component';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { ProfileViewComponent } from './profile/profile-view/profile-view.compon
     ModalInvitationComponent,
     ModalTeamCreatingComponent,
     ModalConfirmingLeavingEquipeComponent,
-    ProfileViewComponent
+    ProfileViewComponent,
+    QrcodeComponent
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,11 @@
 package Backend.services.classes;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 
 
@@ -13,6 +16,10 @@ import Backend.DAO.entities.InvitationStatus;
 import Backend.DAO.entities.User;
 import Backend.services.interfaces.IEquipeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import Backend.DAO.Repositories.userRepository;
@@ -37,6 +44,12 @@ public class userService implements IUserService{
 
 	@Autowired
 	IEquipeService IEquipe;
+
+	@Autowired
+	private JavaMailSender mailSender;
+
+	@Autowired
+	PasswordEncoder encoder;
 
 	public User getUserByEmail(String email){
 		Optional<User> user = userRep.getByEmail(email);
@@ -102,18 +115,22 @@ public class userService implements IUserService{
 			// Setting invitations that are accepted to LEFTTEAM
 			List<Invitation> invitationsReceived = new ArrayList<Invitation>();
 			List<Invitation> invitations = invitationRep.findAll();
-			invitations.forEach(invitation -> {
-				if(invitation.getStatus().equals(InvitationStatus.ACCEPTED))
-				{
-					userObject.get().getInvitationsReceived().forEach(invitationReceivedIteration -> {
-						if(invitation.getIdInvitation() == invitationReceivedIteration.getIdInvitation() && invitation.getStatus().equals(InvitationStatus.ACCEPTED))
-						{
-							invitation.setStatus(InvitationStatus.LEFTTEAM);
-							invitationRep.save(invitation);
-						}
-					});
-				}
-			});
+			if(!invitations.isEmpty())
+			{
+				invitations.forEach(invitation -> {
+					if(invitation.getStatus().equals(InvitationStatus.ACCEPTED))
+					{
+						userObject.get().getInvitationsReceived().forEach(invitationReceivedIteration -> {
+							if(invitation.getIdInvitation() == invitationReceivedIteration.getIdInvitation() && invitation.getStatus().equals(InvitationStatus.ACCEPTED))
+							{
+								invitation.setStatus(InvitationStatus.LEFTTEAM);
+								invitationRep.save(invitation);
+							}
+						});
+					}
+				});
+			}
+
 			////////////////////////////////////////////////////////////
 			userObject.get().setEquipe(null);
 			userRep.save(userObject.get());
@@ -141,6 +158,111 @@ public class userService implements IUserService{
 		}
 		System.out.println("not in the condition !!!!!! ");
 		return null;
+	}
+
+	//mail verfication
+	@Override
+	public void sendVerificationEmail(User user,String domain) throws MessagingException, UnsupportedEncodingException {
+		String toAddress = user.getEmail();
+		String fromAddress = "moezmahmoud82@gmail.com";
+		String senderName = "INCEPTECH";
+		String subject = "Please verify your registration";
+		String content = "Dear [[name]],<br>"
+				+ "Please click the link below to verify your registration:<br>"
+				+ "<h3><a href=\"[[URL]]\" target=\"_self\">Click this link to verify you account</a></h3>"
+				+ "Thank you,<br>"
+				+ "INCEPTECH.";
+
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+
+		helper.setFrom(fromAddress, senderName);
+		helper.setTo(toAddress);
+		helper.setSubject(subject);
+
+		content = content.replace("[[name]]", user.getPrenom()+" "+user.getNom());
+		String verifyURL = domain + "/auth/emailValidation/" + user.getVerificationCode();
+
+		content = content.replace("[[URL]]", verifyURL);
+
+		helper.setText(content, true);
+
+		mailSender.send(message);
+	}
+
+	@Override
+	public String verify(String verificationCode) {
+		Optional<User> user = userRep.findByVerificationCode(verificationCode);
+		if(user.isPresent())
+		{
+			List<User> userValid = userRep.getUsersByEmailValid(user.get().getEmail());
+			if(user.get().isEnabled())
+			{
+				return "account already valid";
+			}
+			else if(!userValid.isEmpty())
+			{
+				return "email is already valid";
+			}
+			else {
+				user.get().setVerificationCode(null);
+				user.get().setEnabled(true);
+				userRep.save(user.get());
+				List<User> usersNotValid = userRep.getUsersByEmailNotValid(user.get().getEmail());
+				if(!usersNotValid.isEmpty())
+				{
+					usersNotValid.forEach(userNotValid-> {
+						userRep.delete(userNotValid);
+					});
+				}
+				return "account validated successfully";
+			}
+		}
+		else {
+			return "user not found";
+		}
+
+
+	}
+
+
+	@Override
+	public User updateProfile(User u) {
+		Optional<User> userObject = userRep.findById(u.getIdUser());
+		if(userObject.isPresent()){
+			userObject.get().setNom(u.getNom());
+			userObject.get().setPrenom(u.getPrenom());
+			userObject.get().setCIN(u.getCIN());
+			userObject.get().setEtablissement(u.getEtablissement());
+			userObject.get().setJe(u.getJe());
+			return userRep.save(userObject.get());
+		}
+		return null;
+	}
+
+	@Override
+	public void updateResetPasswordToken(String token, String email) throws Exception {
+		Optional<User> user = userRep.findByEmail(email);
+		if (user.isPresent()) {
+			user.get().setResetPasswordToken(token);
+			userRep.save(user.get());
+		} else {
+			throw new Exception("Could not find any customer with the email " + email);
+		}
+	}
+
+	@Override
+	public Optional<User> getByResetPasswordToken(String token) {
+		return userRep.findByResetPasswordToken(token);
+	}
+
+	@Override
+	public void updatePassword(User user, String newPassword) {
+		String encodedPassword = encoder.encode(newPassword);
+		user.setPassword(encodedPassword);
+
+		user.setResetPasswordToken(null);
+		userRep.save(user);
 	}
 
 

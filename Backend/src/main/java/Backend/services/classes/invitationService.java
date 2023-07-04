@@ -52,16 +52,20 @@ public class invitationService implements IInvitationService {
         User userObject = userRep.getByEmail(user.getEmail()).get();
         List<Invitation> invitationsReceived = new ArrayList<Invitation>();
         List<Invitation> invitations = invitationRepository.findAll();
-        invitations.forEach(invitation -> {
-            if(invitation.getStatus().equals(InvitationStatus.OPENED) || invitation.getStatus().equals(InvitationStatus.PENDING))
-            {
-                userObject.getInvitationsReceived().forEach(invitationReceivedIteration -> {
-                    if(invitation.getIdInvitation() == invitationReceivedIteration.getIdInvitation())
-                        invitationsReceived.add(invitation);
-                });
-            }
+        if(!invitations.isEmpty())
+        {
+            invitations.forEach(invitation -> {
+                if(invitation.getStatus().equals(InvitationStatus.OPENED) || invitation.getStatus().equals(InvitationStatus.PENDING))
+                {
+                    userObject.getInvitationsReceived().forEach(invitationReceivedIteration -> {
+                        if(invitation.getIdInvitation() == invitationReceivedIteration.getIdInvitation())
+                            invitationsReceived.add(invitation);
+                    });
+                }
 
-        });
+            });
+        }
+
         System.out.println("result of inviations received in the getAllReceivedByUser is : "+invitationsReceived);
         return invitationsReceived;
     }

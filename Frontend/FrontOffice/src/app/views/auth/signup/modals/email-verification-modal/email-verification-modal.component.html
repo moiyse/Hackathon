@@ -1,0 +1,6 @@
+<h1 style="color : black" mat-dialog-title><strong>{{messageTitleToDisplay}}</strong></h1>
+            <div class="sure-text" mat-dialog-content>{{messageToDisplay}}</div>
+            <div class="button-container" mat-dialog-actions>
+                <button mat-button (click)="onOkClick()">Close</button>
+                <button (click)="onOkClick()" mat-button mat-raised-button class="send-button">Ok</button>
+            </div>

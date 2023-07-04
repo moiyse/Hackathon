@@ -29,8 +29,14 @@
 		
 		<div class="my-workshop-container">
 			<div class="equipe-title">
-				<div *ngIf="equipeExists == true; else noEquipeBlock">
-					{{equipe.nom}} <i (click)="exitTeam()" class="fa fa-ban"></i>
+				<div class="team-name-field-container" *ngIf="equipeExists == true; else noEquipeBlock">
+					<div *ngIf="leader == true; else notLeader" class="team-name-field" contentEditable="true" (blur)="mouseClickAlert($event)" (keydown.enter)="updateEquipeNom($event)">
+						{{ equipe.nom }}
+					</div>
+					<ng-template #notLeader>
+						{{ equipe.nom }}
+					</ng-template> 
+					<i (click)="exitTeam()" class="fa fa-ban"></i>
 				</div>
 				<ng-template #noEquipeBlock>
 					<div *ngIf="NoEquipeNotLeader == true">No team</div>
@@ -40,6 +46,18 @@
 			<div class="workshop-table">
 				<div class="schedule-contents bg-schedule">
 					<div *ngIf="leader == true; else ifBlock1">
+						<div *ngIf="showEquipeNameAlert" class="alert-class">
+							<div class="alert alert-warning alert-dismissible fade show" [ngClass]="{'alert-danger':alertDanger,'alert-warning':alertWarning,'alert-info':alertInfo,'alert-secondary':alertSecondary}" role="alert">
+								<div class="row">
+									<div class="col-10"><div class="alert-message">{{alertMessageEquipeName}}</div></div>
+									<div class="col-2" style="text-align: center;">
+										<a style="cursor: pointer;" type="button" (click)="showEquipeNameAlert = false" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="team-leader-container-gpt">
 							<div *ngFor="let member of teamMembers; let i = index">
 								<div class="team-leader-member-gpt">
@@ -47,10 +65,10 @@
 									<img *ngIf="leaderOfEquipe.email == member.email" class="image-member-mark" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
 									<div class="team-leader-member-details-gpt">
 										<p>{{member.nom+" "}} {{" "+member.prenom}}</p>
-										<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
+										<p><strong>Email:</strong> <br> <span class="break-all-class">{{member.email}}</span></p>
 										<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
 									</div>
-									<button *ngIf="member.email != user.email" class="team-leader-member-gpt-button">Kick</button>
+									<button *ngIf="member.email != user.email" (click)="kickMember(member)" class="team-leader-member-gpt-button">Kick</button>
 								</div>
 							</div>
 							<!-- Add more team members as needed -->
@@ -73,7 +91,7 @@
 										<img *ngIf="leaderOfEquipe.email == member.email" class="image-member-mark" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="Team member photo">
 										<div class="team-member-details-gpt">
 											<p>{{member.nom+" "}} {{" "+member.prenom}}</p>
-											<p><strong>Email:</strong> <br> <span>{{member.email}}</span></p>
+											<p><strong>Email:</strong> <br> <span class="break-all-class">{{member.email}}</span></p>
 											<p><strong>University:</strong> <br> <span>{{member.etablissement}}</span></p>
 										</div>
 										

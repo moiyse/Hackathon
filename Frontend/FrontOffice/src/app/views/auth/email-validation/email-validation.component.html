@@ -1,0 +1,23 @@
+<section class="vh-100 gradient-custom login-body">
+    <div class="container h-100 login-container">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="validation-text">
+                        <div  class="validation-page-title">
+                            <h2 [style]="titleStyle">{{titleToDisplay}}</h2>
+                        </div>
+                        <div class="validation-page-body">
+                            <p>{{messageToDisplay}}.</p>
+                        </div>
+                    </div>
+                    <div [routerLink]="routerLink" class="signin-side card-body p-4 px-lg-5 text-black">
+                        <div class="return-button">
+                        <span>{{buttonMessageToDisplay}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
