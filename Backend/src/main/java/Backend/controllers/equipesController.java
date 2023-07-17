@@ -63,5 +63,11 @@ public class equipesController {
 	{
 		return IEquipe.deleteEquipeWithRemovingUserKey(idEquipe);
 	}
+
+	@PutMapping("/equipe/changeTeamName/{equipeName}")
+	public Equipe changeTeamName(@RequestBody Equipe equipe,@PathVariable("equipeName") String equipeName)
+	{
+		return IEquipe.changeTeamName(equipe,equipeName);
+	}
 	
 }

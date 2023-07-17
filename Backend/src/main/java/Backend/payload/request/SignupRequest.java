@@ -46,6 +46,8 @@ public class SignupRequest {
 
     private int idJe;
 
+    private String domain;
+
     public String getNom() {
         return nom;
     }
@@ -124,5 +126,13 @@ public class SignupRequest {
 
     public void setIdJe(int idJe) {
         this.idJe = idJe;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
     }
 }

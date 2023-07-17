@@ -2,7 +2,10 @@ package Backend.services.interfaces;
 
 import Backend.DAO.entities.User;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Optional;
 
 public interface IUserService {
 
@@ -20,7 +23,19 @@ public interface IUserService {
 
 	public Integer checkSateOfUser(User user,Integer idEquipe);
 
-	public List<User> getAll();
+	public void sendVerificationEmail(User user,String domain) throws MessagingException, UnsupportedEncodingException;
+
+	public String verify(String verificationCode);
+
+    User updateProfile(User u);
+
+	void updateResetPasswordToken(String token, String email) throws Exception;
+
+	Optional<User> getByResetPasswordToken(String token);
+
+	void updatePassword(User user, String newPassword);
+
+    public List<User> getAll();
 	public User getUserById(int id);
 	public User addUser(User e);
 	public User updateUser(User e);

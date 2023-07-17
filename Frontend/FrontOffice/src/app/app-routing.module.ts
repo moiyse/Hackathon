@@ -12,7 +12,8 @@ const routes: Routes = [
         loadChildren: () => import('./views/landing/landing.module').then(m => m.LandingModule),
       }
     ]
-  }
+  },
+  {path:'**', redirectTo:'landing'}
 ]
 
 @NgModule({

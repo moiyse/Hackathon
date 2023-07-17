@@ -42,6 +42,10 @@ export class UserService {
   checkSateOfUser(user:User,idEquipe:number):Observable<any>{
     return this.http.post<any>(this.apiServerUrl  + '/user/checkSateOfUser/'+idEquipe,user);
   }
+
+  updateUserProfile(user:User):Observable<any>{
+    return this.http.put<any>(this.apiServerUrl+'/user/Update',user);
+  }
   
 
   

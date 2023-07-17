@@ -18,7 +18,9 @@ public interface IEquipeService {
 	public Equipe deleteEquipeWithRemovingUserKey(Integer idEquipe);
 
 
-	public List<Equipe> getAll();
+    Equipe changeTeamName(Equipe equipe, String equipeName);
+
+    public List<Equipe> getAll();
 	public Equipe getEquipeById(Integer id);
 	public Equipe addEquipe(Equipe e);
 	public Equipe updateEquipe(Equipe e);

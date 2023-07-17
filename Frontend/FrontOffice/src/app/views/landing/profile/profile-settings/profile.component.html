@@ -3,34 +3,66 @@
     <div class="main-container">
         <div class="profile-page-container">
             <div class="row profile-settings">
-                <div class="col-md-4 left-side">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-2"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+                <div class="col-lg-4 p-0 left-side">
+                    <div class="d-flex flex-column align-items-center text-center py-3">
+                        <div class="img-container mt-5">
+                            <img *ngIf="user.imagePath != '';else elseBlock" class="rounded-circle" [src]="user.imagePath" >
+                            <ng-template #elseBlock><img class="rounded-circle" src="assets/no-user-image-icon-27.jpg" ></ng-template>
+                            
+                            <span class="edit-icon"><input [value]="imagePath" #imageInput formControlName="imagePath" (change)="imageFileOnChange(imageInput)" type="file" id="imageinput" class="input-file" /></span>
+
+                        </div>
+                        <span class="font-weight-bold">{{f['first_name'].value+" "}}{{" "+f['last_name'].value+" "}}</span>
+                        <span class="text-black-50 break-all-class">{{user.email}}</span><span> </span>
+                    </div>
                 </div>
-                <div class="col-md-7 border-right">
+                <div class="col-lg-7 border-right">
                     <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Profile Settings</h4>
+                        <div class="d-flex justify-content-between align-items-center mt-lg-5 mb-3">
+                            <h4 style="color:rgb(86, 0, 226)" class="text-right">Profile Settings</h4>
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                            <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                            <div class="col-md-12"><label class="labels">Cin</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-                            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                            <div class="col-md-12"><label class="labels">Campus</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                            <div class="col-md-12 py-2"><label class="labels">Are you a Je member ?</label> <br>
-                                <input type="radio" id="contactChoice1"
-                                 name="contact" value="email">
-                                <label class="mr-4" for="contactChoice1">Yes</label>
-                                <input type="radio" id="contactChoice1"
-                                 name="contact" value="email">
-                                <label for="contactChoice1">No</label>
+                        <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+                            <div class="row mt-2">
+                                <div class="col-lg-6"><label class="labels">First name</label><input type="text" [(ngModel)]="user.prenom" formControlName="first_name" class="form-control" placeholder="first name" value="">
+                                    <div *ngIf="f['first_name'].invalid && (f['first_name'].dirty || f['first_name'].touched)">
+                                        <div class="text-danger" *ngIf="f['first_name'].errors && f['first_name'].errors['required']" >*FirstName is required please fill it</div>
+                                      </div>
+                                </div>
+                                
+                                <div class="col-lg-6"><label class="labels">Last name</label><input type="text" [(ngModel)]="user.nom" formControlName="last_name" class="form-control" value="" placeholder="last name">
+                                    <div *ngIf="f['last_name'].invalid && (f['last_name'].dirty || f['last_name'].touched)">
+                                        <div class="text-danger" *ngIf="f['last_name'].errors && f['last_name'].errors['required']" >*LastName is required please fill it</div>
+                                      </div>
+                                </div>
                                 
                             </div>
-                        </div>
-                        <div class="button-place text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                            <div class="row mt-3">
+                                <div class="col-lg-12"><label class="labels">Cin</label><input type="text" [(ngModel)]="user.cin" formControlName="cin" class="form-control" placeholder="enter address line 1" value="">
+                                    <div *ngIf="f['cin'].invalid && (f['cin'].dirty || f['cin'].touched)">
+                                        <div class="text-danger" *ngIf="f['cin'].errors && f['cin'].errors['required']" >*Cin is required please fill it</div>
+                                        <div class="text-danger" *ngIf="f['cin'].errors && f['cin'].errors['pattern']" >*Cin must be composed of numbers</div>
+                                        <div class="text-danger" *ngIf="f['cin'].errors && (f['cin'].errors['maxlength'] || f['cin'].errors['minlength'])" >*Cin must be composed of 8 numbers</div>
+                                      </div>
+                                </div>
+                                
+                                <div class="col-lg-12"><label class="labels">Campus</label><input type="text" [(ngModel)]="user.etablissement" formControlName="campus" class="form-control" placeholder="enter address line 2" value="">
+                                    <div *ngIf="f['campus'].invalid && (f['campus'].dirty || f['campus'].touched)">
+                                        <div class="text-danger" *ngIf="f['campus'].errors && f['campus'].errors['required']" >*Campus is required please fill it</div>
+                                    </div>
+                                </div>
+                                
+                                <div *ngIf="userJe != null " class="col-lg-12">
+                                                <label class="labels" for="form2Example17">JE</label>
+                                                <select [(ngModel)]="userJe" class="form-control-select" formControlName="je">
+                                                  <option [ngValue]="userJe" disabled [selected]="userJe.nom">{{userJe.nom}}</option>
+                                                  <option *ngFor="let je of jeObject" [ngValue]="je" >{{je.nom}}</option>
+                                                </select>
+                                        
+                                </div>
+                            </div>
+                            <div class="button-place text-center"><button class="btn btn-primary profile-button" [disabled]="!settingsForm.valid" type="submit">Save Profile</button></div>
+                        </form>
+                        
                     </div>
                 </div>
                 

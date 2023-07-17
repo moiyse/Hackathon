@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   subscription!: Subscription;
 
 
-  constructor(private globalService:GlobalService,private authService:AuthService,private router:Router,private equipeService:EquipeService,private userService:UserService,private tokenStorage:TokenStorageService,private invitationService:InvitationService) { 
+  constructor(private globalService:GlobalService,private authService:AuthService,private router:Router,private equipeService:EquipeService,private userService:UserService,public tokenStorage:TokenStorageService,private invitationService:InvitationService) { 
     this.token = this.tokenStorage.getToken();
     this.email = this.tokenStorage.getUser();
     if(this.tokenStorage.getToken()!=null && this.tokenStorage.getUser() !=null)
@@ -48,7 +48,10 @@ export class NavbarComponent implements OnInit {
     if(this.tokenStorage.getUser()){
       console.log()
       this.userService.getUserByEmail(this.tokenStorage.getUser()).subscribe(data => {
-        console.log("getuserbyemail = "+data);this.user = data
+        console.log("getuserbyemail = "+data);
+        this.user = data
+        this.tokenStorage.saveUserName(data.prenom)
+        this.token
         this.invitationService.getInvitationReceived(this.user).subscribe(data => {this.invitationNumber=data.length;console.log("number of invitations is : ",this.invitationNumber)},err => console.log("error in number of invitations",err));
         this.equipeService.getEquipeByUser(this.user).subscribe(data => {
           this.equipe = data;

@@ -1,0 +1,92 @@
+:host {
+    display: block;
+  }
+  
+  .login-body {
+    font-family: "michroma" !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .validation-text {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to top, rgb(255 255 255), rgb(215 215 215));
+    background-position: bottom;
+    background-size: 100% 150%;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .validation-text:hover {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
+  
+  .validation-page-title h2 {
+    color: rgb(0, 135, 255);
+  }
+  
+  .validation-page-body {
+    margin: 20px 0;
+  }
+  
+  .validation-page-body p {
+    color: #a3a2a2;
+    font-size: 22px;
+    /* font-weight: bold; */
+    margin: 0;
+  }
+  
+  .validation-page-body span {
+    color: #0087ff;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0 0;
+    display: block;
+  }
+
+  .signin-side{
+    text-align: center;
+    color:#c6c6c6;
+    cursor: pointer;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  
+
+  .signin-side span{
+    color: rgb(81 124 144);
+  }
+
+
+  
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: rgb(142, 23, 44);
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(142, 23, 44, 1), rgba(38, 38, 38,1));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to top, rgb(0 38 30), rgba(38, 38, 38,1));
+  }
+
+  
+
+
+  

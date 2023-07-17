@@ -1,5 +1,7 @@
 package Backend.services.classes;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import javax.transaction.Transactional;
 import Backend.DAO.entities.Equipe;
 import Backend.DAO.entities.Hackathon;
 import Backend.DAO.entities.User;
+import Backend.services.interfaces.IHackathonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +36,9 @@ public class equipeService implements IEquipeService{
 
 	@Autowired
 	hackathonRepository hackathonRep;
+
+	@Autowired
+	IHackathonService IHackathonService;
 
 
 	@Override
@@ -92,12 +98,30 @@ public class equipeService implements IEquipeService{
 		if(equipeObject != null)
 		{
 			List<User> usersOfEquipe = userRep.getByEquipe(equipeObject.get());
-			usersOfEquipe.forEach(member -> {
-				member.setEquipe(null);
-				userRep.save(member);
-			});
+			if(!usersOfEquipe.isEmpty())
+			{
+				usersOfEquipe.forEach(member -> {
+					member.setEquipe(null);
+					userRep.save(member);
+				});
+			}
+
 			equipeRep.delete(equipeObject.get());
 			return equipeObject.get();
+		}
+		return null;
+	}
+
+	@Override
+	public Equipe changeTeamName(Equipe equipe, String equipeName){
+		Optional<Equipe> equipeObject = equipeRep.findById(equipe.getIdEquipe());
+		Hackathon hackathon = IHackathonService.findCommingHackathon();
+		if (hackathon != null && LocalDate.now().equals(hackathon.getDateDebut().toLocalDate())) {
+			throw new RuntimeException("Cannot modify team name during the hackathon");
+		}
+		if (equipeObject.isPresent()) {
+			equipeObject.get().setNom(equipeName);
+			return equipeRep.save(equipeObject.get());
 		}
 		return null;
 	}

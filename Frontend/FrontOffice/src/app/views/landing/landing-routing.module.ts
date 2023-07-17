@@ -12,6 +12,7 @@ import { ProfileViewComponent } from './profile/profile-view/profile-view.compon
 import { ReservationComponent } from './reservation/reservation.component';
 import { TeamComponent } from './team/team.component';
 import { WorkshopsComponent } from './workshops/workshops.component';
+import { QrcodeComponent } from './qrcode/qrcode.component';
 
 const routes: Routes = [
   { path:'',pathMatch:'full',redirectTo:'home' },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path:'invitationsReceived',component:InvitationsReceivedComponent,canActivate:[AuthGuard]},
   { path:'team',component:TeamComponent,canActivate:[AuthGuard]},
   { path:'profile',component:ProfileViewComponent,canActivate:[AuthGuard]},
-  { path:'profileSettings',component:ProfileComponent,canActivate:[AuthGuard]}
+  { path:'profileSettings',component:ProfileComponent,canActivate:[AuthGuard]},
+  { path:'qrcode',component:QrcodeComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

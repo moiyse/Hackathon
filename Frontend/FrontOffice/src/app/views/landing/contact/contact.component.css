@@ -1,0 +1,23 @@
+.contact-form input{
+    background-color: #ECECEC;
+}
+
+.contact-form input::placeholder{
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.contact-form textarea::placeholder{
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.contact-form textarea{
+    background-color: #ECECEC;
+}
+
+.contact-form input:hover{
+    border-color: rgb(0, 135, 255);
+}
+
+.contact-form textarea:hover{
+    border-color: rgb(0, 135, 255);
+}

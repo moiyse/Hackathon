@@ -40,13 +40,37 @@ export class AuthService {
       password: user.password,
       etablissement: user.etablissement,
       idJe: user.je.idJe,
-      imagePath: user.imagePath
+      imagePath: user.imagePath,
+      domain:window.location.origin,
     }, httpOptions);
   }
 
   checkToken():Observable<any>{
     //console.log("in check token")
     return this.http.get(this.apiServerUrl  + '/checkToken',{responseType: 'text'});
+    
+  }
+
+  verifyEmailVerfication(code:String):Observable<any>{
+    return this.http.get<any>(this.openServiceUrl  + '/verify/'+code);
+  }
+
+  sendEmailVerification(user:User):Observable<any>{
+    let body = {user:user,domain:window.location.origin}
+    return this.http.post<any>(this.openServiceUrl  + '/sendVerificationLink/',body);
+  }
+
+  processForgotPassword(email:String):Observable<any>{
+    let url = window.location.origin
+    let body = {domain : url}
+    return this.http.post<any>(this.openServiceUrl  + '/forgot_password/'+email,body);
+    
+  }
+
+  processResetPassword(token:String,password:String):Observable<any>{
+    let body = {token : token,password:password}
+    console.log("body : ",body)
+    return this.http.post<any>(this.openServiceUrl  + '/reset_password/',body);
     
   }
 
@@ -71,5 +95,8 @@ export class AuthService {
       //console.log("auth valid !")
     }
   }
+
+
+
 }
 

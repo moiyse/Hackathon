@@ -28,6 +28,16 @@ export class TeamComponent implements OnInit {
   name!: string;
   teamMembers!:User[];
   leaderOfEquipe!:User;
+  allEquipes!:Equipe[];
+  //controls for changing team name
+  equipeNameExist = false;
+  showEquipeNameAlert = false;
+  alertMessageEquipeName ="";
+  alertDanger = false;
+  alertWarning = false;
+  alertInfo = false;
+  alertSecondary = false;
+  //////
 
   constructor(private dialog: MatDialog,private authService:AuthService,private router:Router,private equipeService:EquipeService,private userService:UserService,private tokenStorage:TokenStorageService,private invitationService:InvitationService) { }
 
@@ -81,28 +91,6 @@ export class TeamComponent implements OnInit {
           else 
           console.log("ddata from check state user : ",data)
         },err => console.log("error in check user : ",err))
-        /*await this.equipeService.getEquipeByLeader(user).subscribe(data => {
-          console.log("team leader data : ",data)
-          this.leader = data
-          if(this.leader==true){
-            this.equipeExists=true
-            this.userService.getMembersOfEquipe(this.equipe.idEquipe).subscribe(data => {
-              this.teamMembers = data;
-            })
-          }
-          else if(this.equipe !=null && this.leader==false){
-            console.log("here and equipe exists = ",this.equipeExists)
-            this.equipeExists=true
-            this.userService.getMembersOfEquipe(this.equipe.idEquipe).subscribe(data => {
-              this.teamMembers = data;
-            })
-          }
-          else if(this.equipe ==null && this.leader==false)
-          {
-            this.NoEquipeNotLeader=true;
-          }
-          
-        },err=> {console.log("error in the invitation sent of leader of team probably leader not found : ",err)})*/
       }
     })
   }
@@ -147,5 +135,123 @@ export class TeamComponent implements OnInit {
   reloadData(){
     this.setupDisplay(this.user);
   }
+
+  kickMember(member:User){
+    this.userService.leaveTeam(member).subscribe(data => {console.log(data),this.reloadData()},err => {this.reloadData()})
+  }
+
+  updateEquipeNom(event) {
+    event.preventDefault();
+    console.log("team name : ",event.target.textContent)
+    const editedText = event.target.textContent.trim();
+    if (editedText === '' || editedText === '\u00A0') {
+      console.log("here")
+      event.target.textContent = this.equipe.nom;
+    }
+    else{
+      this.changeTeamName(editedText)
+    }
+
+  }
+
+  mouseClickAlert(event){
+    const editedText = event.target.textContent.trim();
+    if (editedText === '' || editedText === '\u00A0') {
+      console.log("here")
+      event.target.textContent = this.equipe.nom;
+    }
+    else if(this.alertDanger == false && this.alertWarning == false && this.alertInfo == false){
+      this.showEquipeNameAlert = true;
+      this.alertMessageEquipeName ="you need to press ENTER to change your team's name";
+      this.alertDanger = false;
+      this.alertWarning = false;
+      this.alertInfo = false;
+      this.alertSecondary = true;
+    }
+  }
+
+
+  changeTeamName(newTeamName:String){
+    ///// initialisation ///
+    this.equipeNameExist = false
+    this.showEquipeNameAlert = false
+    this.alertDanger = false;
+    this.alertWarning = false;
+    this.alertInfo = false;
+    this.alertSecondary = false;
+    //////////////////////////
+    this.equipeService.getAllEquipes().subscribe(data => {
+      this.allEquipes = data
+      console.log("all Equipes : ",this.allEquipes)
+      let equipeNumber = this.allEquipes.length
+        console.log("checking for name doubling")
+        if(this.allEquipes.length == 0)
+        {
+          console.log("equipe to save : ",this.equipe)
+          this.equipeService.changeTeamName(this.equipe,newTeamName).subscribe(data => {
+            console.log(data)
+            this.showEquipeNameAlert = true;
+            this.alertMessageEquipeName ="Your team name has been successfuly changed";
+            this.alertDanger = false;
+            this.alertWarning = false;
+            this.alertInfo = true;
+            this.alertSecondary = false;
+          },err=>{
+            console.log(err)
+            if(err.status == 500){
+              this.showEquipeNameAlert = true;
+              this.alertMessageEquipeName ="You cannot change the name of your team anymore";
+              this.alertDanger = true;
+              this.alertWarning = false;
+              this.alertInfo = false;
+              this.alertSecondary = false;
+            }
+          })
+        }
+        else {
+          this.allEquipes.forEach(equipe => {
+            console.log("equipe number : ",equipeNumber)
+            equipeNumber--;
+            console.log("equipe.nom : ",equipe.nom," newteamname : ",newTeamName)
+            if(equipe.nom == newTeamName)
+            {
+              this.equipeNameExist = true
+              this.showEquipeNameAlert = true;
+              this.alertMessageEquipeName ="The name you have chosen already exists";
+              this.alertDanger = false;
+              this.alertWarning = true;
+              this.alertInfo = false;
+              this.alertSecondary = false;
+            }
+            else if(this.equipeNameExist != true){
+              this.equipeNameExist = false;
+            }
+            if(this.equipeNameExist != true && equipeNumber <=0 ){
+              this.equipeService.changeTeamName(this.equipe,newTeamName).subscribe(data => {
+                console.log(data)
+                this.showEquipeNameAlert = true;
+                this.alertMessageEquipeName ="Your team's name has been successfuly changed";
+                this.alertDanger = false;
+                this.alertWarning = false;
+                this.alertInfo = true;
+                this.alertSecondary = false;
+              },err=>{
+                console.log(err)
+                if(err.status == 500){
+                  this.showEquipeNameAlert = true;
+                  this.alertMessageEquipeName ="You cannot change the name of your team anymore";
+                  this.alertDanger = true;
+                  this.alertWarning = false;
+                  this.alertInfo = false;
+                  this.alertSecondary = false;
+                }
+              })
+            }
+          })
+        }
+    })
+  }
+
+
 
 }

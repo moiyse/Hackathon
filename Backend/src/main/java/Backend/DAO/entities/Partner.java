@@ -31,7 +31,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
 @Entity
 public class Partner implements Serializable {
 	@Id

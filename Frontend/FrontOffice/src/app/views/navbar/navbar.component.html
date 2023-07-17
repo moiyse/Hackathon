@@ -1,7 +1,7 @@
 <nav class="navbar main-nav border-less fixed-top navbar-expand-lg p-0">
     <div class="container-fluid p-0">
         <!-- logo -->
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" routerLink="/landing">
           <img src="assets/INCEPTECH-logo.png" class="img-logo" alt="logo">
           <!--<p>INCEPTECH</p>-->
         </a>
@@ -10,17 +10,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/landing">Home<span>/</span></a>
+            <li class="nav-item" >
+                <a class="nav-link" routerLink="/landing/home" routerLinkActive="active"><a >Home</a><span>/</span></a>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" routerLink="/landing/about" routerLinkActive="active"><a >About</a><span>/</span></a>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" routerLink="/landing/contact" routerLinkActive="active"><a >Contact</a><!--<span *ngIf="email!=null">/</span>--><span>/</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/landing/about">About<span>/</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/landing/contact">Contact<span *ngIf="email!=null">/</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/landing/workshops">Workshops</a>
+                <a class="nav-link" routerLink="/landing/workshops" routerLinkActive="active"><a >Workshops</a></a>
             </li>
             
             </ul>
@@ -28,15 +28,16 @@
                 
                     
                     <a class="ticket">
-                    <span style="border: none !important;"><i style="margin-right: 4px;" class="fa fa-user"></i>{{user.nom}}</span>
+                    <span style="border: none !important;"><i style="margin-right: 4px;" class="fa fa-user"></i>{{tokenStorage.getUserName()}}</span>
                     <span style="border: none !important;"><i class="fa fa-caret-down"></i></span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" routerLink="/landing/profile"><i class="fa fa-user dropdown-icons"></i>Profile Settings</a>
+                        <a class="dropdown-item" routerLink="/landing/profile"><i class="fa fa-user dropdown-icons"></i>Profile</a>
                         <a class="dropdown-item" routerLink="/landing/reservation"><i class="fa fa-list dropdown-icons"></i>My Workshops</a>
                         <a class="dropdown-item" style="display: -webkit-inline-box;width: 100%;" routerLink="/landing/invitationsReceived"><i class="fa fa-bell dropdown-icons"></i>Invitation <div class="circle-icon"><span>{{invitationNumber}}</span></div></a>
                         <a *ngIf="equipeExists==true ; else equipeElseBlock" class="dropdown-item" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>{{equipe.nom}}</a>
                         <ng-template #equipeElseBlock><a class="dropdown-item" routerLink="/landing/team"><i class="fa fa-users dropdown-icons"></i>Equipe</a></ng-template>
+                        <a class="dropdown-item" routerLink="/landing/qrcode"><i class="fa fa-qrcode dropdown-icons"></i>Your QR-code</a>
                         <a class="dropdown-item logout" (click)="logout()"><i class="fa fa-sign-in dropdown-icons" aria-hidden="true"></i>Logout</a>
                     </div>
             </li>

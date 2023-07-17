@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Equipe } from 'src/app/models/Equipe';
+import { Je } from 'src/app/models/Je';
 import { User } from 'src/app/models/User';
 import { EquipeService } from 'src/app/services/equipe.service';
+import { JeService } from 'src/app/services/je.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -21,10 +23,13 @@ export class ProfileViewComponent implements OnInit {
   name!: string;
   teamMembers!:User[];
   leaderOfEquipe!:User;
+  teamToShow="";
+  jeToShow=""
+  je!:Je;
 
 
 
-  constructor(private equipeService:EquipeService,private userService:UserService,private tokenStorage:TokenStorageService) { }
+  constructor(private jeService:JeService,private equipeService:EquipeService,private userService:UserService,private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
     this.userService.getUserByEmail(this.tokenStorage.getUser()).subscribe(data => 
@@ -32,11 +37,8 @@ export class ProfileViewComponent implements OnInit {
 
         console.log("fil invitation : ",data)
         this.user = data;
-        if(this.user.cin.length == 7)
-        {
-          console.log("length : ",this.user.cin.length)
-        }
-        this.user.cin = "0"+this.user.cin
+        this.getEquipe(this.user)
+        this.getJeOfUser(this.user)
 
       },err=> {console.log("error in the invitation sent of getting user details : ",err);this.tokenStorage.signOut()})
       console.log("refreshed")
@@ -49,39 +51,33 @@ export class ProfileViewComponent implements OnInit {
       this.equipe = data;
       if(this.equipe == null)
       {
-        this.NoEquipeNotLeader=true;
+        console.log("here")
+        this.teamToShow = "None"
       }
-      else{
-        this.userService.getLeaderOfEquipe(this.equipe.idEquipe).subscribe(data => {this.leaderOfEquipe = data;console.log("leader of equipe retrieved : ",this.leaderOfEquipe)})
-        console.log("equiupe retrieved",this.equipe)
-        this.userService.checkSateOfUser(user,this.equipe.idEquipe).subscribe(data => {
-          console.log("data of the string is : ",data)
-          if(data == 0)
-          {
-            this.leader = true
-            this.equipeExists=true
-            this.userService.getMembersOfEquipe(this.equipe.idEquipe).subscribe(data => {
-              this.teamMembers = data;
-            })
-          }
-          else if(data == 1)
-          {
-            console.log("here and equipe exists = ",this.equipeExists)
-            this.equipeExists=true
-            this.userService.getMembersOfEquipe(this.equipe.idEquipe).subscribe(data => {
-              this.teamMembers = data;
-            })
-          }
-          else if(data == 2)
-          {
-            this.NoEquipeNotLeader=true;
-          }
-          else 
-          console.log("ddata from check state user : ",data)
-        },err => console.log("error in check user : ",err))
+      else {
+        console.log("here1")
+        this.teamToShow = this.teamToShow+this.equipe.nom;
+      }
+      
+    })
+  }
+
+  getJeOfUser(user:User){
+    this.jeService.getJeByUser(user).subscribe(data => {
+      this.je = data;
+      if(this.je == null)
+      {
+        console.log("here")
+        this.jeToShow = "None"
+      }
+      else {
+        console.log("here1")
+        this.jeToShow = this.jeToShow+this.je.nom;
       }
     })
   }
+
+
 
 
 

@@ -4,7 +4,8 @@ import { timeout } from 'rxjs';
 import { User } from '../models/User';
 
 const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
+const USER_KEY = 'user-email';
+const USER_Name = 'user-name';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class TokenStorageService {
   }
 
   async logout(){
-    await window.sessionStorage.clear();
     this.router.navigateByUrl('/auth');
+    await window.sessionStorage.clear();
   }
 
   
@@ -41,7 +42,15 @@ export class TokenStorageService {
     window.sessionStorage.setItem(USER_KEY, email);
   }
 
+  public saveUserName(name: any): void {
+    window.sessionStorage.removeItem(USER_Name);
+    window.sessionStorage.setItem(USER_Name, name);
+  }
+
   public getUser(): any {
     return sessionStorage.getItem(USER_KEY)!;
+  }
+  public getUserName(): any {
+    return sessionStorage.getItem(USER_Name)!;
   }
 }

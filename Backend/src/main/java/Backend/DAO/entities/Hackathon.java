@@ -61,11 +61,6 @@ public class Hackathon implements Serializable {
 	@Column(name = "updated_at")
 	private Date updatedAt;
 
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "hackathon")
-	private List<Equipe> equipes;
-
 	@JsonIgnore
 	@OneToMany(mappedBy = "hackathon")
 	private List<Event> events;

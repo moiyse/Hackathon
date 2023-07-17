@@ -35,5 +35,10 @@ export class EquipeService {
     return this.http.delete<Equipe>(`${this.apiServerUrl}/equipe/deleteEquipeWithRemovingUserKey/`+idEquipe);
   }
 
+  public changeTeamName(equipe:Equipe,equipeName:String):Observable<Equipe>{
+    return this.http.put<Equipe>(`${this.apiServerUrl}/equipe/changeTeamName/`+equipeName,equipe);
+
+  }
+
 
 }

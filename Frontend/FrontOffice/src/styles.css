@@ -636,8 +636,8 @@ select.form-control:not([size]):not([multiple]) {
 
 
 
-
-@media (max-width: 767px) {
+/******** for centering dropdown menu *******/
+/*@media (max-width: 767px) {
   .main-nav .dropdown-slide:hover .dropdown-menu {
     -webkit-transform: none;
             transform: none;
@@ -646,7 +646,7 @@ select.form-control:not([size]):not([multiple]) {
     text-align: center;
     width: 100%;
   }
-}
+}*/
 
 .main-nav .dropdown-slide .dropdown-menu {
   min-width: 215px;
@@ -1129,7 +1129,7 @@ select.form-control:not([size]):not([multiple]) {
   overflow: hidden;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 575px) {
   .speakers .speaker-item .image img {
     width: 100% !important;
   }
@@ -1167,7 +1167,7 @@ select.form-control:not([size]):not([multiple]) {
   width: 50%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1999px) {
   .speakers .speaker-item .image .socials ul {
     width: 61%;
   }
@@ -3466,3 +3466,10 @@ ul.pagination .active a {
 /*# sourceMappingURL=maps/style.css.map */
 
 
+
+
+/* Added for breakall lines*/
+
+.break-all-class {
+  word-break: break-all !important;
+}
